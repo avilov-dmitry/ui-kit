@@ -1,9 +1,11 @@
+@import "src/styles";
+
 .App {
   text-align: center;
 }
 
 .App__header {
-  background-color: #282c34;
+  background-color: $Gray;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
