@@ -8,9 +8,6 @@ const cn = classname.bind(styles);
 function App() {
   return (
     <div className={cn(CLASS_NAME)}>
-      <header className={cn(`${CLASS_NAME}__header`)}>
-      1234
-      </header>
     </div>
   );
 }

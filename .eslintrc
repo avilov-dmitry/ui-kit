@@ -1,15 +1,15 @@
 {
   "plugins": [
-    "@typescript-eslint",
-    "prettier",
-    "import"
+    "@typescript-eslint", // npm module "@typescript-eslint/eslint-plugin"
+    "prettier", // npm module "eslint-config-prettier"
+    "import" // npm module "eslint-plugin-import"
   ],
   "extends": [
-    "airbnb-typescript/base",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "prettier", // npm module "eslint-config-prettier"
-    "prettier/@typescript-eslint"
+    "prettier/@typescript-eslint",
+    "plugin:import"
   ],
   "parserOptions": {
     "ecmaVersion": 2020,
@@ -19,7 +19,7 @@
     "es6": true,
     "browser": true,
     "node": true,
-    "jest": true,
+    "jest": true
   },
   "rules": {
     "prettier/prettier": [
@@ -28,8 +28,16 @@
         "singleQuote": true,
         "trailingComma": "all",
         "useTabs": false,
-        "printWidth": 80,
-      },
+        "printWidth": 80
+      }
+    ],
+    "max-lines": [
+      "error",
+      {
+        "max": 300,
+        "skipBlankLines": true,
+        "skipComments": true
+      }
     ],
     "no-debugger": "off",
     "no-console": 0
