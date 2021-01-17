@@ -1,25 +1,11 @@
 {
-  "plugins": [
-    "@typescript-eslint", // npm module "@typescript-eslint/eslint-plugin"
-    "prettier", // npm module "eslint-config-prettier"
-    "import" // npm module "eslint-plugin-import"
-  ],
   "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended",
-    "prettier", // npm module "eslint-config-prettier"
-    "prettier/@typescript-eslint",
-    "plugin:import"
+    "react-app",
+    "prettier"
   ],
-  "parserOptions": {
-    "ecmaVersion": 2020,
-    "sourceType": "module"
-  },
   "env": {
     "es6": true,
-    "browser": true,
-    "node": true,
-    "jest": true
+    "browser": true
   },
   "rules": {
     "prettier/prettier": [
@@ -40,6 +26,17 @@
       }
     ],
     "no-debugger": "off",
-    "no-console": 0
-  }
+    "no-console": 0,
+    "comma-dangle": ["error", "always-multiline"]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  },
+  "plugins": [
+    "prettier"
+  ]
 }
