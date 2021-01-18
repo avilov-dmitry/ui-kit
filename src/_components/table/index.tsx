@@ -9,6 +9,7 @@ import {
 import { TableView } from './_components/table-view';
 import classnames from 'classnames/bind';
 import styles from './index.module.scss';
+import { TableHeader } from './_components/table-header';
 
 const cn = classnames.bind(styles);
 const CLASS_NAME = 'Table';
@@ -84,23 +85,37 @@ export const Table = ({
   );
 
   return (
-    <div className={cn(CLASS_NAME)}>
-      <TableView
-        allIsChecked={allIsChecked}
-        columns={config}
-        Row={customDesktopRow}
-        id={id}
-        isRowReadOnly={isRowReadOnly}
-        isVisibleTableHeader={isVisibleTableHeader}
-        onClickRow={handleRowClick}
-        onSelectAllRows={handleSelectAllRows}
-        onSelectRow={handleSelectRow}
-        onSort={onSort}
-        rows={rows}
-        selected={selectedIds}
-        sort={sort}
-        withCheckboxes={withCheckboxes}
-      />
+    <div className={cn(`${CLASS_NAME}__wrapper`)}>
+      <div className={cn(CLASS_NAME)} id={id}>
+        {isVisibleTableHeader && (
+          <TableHeader
+            allIsChecked={allIsChecked}
+            columns={config}
+            onSelectAllRows={handleSelectAllRows}
+            onSort={onSort}
+            sort={sort}
+            tableId={id}
+            withCheckboxes={withCheckboxes}
+          />
+        )}
+        <div className={cn(`${CLASS_NAME}__body`)}>
+          {rows.map((row: TableRowType) => {
+            return (
+              <Row
+                key={row.id}
+                columns={config}
+                isRowReadOnly={isRowReadOnly}
+                onClickRow={onClickRow}
+                onSelectRow={onSelectRow}
+                row={row}
+                selected={selectedIds}
+                tableId={id}
+                withCheckboxes={withCheckboxes}
+              />
+            );
+          })}
+        </div>
+      </div>
       {isLoading && <div>Идет загрузка данных...</div>}
     </div>
   );
