@@ -6,7 +6,6 @@ import {
   getSelectedAllRows,
   checkAllIsChecked,
 } from './_utils';
-import { TableView } from './_components/table-view';
 import classnames from 'classnames/bind';
 import styles from './index.module.scss';
 import { TableHeader } from './_components/table-header';
@@ -16,7 +15,7 @@ const CLASS_NAME = 'Table';
 
 export const Table = ({
   config,
-  customDesktopRow,
+  customDesktopRow = Row,
   // customMobileRow,
   id,
   rowIsNotClickable = true,
@@ -105,8 +104,8 @@ export const Table = ({
                 key={row.id}
                 columns={config}
                 isRowReadOnly={isRowReadOnly}
-                onClickRow={onClickRow}
-                onSelectRow={onSelectRow}
+                onClickRow={handleRowClick}
+                onSelectRow={handleSelectRow}
                 row={row}
                 selected={selectedIds}
                 tableId={id}
