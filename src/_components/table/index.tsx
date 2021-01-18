@@ -88,7 +88,7 @@ export const Table = ({
       <TableView
         allIsChecked={allIsChecked}
         columns={config}
-        customDesktopRow={customDesktopRow}
+        Row={customDesktopRow}
         id={id}
         isRowReadOnly={isRowReadOnly}
         isVisibleTableHeader={isVisibleTableHeader}
