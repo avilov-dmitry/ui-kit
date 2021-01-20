@@ -4,6 +4,8 @@ import { getWeekDays } from './_utils';
 import './calendar.scss';
 import { CalendarHeader } from './_components/calendar-header';
 import { getMonthName } from './_utils/getMonthName';
+import { CalendarTime } from './_components/CalendarTime';
+import { CalendarTimeType } from './_components/_types';
 
 const CLASS_NAME = 'Calendar';
 const cn = classNames;
@@ -11,6 +13,7 @@ const cn = classNames;
 type PropsType = {
   id: string;
   lang: any;
+  withTime?: boolean;
 };
 
 export const Calendar = ({ id, lang }: PropsType) => {
@@ -20,7 +23,7 @@ export const Calendar = ({ id, lang }: PropsType) => {
 
   const month: string = useMemo(
     () => `${getMonthName(lang, getDate.getMonth())} ${getDate.getFullYear()}`,
-    [getDate],
+    [getDate]
   );
 
   const weekDays = useMemo(() => getWeekDays(lang), []);
@@ -35,25 +38,46 @@ export const Calendar = ({ id, lang }: PropsType) => {
     setDate(new Date(nextMont));
   }, [getDate]);
 
+  const handleChangeTime = useCallback(
+    ({ minutes, hours }: CalendarTimeType) => {
+      const newDate = getDate;
+      getDate.setMinutes(minutes);
+      getDate.setHours(hours);
+      setDate(new Date(newDate));
+    },
+    [getDate]
+  );
+
   return (
     <div className={cn(CLASS_NAME, {})} id={id}>
-      <CalendarHeader
-        month={month}
-        onPrevMonth={handlePrevMonth}
-        onNextMonth={handleNextMonth}
-      />
-      <div className={cn(`${CLASS_NAME}__week`)}>
-        {weekDays.map((dayName, key) => (
-          <span
-            className={cn(`${CLASS_NAME}__week-name`, {
-              [`${CLASS_NAME}__week-name-end`]: key >= 5,
-            })}
-            key={`w${dayName}`}
-          >
-            {dayName}
-          </span>
-        ))}
+      <div className={cn(`${CLASS_NAME}__month`)}>
+        <CalendarHeader
+          month={month}
+          onNextMonth={handleNextMonth}
+          onPrevMonth={handlePrevMonth}
+        />
+        <div className={cn(`${CLASS_NAME}__week`)}>
+          {weekDays.map((dayName, key) => (
+            <span
+              className={cn(`${CLASS_NAME}__week-name`, {
+                [`${CLASS_NAME}__week-name-end`]: key >= 5
+              })}
+              key={`w${dayName}`}
+            >
+              {dayName}
+            </span>
+          ))}
+        </div>
       </div>
+      {withTime && (
+        <div className={cn(`${CLASS_NAME}__time`)}>
+          <CalendarTime
+            hours={getDate.getHours()}
+            minutes={getDate.getMinutes()}
+            onChange={handleChangeTime}
+          />
+        </div>
+      )}
     </div>
   );
 };
