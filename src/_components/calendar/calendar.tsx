@@ -9,31 +9,31 @@ const CLASS_NAME = 'Calendar';
 const cn = classNames;
 
 type PropsType = {
-  id: string
-  lang: any
+  id: string;
+  lang: any;
 };
 
 export const Calendar = ({ id, lang }: PropsType) => {
-  const [getDate, setDate] = useState(new Date())
-  const now = new Date()
-  now.setHours(0, 0, 0, 0)
+  const [getDate, setDate] = useState(new Date());
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
 
   const month: string = useMemo(
     () => `${getMonthName(lang, getDate.getMonth())} ${getDate.getFullYear()}`,
-    [getDate]
-  )
+    [getDate],
+  );
 
-  const weekDays = useMemo(() => getWeekDays(lang),[]);
+  const weekDays = useMemo(() => getWeekDays(lang), []);
 
   const handlePrevMonth = useCallback(() => {
-    const prevMont = getDate.setMonth(getDate.getMonth() - 1)
-    setDate(new Date(prevMont))
-  }, [getDate])
+    const prevMont = getDate.setMonth(getDate.getMonth() - 1);
+    setDate(new Date(prevMont));
+  }, [getDate]);
 
   const handleNextMonth = useCallback(() => {
-    const nextMont = getDate.setMonth(getDate.getMonth() + 1)
-    setDate(new Date(nextMont))
-  }, [getDate])
+    const nextMont = getDate.setMonth(getDate.getMonth() + 1);
+    setDate(new Date(nextMont));
+  }, [getDate]);
 
   return (
     <div className={cn(CLASS_NAME, {})} id={id}>
