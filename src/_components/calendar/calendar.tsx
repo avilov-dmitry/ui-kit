@@ -5,7 +5,7 @@ import './calendar.scss';
 import { CalendarHeader } from './_components/calendar-header';
 import { getMonthName } from './_utils/getMonthName';
 import { CalendarTime } from './_components/CalendarTime';
-import { CalendarTimeType } from './_components/_types';
+import { CalendarTimeType } from './_types';
 
 const CLASS_NAME = 'Calendar';
 const cn = classNames;

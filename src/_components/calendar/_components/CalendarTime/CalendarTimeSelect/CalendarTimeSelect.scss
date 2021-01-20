@@ -1,10 +1,14 @@
 .CalendarTimeSelect {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow-y: scroll;
   height: 100%;
   width: 50%;
   box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
 
   &__item {
     padding-top: 15px;
@@ -15,9 +19,8 @@
     cursor: pointer;
 
     &--selected {
-      background-color: #d1cfd7;
       border-radius: 5px;
-      color: #18182e;
+      border: 1px solid #fff731;
     }
   }
 }
