@@ -1,7 +1,8 @@
-import React, { memo, useCallback, useEffect, useMemo } from 'react'
+import React, { memo, useCallback, useMemo } from 'react'
 import classNames from 'classnames/bind'
 import './CalendarTime.scss'
 import { CalendarTimeType } from 'components/calendar/types'
+import { getTimeOptions } from 'components/calendar/_utils/getTimeOptions'
 import { CalendarTimeSelect } from './CalendarTimeSelect'
 
 const CLASS_NAME = 'CalendarTime'
@@ -14,22 +15,8 @@ type PropsType = {
 }
 
 export const CalendarTime = memo(({ minutes, hours, onChange }: PropsType) => {
-  const hoursOptions = useMemo(
-    () =>
-      new Array(24).fill(0).map((item, index) => ({
-        id: index,
-        label: index < 10 ? `0${index}` : `${index}`
-      })),
-    []
-  )
-  const minutesOptions = useMemo(
-    () =>
-      new Array(60).fill(0).map((item, index) => ({
-        id: index,
-        label: index < 10 ? `0${index}` : `${index}`
-      })),
-    []
-  )
+  const hoursOptions = useMemo(() => getTimeOptions(24), [])
+  const minutesOptions = useMemo(() => getTimeOptions(60), [])
 
   const handleChangeHours = useCallback(
     (selected) => {
