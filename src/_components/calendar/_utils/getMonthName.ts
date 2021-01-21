@@ -12,7 +12,7 @@ export const getMonthName = (lang: 'ru' | 'en', monthIndex: number) => {
       'Сентябрь',
       'Октябрь',
       'Ноябрь',
-      'Декабрь',
+      'Декабрь'
     ],
     en: [
       'January',
@@ -26,8 +26,8 @@ export const getMonthName = (lang: 'ru' | 'en', monthIndex: number) => {
       'September',
       'October',
       'November',
-      'December',
-    ],
+      'December'
+    ]
   };
 
   return days[lang][monthIndex];
