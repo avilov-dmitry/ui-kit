@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import classNames from 'classnames/bind';
 import { getWeekDays } from './_utils';
 import './calendar.scss';
-import { CalendarHeader } from './_components/calendar-header';
+import { CalendarHeader } from './_components/CalendarHeader';
 import { getMonthName } from './_utils/getMonthName';
 import { CalendarTime } from './_components/CalendarTime';
 import { CalendarTimeType } from './_types';

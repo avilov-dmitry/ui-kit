@@ -1,19 +1,19 @@
-import React, { FC, SyntheticEvent, useCallback } from 'react'
-import classNames from 'classnames/bind'
-import { Locale } from '../locale'
-import '../Calendar.scss'
+import React, { FC, SyntheticEvent, useCallback } from 'react';
+import classNames from 'classnames/bind';
+import { Locale } from '../locale';
+import '../Calendar.scss';
 
-const cn = classNames
-const CLASS_NAME = 'Calendar'
+const cn = classNames;
+const CLASS_NAME = 'Calendar';
 
 type PropsType = {
-  day: Date
-  disabled: boolean
-  onClick: any
-  index: number
-  length: number
-  value: Date
-}
+  day: Date;
+  disabled: boolean;
+  onClick: any;
+  index: number;
+  length: number;
+  value: Date;
+};
 
 export const CalendarDayView = ({
   day,
@@ -23,15 +23,15 @@ export const CalendarDayView = ({
   length,
   value
 }: PropsType) => {
-  const now = new Date()
-  now.setHours(0, 0, 0, 0)
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
 
   const handleSelect = useCallback(
     (event: SyntheticEvent<HTMLButtonElement>) => {
-      onClick({ event, value: event.currentTarget.value })
+      onClick({ event, value: event.currentTarget.value });
     },
     [onClick]
-  )
+  );
 
   return (
     <button
@@ -56,5 +56,5 @@ export const CalendarDayView = ({
     >
       {day.getDate()}
     </button>
-  )
-}
+  );
+};
