@@ -1,0 +1,16 @@
+.CalendarTimeSelectOption {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #18182e;
+  color: #d1cfd7;
+  border: none;
+  cursor: pointer;
+
+  &--selected {
+    border-radius: 5px;
+    border: 1px solid #fff731;
+  }
+}

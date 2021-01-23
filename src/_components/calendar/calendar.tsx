@@ -51,11 +51,7 @@ export const Calendar = ({ id, lang }: PropsType) => {
   return (
     <div className={cn(CLASS_NAME, {})} id={id}>
       <div className={cn(`${CLASS_NAME}__month`)}>
-        <CalendarHeader
-          month={month}
-          onNextMonth={handleNextMonth}
-          onPrevMonth={handlePrevMonth}
-        />
+        <CalendarHeader month={month} onNextMonth={handleNextMonth} onPrevMonth={handlePrevMonth} />
         <div className={cn(`${CLASS_NAME}__week`)}>
           {weekDays.map((dayName, key) => (
             <span
