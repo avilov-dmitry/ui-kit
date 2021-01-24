@@ -1,1 +1,1 @@
-export { CalendarTimeSelectOption } from './CalendarTimeSelectOption'
+export { CalendarTimeSelectOption } from './CalendarTimeSelectOption';

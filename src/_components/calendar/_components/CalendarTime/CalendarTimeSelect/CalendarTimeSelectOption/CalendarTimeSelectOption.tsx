@@ -20,9 +20,6 @@ export const CalendarTimeSelectOption = memo(
 
     useEffect(() => {
       if (isSelected && refLink.current !== null && refOption.current !== null) {
-        console.log(refOption.current.getBoundingClientRect());
-        console.log(index);
-
         const height = refOption.current.getBoundingClientRect().height;
 
         refLink.current.scrollTo({ top: index * height });

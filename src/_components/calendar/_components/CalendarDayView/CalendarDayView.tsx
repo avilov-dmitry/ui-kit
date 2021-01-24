@@ -1,4 +1,4 @@
-import React, { memo, SyntheticEvent, useCallback } from 'react';
+import React, { memo, SyntheticEvent, useCallback, useMemo } from 'react';
 import classNames from 'classnames/bind';
 import { getLocale } from '../../_utils/getLocale';
 import './CalendarDayView.scss';
@@ -17,23 +17,19 @@ type PropsType = {
 
 export const CalendarDayView = memo(
   ({ day, disabled, onClick, index, length, value }: PropsType) => {
-    const now = new Date();
-    now.setHours(0, 0, 0, 0);
+    const isNow = useMemo(() => day.getTime() === new Date().getTime(), [day]);
 
     const handleSelect = useCallback(
       (event: SyntheticEvent<HTMLButtonElement>) => {
-        onClick({ event, value: event.currentTarget.value });
+        onClick({ event, value: day });
       },
-      [onClick]
+      [day, onClick]
     );
-
-    console.log('value', value);
-    console.log('day', day);
 
     return (
       <button
         className={cn(`${CLASS_NAME}`, {
-          [`${CLASS_NAME}-now`]: day.getTime() === now.getTime(),
+          [`${CLASS_NAME}--now`]: isNow,
           [`${CLASS_NAME}-select`]: getLocale(value) === getLocale(day),
           [`${CLASS_NAME}--firstup`]:
             index === 0 || (day.getDate() >= 2 && day.getDate() < 8 && day.getDay() === 1),

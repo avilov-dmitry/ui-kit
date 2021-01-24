@@ -14,7 +14,8 @@
 
   &--withTime {
     display: flex;
-    width: 400px;
+    justify-content: space-between;
+    width: 380px;
   }
 
   &__month {
@@ -48,6 +49,6 @@
   }
 
   &__time {
-    width: calc(100% - 270px);
+    width: calc(100% - 280px);
   }
 }

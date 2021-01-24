@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 type PropsType = {
   className?: string;
@@ -11,20 +11,22 @@ const PATH_LEFT =
 const PATH_RIGHT =
   'M14.5858 10.0001H0V8.00008H14.5858L8.29289 1.70718L9.70711 0.292969L18.4142 9.00008L9.70711 17.7072L8.29289 16.293L14.5858 10.0001Z';
 
-export const IconArrow = ({ className = '', color = '#d1cfd7', isRight = false }: PropsType) => (
-  <svg
-    className={className}
-    height={24}
-    viewBox="-2 -2 24 24"
-    width={24}
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      key={isRight ? PATH_RIGHT : PATH_LEFT}
-      clipRule="evenodd"
-      d={isRight ? PATH_RIGHT : PATH_LEFT}
-      fill="#d1cfd7"
-      fillRule="evenodd"
-    />
-  </svg>
+export const IconArrow = memo(
+  ({ className = '', color = '#d1cfd7', isRight = false }: PropsType) => (
+    <svg
+      className={className}
+      height={24}
+      viewBox="-2 -2 24 24"
+      width={24}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        key={isRight ? PATH_RIGHT : PATH_LEFT}
+        clipRule="evenodd"
+        d={isRight ? PATH_RIGHT : PATH_LEFT}
+        fill={color}
+        fillRule="evenodd"
+      />
+    </svg>
+  )
 );

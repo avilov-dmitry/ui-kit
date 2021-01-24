@@ -1,1 +1,1 @@
-export { CalendarTime } from './CalendarTime'
+export { CalendarTime } from './CalendarTime';
