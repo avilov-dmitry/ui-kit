@@ -32,10 +32,23 @@ export const CalendarTime = memo(({ minutes, hours, onChange }: PropsType) => {
     [hours, onChange]
   );
 
+  const time = useMemo(() => {
+    const visibleHours = `${hours < 10 ? `0${hours}` : hours}`;
+    const visibleMinutes = `${minutes < 10 ? `0${minutes}` : minutes}`;
+    return `${visibleHours} : ${visibleMinutes}`;
+  }, [hours, minutes]);
+
   return (
     <div className={cn(`${CLASS_NAME}`)}>
-      <CalendarTimeSelect onClick={handleChangeHours} options={hoursOptions} value={hours} />
-      <CalendarTimeSelect onClick={handleChangeMinutes} options={minutesOptions} value={minutes} />
+      <div className={cn(`${CLASS_NAME}__selected-time`)}>{time}</div>
+      <div className={cn(`${CLASS_NAME}__selects`)}>
+        <CalendarTimeSelect onClick={handleChangeHours} options={hoursOptions} value={hours} />
+        <CalendarTimeSelect
+          onClick={handleChangeMinutes}
+          options={minutesOptions}
+          value={minutes}
+        />
+      </div>
     </div>
   );
 });

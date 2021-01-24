@@ -1,4 +1,17 @@
 .CalendarTime {
   display: flex;
+  flex-direction: column;
   height: 100%;
+
+  &__selected-time {
+    display: flex;
+    width: 100%;
+    align-self: center;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
+  &__selects {
+    display: flex;
+    overflow: hidden;
+  }
 }

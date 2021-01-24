@@ -103,8 +103,17 @@ export const Calendar = ({
   // todo end
 
   return (
-    <div className={cn(CLASS_NAME, {})} id={id}>
-      <div className={cn(`${CLASS_NAME}__month`)}>
+    <div
+      className={cn(CLASS_NAME, {
+        [`${CLASS_NAME}--withTime`]: withTime
+      })}
+      id={id}
+    >
+      <div
+        className={cn(`${CLASS_NAME}__month`, {
+          [`${CLASS_NAME}__month--withTime`]: withTime
+        })}
+      >
         <CalendarHeader month={month} onNextMonth={handleNextMonth} onPrevMonth={handlePrevMonth} />
         <div className={cn(`${CLASS_NAME}__week`)}>
           {weekDays.map((dayName, key) => (

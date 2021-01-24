@@ -1,35 +1,35 @@
-import React, { memo, useCallback, useEffect, useRef } from 'react'
-import classNames from 'classnames/bind'
-import './CalendarTimeSelectOption.scss'
+import React, { memo, useCallback, useEffect, useRef } from 'react';
+import classNames from 'classnames/bind';
+import './CalendarTimeSelectOption.scss';
 
-const CLASS_NAME = 'CalendarTimeSelectOption'
-const cn = classNames
+const CLASS_NAME = 'CalendarTimeSelectOption';
+const cn = classNames;
 
 type PropsType = {
-  refLink: any
-  id: string
-  label: string
-  isSelected: boolean
-  index: number
-  onClick: (params: number) => void
-}
+  refLink: any;
+  id: string;
+  label: string;
+  isSelected: boolean;
+  index: number;
+  onClick: (params: number) => void;
+};
 
 export const CalendarTimeSelectOption = memo(
   ({ refLink, id, label, isSelected, index, onClick }: PropsType) => {
-    const refOption = useRef<HTMLButtonElement>(null)
+    const refOption = useRef<HTMLButtonElement>(null);
 
     useEffect(() => {
       if (isSelected && refLink.current !== null && refOption.current !== null) {
-        console.log(refOption.current.getBoundingClientRect())
-        console.log(index)
+        console.log(refOption.current.getBoundingClientRect());
+        console.log(index);
 
-        const height = refOption.current.getBoundingClientRect().height
+        const height = refOption.current.getBoundingClientRect().height;
 
-        refLink.current.scrollTo({ top: index * height })
+        refLink.current.scrollTo({ top: index * height });
       }
-    }, [refLink, index, isSelected])
+    }, [refLink, index, isSelected]);
 
-    const handleClick = useCallback(() => onClick(Number(id)), [id, onClick])
+    const handleClick = useCallback(() => onClick(Number(id)), [id, onClick]);
 
     return (
       <button
@@ -43,6 +43,6 @@ export const CalendarTimeSelectOption = memo(
       >
         {label}
       </button>
-    )
+    );
   }
-)
+);

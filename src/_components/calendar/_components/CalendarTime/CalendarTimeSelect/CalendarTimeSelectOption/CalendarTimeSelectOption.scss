@@ -1,6 +1,7 @@
 .CalendarTimeSelectOption {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,6 +9,7 @@
   color: #d1cfd7;
   border: none;
   cursor: pointer;
+  border: 1px solid transparent;
 
   &--selected {
     border-radius: 5px;
