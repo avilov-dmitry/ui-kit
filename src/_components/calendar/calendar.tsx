@@ -39,7 +39,7 @@ export const Calendar = ({
     [lang, getDate]
   );
 
-  const weekDays = useMemo(() => getWeekDays(lang), []);
+  const weekDays = useMemo(() => getWeekDays(lang), [lang]);
 
   const handlePrevMonth = useCallback(() => {
     const prevMont = getDate.setMonth(getDate.getMonth() - 1);
@@ -61,7 +61,7 @@ export const Calendar = ({
     [getDate]
   );
 
-  //todo
+  // todo
   const handleChangeDate = useCallback(
     ({ minutes, hours }: CalendarTimeType) => {
       const newDate = getDate;
@@ -100,7 +100,7 @@ export const Calendar = ({
   const nextfirstDayOnWeek = useMemo(() => getDaysOfNextMonth(firstDayNextMonth), [
     firstDayNextMonth
   ]);
-  //todo end
+  // todo end
 
   return (
     <div className={cn(CLASS_NAME, {})} id={id}>
@@ -109,10 +109,10 @@ export const Calendar = ({
         <div className={cn(`${CLASS_NAME}__week`)}>
           {weekDays.map((dayName, key) => (
             <span
+              key={`w${dayName}`}
               className={cn(`${CLASS_NAME}__week-name`, {
                 [`${CLASS_NAME}__week-name-end`]: key >= 5
               })}
-              key={`w${dayName}`}
             >
               {dayName}
             </span>
@@ -120,23 +120,23 @@ export const Calendar = ({
         </div>
         <div className={cn(`${CLASS_NAME}__days`)}>
           {prevfirstDayOnWeek.map((el, index) => (
-            <button className={cn(`${CLASS_NAME}__days-day-empty`)} key={el} type="button">
+            <button key={el} className={cn(`${CLASS_NAME}__day-empty`)} type="button">
               {prevlastDayPrevMonth.getDate() - (prevfirstDayOnWeek.length - index - 1)}
             </button>
           ))}
           {allDaysInMonth.map((day, index) => (
             <CalendarDayView
+              key={day}
               day={day}
               disabled={disabled}
               index={index}
-              key={day}
               length={allDaysInMonth.length}
               onClick={onClick}
               value={value}
             />
           ))}
           {nextfirstDayOnWeek.map((el, index) => (
-            <button className={cn(`${CLASS_NAME}__days-day-empty`)} key={el} type="button">
+            <button key={el} className={cn(`${CLASS_NAME}__day-empty`)} type="button">
               {index + 1}
             </button>
           ))}

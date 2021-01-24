@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import classNames from 'classnames/bind';
-import IconArrow from 'components/icon/icons/icon-arrow';
+import { IconArrow } from './_components/IconArrow';
 import './CalendarHeader.scss';
 
 const CLASS_NAME = 'CalendarHeader';
