@@ -1,9 +1,9 @@
 import React, { memo } from 'react';
 import classNames from 'classnames/bind';
-import '../Calendar.scss';
-import { IconArrow } from '../../icons/IconArrow';
+import IconArrow from 'components/icon/icons/icon-arrow';
+import './CalendarHeader.scss';
 
-const CLASS_NAME = 'Calendar-header';
+const CLASS_NAME = 'CalendarHeader';
 const cn = classNames;
 
 type PropsType = {

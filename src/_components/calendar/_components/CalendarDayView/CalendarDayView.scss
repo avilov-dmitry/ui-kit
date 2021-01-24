@@ -1,0 +1,63 @@
+.CalendarDayView {
+  // position: relative;
+
+  align-items: center;
+  background-color: transparent;
+  font-size: 16px;
+  height: 38px;
+  justify-content: center;
+  outline: none;
+  padding: 0;
+  position: relative;
+  width: 38px;
+  border: 1px solid rgba(#d1cfd7, 0.4);
+  color: #d1cfd7;
+
+  &:hover {
+    border: 1px solid #d1cfd7;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  &-empty {
+    background: transparent;
+    border: none;
+    color: #d1cfd7;
+    font-size: 16px;
+    width: 38px;
+  }
+
+  &--lastup {
+    border-top-right-radius: 4px;
+  }
+
+  &--firstup {
+    border-top-left-radius: 4px;
+  }
+
+  &--lastdown {
+    border-bottom-right-radius: 4px;
+  }
+
+  &--firstdown {
+    border-bottom-left-radius: 4px;
+  }
+
+  &-now::after {
+    border: 5px solid transparent;
+    border-left: 5px solid #fff731;
+    border-top: 5px solid #fff731;
+    content: '';
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  &-select {
+    font-weight: 700;
+    background-color: rgba(#fff731, 0.2);
+    border: 1px solid #fff731;
+    border-radius: 4px;
+  }
+}
