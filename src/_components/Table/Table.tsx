@@ -1,11 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import { ClickRowParamsType, TableRowType } from './_types';
 import { TablePropsType } from './_types/props-type';
-import {
-  getSelectedRows,
-  getSelectedAllRows,
-  checkAllIsChecked,
-} from './_utils';
+import { getSelectedRows, getSelectedAllRows, checkAllIsChecked } from './_utils';
 import classnames from 'classnames/bind';
 import styles from './index.module.scss';
 import { TableHeader } from './_components/table-header';
@@ -28,7 +24,7 @@ export const Table = ({
   isLoading,
   onSort,
   sort,
-  withCheckboxes = false,
+  withCheckboxes = false
 }: TablePropsType) => {
   const handleRowClick = useCallback(
     ({ row, event }: ClickRowParamsType) => {
@@ -36,52 +32,51 @@ export const Table = ({
         onClickRow({ row, event });
       }
     },
-    [rowIsNotClickable, onClickRow],
+    [rowIsNotClickable, onClickRow]
   );
 
   const handleSelectRow = useCallback(
     (row: TableRowType) => {
       if (onSelectRow) {
         onSelectRow({
-          selected: getSelectedRows({ row, selected, selectedIsOption }),
+          selected: getSelectedRows({ row, selected, selectedIsOption })
         });
       }
     },
-    [selected, rows, selectedIsOption, onSelectRow],
+    [selected, rows, selectedIsOption, onSelectRow]
   );
 
   const handleSelectAllRows = useCallback(() => {
     if (onSelectRow) {
       onSelectRow({
-        selected: getSelectedAllRows({ selected, rows, selectedIsOption }),
+        selected: getSelectedAllRows({ selected, rows, selectedIsOption })
       });
     }
   }, [selected, rows, selectedIsOption, onSelectRow]);
 
-  const allIsChecked = useMemo(
-    () => checkAllIsChecked({ rows, selected, selectedIsOption }),
-    [rows, selected, selectedIsOption],
-  );
+  const allIsChecked = useMemo(() => checkAllIsChecked({ rows, selected, selectedIsOption }), [
+    rows,
+    selected,
+    selectedIsOption
+  ]);
 
-  const isVisibleTableHeader = useMemo(
-    () => Boolean(config.length && !isHiddenHeader),
-    [config.length, isHiddenHeader],
-  );
+  const isVisibleTableHeader = useMemo(() => Boolean(config.length && !isHiddenHeader), [
+    config.length,
+    isHiddenHeader
+  ]);
 
   const selectedIds = useMemo(
     () =>
       Array.isArray(selected)
-        ? (selected as Array<any>).map((param) =>
-            selectedIsOption ? param.id : param,
-          )
+        ? (selected as Array<any>).map((param) => (selectedIsOption ? param.id : param))
         : [],
-    [selected, selectedIsOption],
+    [selected, selectedIsOption]
   );
 
-  const isRowReadOnly = useMemo(
-    () => Boolean(!onClickRow && rowIsNotClickable),
-    [onClickRow, rowIsNotClickable],
-  );
+  const isRowReadOnly = useMemo(() => Boolean(!onClickRow && rowIsNotClickable), [
+    onClickRow,
+    rowIsNotClickable
+  ]);
 
   return (
     <div className={cn(`${CLASS_NAME}__wrapper`)}>
@@ -101,9 +96,9 @@ export const Table = ({
           {rows.map((row: TableRowType) => {
             return (
               <Row
-                key={row.id}
                 columns={config}
                 isRowReadOnly={isRowReadOnly}
+                key={row.id}
                 onClickRow={handleRowClick}
                 onSelectRow={handleSelectRow}
                 row={row}
