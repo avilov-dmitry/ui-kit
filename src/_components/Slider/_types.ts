@@ -1,4 +1,4 @@
-export type SliderSize = 's' | 'm' | 'l';
+export type SliderSize = 's' | 'l';
 
 export type SliderVariant =
   | 'primary'
@@ -9,3 +9,8 @@ export type SliderVariant =
   | 'info'
   | 'dark'
   | 'light';
+
+export type SliderChangeParamsType = {
+  event: any;
+  value: string;
+};

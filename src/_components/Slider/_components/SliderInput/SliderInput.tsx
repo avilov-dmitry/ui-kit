@@ -1,13 +1,15 @@
 import React, { memo, useCallback } from 'react';
+import { SliderChangeParamsType } from '../../_types';
+import './SliderInput.scss';
 
 type PropsType = {
   className: string;
   isDisabled: boolean;
   max: number;
   min: number;
-  onChange: (params: any) => void;
+  onChange: (params: SliderChangeParamsType) => void;
   onMouseUp?: (params: any) => void;
-  onMouseUpOrTouchEnd?: (params: any) => void;
+  onMouseUpOrTouchEnd: (params: any) => void;
   onTouchEnd?: (params: any) => void;
   ref?: any;
   step: number;
@@ -26,6 +28,7 @@ export const SliderInput = memo(
     onTouchEnd,
     step,
     value,
+    customThumb = null,
     ...rest
   }: PropsType) => {
     const handleOnChange = useCallback(
@@ -54,18 +57,20 @@ export const SliderInput = memo(
     );
 
     return (
-      <input
-        className={className}
-        max={max}
-        min={min}
-        onChange={handleOnChange}
-        onMouseUp={handleOnMouseUp}
-        onTouchEnd={handleOnTouchEnd}
-        step={step}
-        type="range"
-        value={value}
-        {...rest}
-      />
+      <>
+        <input
+          className={className}
+          max={max}
+          min={min}
+          onChange={handleOnChange}
+          onMouseUp={handleOnMouseUp}
+          onTouchEnd={handleOnTouchEnd}
+          step={step}
+          type="range"
+          value={value}
+          {...rest}
+        />
+      </>
     );
   }
 );

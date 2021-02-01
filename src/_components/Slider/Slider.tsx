@@ -1,28 +1,30 @@
-import React, { forwardRef, useCallback, useState } from 'react';
+import React, { forwardRef, useCallback } from 'react';
 import classNames from 'classnames';
 import { SliderInput } from './_components/SliderInput/SliderInput';
-import { SliderSize, SliderVariant } from './_types';
+import { SliderChangeParamsType, SliderSize, SliderVariant } from './_types';
+import './Slider.scss';
 
 const CLASS_NAME = 'Slider';
 
 type PropsType = {
   value: number | string;
-  onChange: () => void;
-  onAfterChange: (params: any) => void;
-  min: number;
-  max: number;
-  step: number;
-  disabled: boolean;
-  size: SliderSize;
-  variant: SliderVariant;
-  className: string;
+  onChange: (params: SliderChangeParamsType) => void;
+  onAfterChange?: (params: any) => void;
+  min?: number;
+  max?: number;
+  step?: number;
+  isDisabled?: boolean;
+  size?: SliderSize;
+  variant?: SliderVariant;
+  className?: string;
+  customThumb?: React.ReactNode;
 };
 
 export const Slider = forwardRef(
   (
     {
-      size,
-      disabled = false,
+      size = 'l',
+      isDisabled = false,
       value,
       onChange = () => {},
       onAfterChange = () => {},
@@ -30,21 +32,20 @@ export const Slider = forwardRef(
       max = 100,
       step = 1,
       variant = 'primary',
-      className
+      className,
+      customThumb = null
     }: PropsType,
     ref
   ) => {
-    const [prevValue, setPrevValue] = useState();
-
     const onMouseUpOrTouchEnd = useCallback(
-      (event) => {
-        if (prevValue !== event.target.value) {
+      ({ event }) => {
+        if (value !== event.target.value) {
           onAfterChange({ event, value: event.target.valueAsNumber });
         }
 
-        setPrevValue(event.target.value);
+        onChange({ event, value: event.target.value });
       },
-      [prevValue, onAfterChange]
+      [value, onAfterChange, onChange]
     );
 
     return (
@@ -52,12 +53,17 @@ export const Slider = forwardRef(
         className={classNames(`${CLASS_NAME}__wrap`, { [`${CLASS_NAME}__wrap--${size}`]: size })}
       >
         <SliderInput
-          className={classNames(className, CLASS_NAME, {
-            [`${CLASS_NAME}__${size}`]: size,
-            [`${CLASS_NAME}__disabled`]: disabled,
-            [`${CLASS_NAME}__${variant}`]: variant
-          })}
-          isDisabled={disabled}
+          className={classNames(
+            CLASS_NAME,
+            {
+              [`${CLASS_NAME}--${size}`]: size,
+              [`${CLASS_NAME}--isDisabled`]: isDisabled,
+              [`${CLASS_NAME}--${variant}`]: variant
+            },
+            className
+          )}
+          customThumb={customThumb}
+          isDisabled={isDisabled}
           max={max}
           min={min}
           onChange={onChange}
