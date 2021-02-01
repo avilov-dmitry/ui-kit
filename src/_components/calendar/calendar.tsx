@@ -14,9 +14,9 @@ const CLASS_NAME = 'Calendar';
 const cn = classNames;
 
 type PropsType = {
-  lang?: any;
   disabled?: boolean;
   id: string;
+  lang?: any;
   onChange: any;
   value: any;
   withTime?: boolean;
@@ -98,10 +98,10 @@ export const Calendar = memo(
           <div className={cn(`${CLASS_NAME}__week`)}>
             {weekDays.map((dayName, key) => (
               <span
-                key={`w${dayName}`}
                 className={cn(`${CLASS_NAME}__week-name`, {
                   [`${CLASS_NAME}__week-name-end`]: key >= 5
                 })}
+                key={`w${dayName}`}
               >
                 {dayName}
               </span>
@@ -109,23 +109,23 @@ export const Calendar = memo(
           </div>
           <div className={cn(`${CLASS_NAME}__days`)}>
             {prevfirstDayOnWeek.map((el, index) => (
-              <button key={el} className={cn(`${CLASS_NAME}__day-empty`)} type="button">
+              <button className={cn(`${CLASS_NAME}__day-empty`)} key={el} type="button">
                 {prevlastDayPrevMonth.getDate() - (prevfirstDayOnWeek.length - index - 1)}
               </button>
             ))}
             {allDaysInMonth.map((day, index) => (
               <CalendarDayView
-                key={day}
                 day={day}
                 disabled={disabled}
                 index={index}
+                key={day}
                 length={allDaysInMonth.length}
                 onClick={onChange}
                 value={value}
               />
             ))}
             {firstWeelOfnextMonth.map((el, index) => (
-              <button key={el} className={cn(`${CLASS_NAME}__day-empty`)} type="button">
+              <button className={cn(`${CLASS_NAME}__day-empty`)} key={el} type="button">
                 {index + 1}
               </button>
             ))}

@@ -7,9 +7,9 @@ const CLASS_NAME = 'CalendarTimeSelect';
 const cn = classNames;
 
 type PropsType = {
+  onClick: (params: number) => void;
   options: Array<any>;
   value: number;
-  onClick: (params: number) => void;
 };
 
 export const CalendarTimeSelect = ({ options, value, onClick }: PropsType) => {
@@ -19,10 +19,10 @@ export const CalendarTimeSelect = ({ options, value, onClick }: PropsType) => {
     <div className={cn(`${CLASS_NAME}`)}>
       {options.map(({ id, label }: any, index) => (
         <CalendarTimeSelectOption
-          key={id}
           id={id}
           index={index}
           isSelected={Boolean(value === id)}
+          key={id}
           label={label}
           onClick={onClick}
           refLink={refLink}

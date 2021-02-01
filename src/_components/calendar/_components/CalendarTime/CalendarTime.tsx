@@ -9,8 +9,8 @@ const CLASS_NAME = 'CalendarTime';
 const cn = classNames;
 
 type PropsType = {
-  minutes: number;
   hours: number;
+  minutes: number;
   onChange: (params: CalendarTimeType) => void;
 };
 

@@ -6,12 +6,12 @@ const CLASS_NAME = 'CalendarTimeSelectOption';
 const cn = classNames;
 
 type PropsType = {
-  refLink: any;
   id: string;
-  label: string;
-  isSelected: boolean;
   index: number;
+  isSelected: boolean;
+  label: string;
   onClick: (params: number) => void;
+  refLink: any;
 };
 
 export const CalendarTimeSelectOption = memo(
@@ -30,12 +30,12 @@ export const CalendarTimeSelectOption = memo(
 
     return (
       <button
-        key={id}
-        ref={refOption}
         className={cn(`${CLASS_NAME}`, {
           [`${CLASS_NAME}--selected`]: isSelected
         })}
+        key={id}
         onClick={handleClick}
+        ref={refOption}
         type="button"
       >
         {label}

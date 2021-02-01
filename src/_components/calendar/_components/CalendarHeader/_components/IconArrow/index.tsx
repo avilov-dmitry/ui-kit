@@ -21,11 +21,11 @@ export const IconArrow = memo(
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        key={isRight ? PATH_RIGHT : PATH_LEFT}
         clipRule="evenodd"
         d={isRight ? PATH_RIGHT : PATH_LEFT}
         fill={color}
         fillRule="evenodd"
+        key={isRight ? PATH_RIGHT : PATH_LEFT}
       />
     </svg>
   )

@@ -8,8 +8,8 @@ const cn = classNames;
 
 type PropsType = {
   month: string;
-  onPrevMonth: () => void;
   onNextMonth: () => void;
+  onPrevMonth: () => void;
 };
 
 export const CalendarHeader = memo(({ month, onPrevMonth, onNextMonth }: PropsType) => (
