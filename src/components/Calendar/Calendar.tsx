@@ -1,22 +1,19 @@
 import React, { memo, useCallback, useMemo, useState } from 'react';
 import classNames from 'classnames/bind';
-import { getWeekDays } from './_utils';
+import { getWeekDays, getMonthName, getAllDaysInMonth, getDaysOfNextMonth } from './_utils';
 import { CalendarHeader } from './_components/CalendarHeader';
-import { getMonthName } from './_utils/getMonthName';
 import { CalendarTime } from './_components/CalendarTime';
 import { CalendarTimeType } from './_types';
 import { CalendarDayView } from './_components/CalendarDayView';
-import { getAllDaysInMonth } from './_utils/getAllDaysInMonth';
-import { getDaysOfNextMonth } from './_utils/getDaysOfNextMonth';
 import './Calendar.scss';
 
 const CLASS_NAME = 'Calendar';
 const cn = classNames;
 
 type PropsType = {
+  lang?: any;
   disabled?: boolean;
   id: string;
-  lang?: any;
   onChange: any;
   value: any;
   withTime?: boolean;
@@ -118,10 +115,10 @@ export const Calendar = memo(
                 day={day}
                 disabled={disabled}
                 index={index}
-                key={day}
+                key={String(day)}
                 length={allDaysInMonth.length}
-                onClick={onChange}
                 value={value}
+                onClick={onChange}
               />
             ))}
             {firstWeelOfnextMonth.map((el, index) => (

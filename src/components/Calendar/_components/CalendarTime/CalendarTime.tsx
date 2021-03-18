@@ -9,8 +9,8 @@ const CLASS_NAME = 'CalendarTime';
 const cn = classNames;
 
 type PropsType = {
-  hours: number;
   minutes: number;
+  hours: number;
   onChange: (params: CalendarTimeType) => void;
 };
 
@@ -42,11 +42,11 @@ export const CalendarTime = memo(({ minutes, hours, onChange }: PropsType) => {
     <div className={cn(`${CLASS_NAME}`)}>
       <div className={cn(`${CLASS_NAME}__selected-time`)}>{time}</div>
       <div className={cn(`${CLASS_NAME}__selects`)}>
-        <CalendarTimeSelect onClick={handleChangeHours} options={hoursOptions} value={hours} />
+        <CalendarTimeSelect options={hoursOptions} value={hours} onClick={handleChangeHours} />
         <CalendarTimeSelect
-          onClick={handleChangeMinutes}
           options={minutesOptions}
           value={minutes}
+          onClick={handleChangeMinutes}
         />
       </div>
     </div>

@@ -7,9 +7,9 @@ const CLASS_NAME = 'CalendarTimeSelect';
 const cn = classNames;
 
 type PropsType = {
-  onClick: (params: number) => void;
   options: Array<any>;
   value: number;
+  onClick: (params: number) => void;
 };
 
 export const CalendarTimeSelect = ({ options, value, onClick }: PropsType) => {
@@ -24,8 +24,8 @@ export const CalendarTimeSelect = ({ options, value, onClick }: PropsType) => {
           isSelected={Boolean(value === id)}
           key={id}
           label={label}
-          onClick={onClick}
           refLink={refLink}
+          onClick={onClick}
         />
       ))}
     </div>
