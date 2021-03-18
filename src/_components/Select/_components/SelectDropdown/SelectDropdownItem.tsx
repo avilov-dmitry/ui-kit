@@ -1,38 +1,45 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import cn from 'classnames';
 import { SelectOptionType } from '../../_types';
-import './SelectDropdownItem.scss';
 
-type PropsType = {
-  selectedId?: string;
-  option: SelectOptionType;
-  onChange: (params: any) => void;
-};
+import './SelectDropdownItem.scss';
 
 const CLASS_NAME = 'SelectDropdownItem';
 
-export const SelectDropdownItem = ({
-  selectedId = '',
-  option,
-  option: { id, label },
-  onChange
-}: PropsType) => {
+type PropsType = {
+  selectedId?: string;
+  fieldName: string;
+  option: SelectOptionType | string;
+  onChange: (params: any) => void;
+};
+
+export const SelectDropdownItem = ({ selectedId = '', fieldName, option, onChange }: PropsType) => {
   const handleChange = useCallback(
     (event) => {
-      onChange({ event, value: option });
+      onChange({ event, value: option, fieldName });
     },
-    [option, onChange]
+    [fieldName, option, onChange]
+  );
+
+  const isSelected = useMemo(
+    () => (typeof option === 'string' ? selectedId === option : selectedId === option.id),
+    [option, selectedId]
+  );
+
+  const text = useMemo(
+    () => (typeof option === 'string' ? selectedId === option : selectedId === option.label),
+    [option, selectedId]
   );
 
   return (
     <button
       className={cn(`${CLASS_NAME}`, {
-        [`${CLASS_NAME}--active`]: selectedId === id
+        [`${CLASS_NAME}--active`]: isSelected
       })}
       type="button"
       onClick={handleChange}
     >
-      {label}
+      {text}
     </button>
   );
 };

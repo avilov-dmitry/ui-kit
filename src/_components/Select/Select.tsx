@@ -1,40 +1,64 @@
 import React, { useMemo } from 'react';
-import cn from 'classnames';
-import { Drop } from '@pages';
+// import cn from 'classnames';
+import { Drop } from '@custom';
 import { SelectButton, SelectDropdown } from './_components';
-import './Select.scss';
 import { SelectOptionType } from './_types';
+import './Select.scss';
 
 type PropsType = {
-  value?: any;
+  selected?: SelectOptionType | string;
+  fieldName: string;
+  withArrow?: boolean;
   placeholder?: string;
-  options: Array<SelectOptionType>;
+  buttonClassName?: string;
+  dropdownClassName?: string;
+  icon?: any;
+  options: Array<SelectOptionType | string>;
   onChange: (params: any) => void;
 };
 
-const CLASS_NAME = 'Select';
+// const CLASS_NAME = 'Select';
 
 export const Select = ({
-  value: { id, label } = {},
+  selected = { id: '', label: '' },
+  fieldName,
   placeholder,
   options,
+  icon,
+  withArrow = false,
+  buttonClassName = '',
+  dropdownClassName = '',
   onChange
 }: PropsType) => {
-  const control = useMemo(() => <SelectButton placeholder={placeholder} text={label} />, [
-    label,
-    placeholder
-  ]);
+  const control = useMemo(
+    () => (
+      <SelectButton
+        className={buttonClassName}
+        icon={icon}
+        placeholder={placeholder}
+        text={typeof selected === 'string' ? selected : selected.label}
+        withArrow={withArrow}
+      />
+    ),
+    [icon, withArrow, selected, placeholder, buttonClassName]
+  );
 
   const dropdown = useMemo(
-    () => <SelectDropdown options={options} selectedId={id} onChange={onChange} />,
-    [id, options, onChange]
+    () => (
+      <SelectDropdown
+        className={dropdownClassName}
+        fieldName={fieldName}
+        options={options}
+        selectedId={typeof selected === 'string' ? selected : selected.id}
+        onChange={onChange}
+      />
+    ),
+    [selected, fieldName, options, onChange, dropdownClassName]
   );
-  console.clear();
-  console.log('options', options);
 
   return (
-    <div className={cn(CLASS_NAME)}>
-      <Drop control={control} dropdown={dropdown} />
-    </div>
+    // <div className={cn(CLASS_NAME)}>
+    <Drop control={control} dropdown={dropdown} />
+    // </div>
   );
 };
