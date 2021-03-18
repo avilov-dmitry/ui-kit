@@ -12,4 +12,4 @@
 
 import './index.css';
 
-export * from './_components'
+export * from './components'

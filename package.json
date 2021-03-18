@@ -1,6 +1,7 @@
 {
   "name": "@avilov.dmitry/ui-kit",
-  "version": "0.1.0",
+  "version": "0.0.1-beta.1",
+  "main": "src/index.ts",
   "dependencies": {
     "@testing-library/jest-dom": "5.11.5",
     "@testing-library/react": "11.1.1",
