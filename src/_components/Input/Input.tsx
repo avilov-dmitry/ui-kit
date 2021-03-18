@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import cn from 'classnames';
 
 import './Input.scss';
 
-const CLASS_NAME = 'Input2';
+const CLASS_NAME = 'Input';
 
 type PropsType = {
   id?: string;

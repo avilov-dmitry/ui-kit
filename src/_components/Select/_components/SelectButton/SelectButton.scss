@@ -5,11 +5,12 @@
   border: none;
   color: #fff;
   display: flex;
-  height: 40px;
   padding: 10px 12px;
   position: relative;
-  width: 160px;
+  width: 100%;
   justify-content: space-between;
+  font-size: 12px;
+  line-height: 14px;
 
   &__text {
     display: flex;
