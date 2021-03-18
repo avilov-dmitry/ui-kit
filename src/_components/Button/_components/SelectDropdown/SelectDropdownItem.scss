@@ -1,0 +1,14 @@
+.SelectDropdownItem {
+  align-items: center;
+  background: #18182E;
+  border: none;
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  width: 100%;
+  padding: 12px;
+
+  &--active {
+    background-color: #FF00D0;
+  }
+}
