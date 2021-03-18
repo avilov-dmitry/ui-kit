@@ -36,8 +36,8 @@ export const SelectDropdownItem = ({ selectedId = '', fieldName, option, onChang
       className={cn(`${CLASS_NAME}`, {
         [`${CLASS_NAME}--active`]: isSelected
       })}
-      type="button"
       onClick={handleChange}
+      type="button"
     >
       {text}
     </button>

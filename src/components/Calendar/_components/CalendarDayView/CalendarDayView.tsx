@@ -41,9 +41,9 @@ export const CalendarDayView = memo(
             (day.getDate() > 24 && day.getDay() === 1)
         })}
         disabled={disabled}
+        onClick={handleSelect}
         type="button"
         value={`${day}`}
-        onClick={handleSelect}
       >
         {day.getDate()}
       </button>

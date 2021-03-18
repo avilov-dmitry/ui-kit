@@ -15,17 +15,17 @@ type PropsType = {
 };
 
 export const Button = ({
-  name,
+  // name,
   text,
-  icon,
-  buttonClassName,
+  // icon,
+  // buttonClassName,
   type = 'button',
   onClick
 }: PropsType) => {
-  const handleClick = useCallback(() => {}, []);
+  const handleClick = useCallback(() => onClick(), [onClick]);
 
   return (
-    <button className={cn(CLASS_NAME)} type={type}>
+    <button className={cn(CLASS_NAME)} onClick={handleClick} type={type}>
       {text}
     </button>
   );

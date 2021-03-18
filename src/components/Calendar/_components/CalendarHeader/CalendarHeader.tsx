@@ -14,13 +14,13 @@ type PropsType = {
 
 export const CalendarHeader = memo(({ month, onPrevMonth, onNextMonth }: PropsType) => (
   <div className={cn(`${CLASS_NAME}`)}>
-    <button className={cn(`${CLASS_NAME}__icon`)} type="button" onClick={onPrevMonth}>
+    <button className={cn(`${CLASS_NAME}__icon`)} onClick={onPrevMonth} type="button">
       <IconArrow />
     </button>
 
     <span className={cn(`${CLASS_NAME}__month-name`)}>{month}</span>
 
-    <button className={cn(`${CLASS_NAME}__icon`)} type="button" onClick={onNextMonth}>
+    <button className={cn(`${CLASS_NAME}__icon`)} onClick={onNextMonth} type="button">
       <IconArrow isRight />
     </button>
   </div>

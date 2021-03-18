@@ -24,8 +24,8 @@ export const CalendarTimeSelect = ({ options, value, onClick }: PropsType) => {
           isSelected={Boolean(value === id)}
           key={id}
           label={label}
-          refLink={refLink}
           onClick={onClick}
+          refLink={refLink}
         />
       ))}
     </div>

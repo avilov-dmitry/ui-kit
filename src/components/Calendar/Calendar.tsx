@@ -117,8 +117,8 @@ export const Calendar = memo(
                 index={index}
                 key={String(day)}
                 length={allDaysInMonth.length}
-                value={value}
                 onClick={onChange}
+                value={value}
               />
             ))}
             {firstWeelOfnextMonth.map((el, index) => (

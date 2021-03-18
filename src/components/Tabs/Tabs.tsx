@@ -19,7 +19,7 @@ const CLASS_NAME = 'Tabs';
 export const Tabs = ({ tabs, activeTab, onChange }: PropsType) => (
   <div className={cn(CLASS_NAME)}>
     {tabs.map(({ id, text }) => (
-      <Tab activeTab={activeTab} id={id} key={id} text={text} onChangeTab={onChange} />
+      <Tab activeTab={activeTab} id={id} key={id} onChangeTab={onChange} text={text} />
     ))}
   </div>
 );

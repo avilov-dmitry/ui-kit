@@ -34,9 +34,9 @@ export const CalendarTimeSelectOption = memo(
           [`${CLASS_NAME}--selected`]: isSelected
         })}
         key={id}
+        onClick={handleClick}
         ref={refOption}
         type="button"
-        onClick={handleClick}
       >
         {label}
       </button>

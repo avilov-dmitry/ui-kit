@@ -42,11 +42,11 @@ export const CalendarTime = memo(({ minutes, hours, onChange }: PropsType) => {
     <div className={cn(`${CLASS_NAME}`)}>
       <div className={cn(`${CLASS_NAME}__selected-time`)}>{time}</div>
       <div className={cn(`${CLASS_NAME}__selects`)}>
-        <CalendarTimeSelect options={hoursOptions} value={hours} onClick={handleChangeHours} />
+        <CalendarTimeSelect onClick={handleChangeHours} options={hoursOptions} value={hours} />
         <CalendarTimeSelect
+          onClick={handleChangeMinutes}
           options={minutesOptions}
           value={minutes}
-          onClick={handleChangeMinutes}
         />
       </div>
     </div>

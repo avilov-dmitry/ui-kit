@@ -2,7 +2,7 @@ import React, { memo, RefObject, useCallback, useEffect, useMemo, useRef, useSta
 import { sumRange } from './_utils/sumRange';
 import { SLIDER_VALUES } from './_constants';
 import { IntervalValuesType } from './_types';
-import { TimeIntervelView } from './_components/TimeIntervelView/TimeIntervelView';
+import { TimeIntervelView } from './_components';
 import { sumRangeWidth } from './_utils/sumRangeWidth';
 
 type PropsType = {
@@ -11,8 +11,8 @@ type PropsType = {
 };
 
 export const TimeIntervel = memo(({ id = '', onChange }: PropsType) => {
-  const [firstVal, setFirstVal] = useState<string>('4'); // 12 часов
-  const [secondVal, setSecondVal] = useState<string>('10'); // 18 часов
+  const [firstVal, setFirstVal] = useState<any>('4'); // 12 часов
+  const [secondVal, setSecondVal] = useState<any>('10'); // 18 часов
 
   const trackRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
 
@@ -57,9 +57,10 @@ export const TimeIntervel = memo(({ id = '', onChange }: PropsType) => {
         firstRange,
         secondRange
       });
-
-      trackRef.current.style.left = left;
-      trackRef.current.style.right = right;
+      if (trackRef.current) {
+        trackRef.current.style.left = left;
+        trackRef.current.style.right = right;
+      }
 
       changeRange({ firstRange, secondRange });
     },
@@ -79,18 +80,25 @@ export const TimeIntervel = memo(({ id = '', onChange }: PropsType) => {
         firstRange,
         secondRange
       });
-
-      trackRef.current.style.left = left;
-      trackRef.current.style.right = right;
+      if (trackRef.current) {
+        trackRef.current.style.left = left;
+        trackRef.current.style.right = right;
+      }
 
       changeRange({ firstRange, secondRange });
     },
     [changeRange, firstVal]
   );
 
-  const firstTooltipText = useMemo(() => `с ${SLIDER_VALUES[firstVal].hourText}`, [firstVal]);
+  const firstTooltipText = useMemo(
+    () => (firstVal ? `с ${SLIDER_VALUES[firstVal].hourText}` : ''),
+    [firstVal]
+  );
 
-  const secondTooltipText = useMemo(() => `до ${SLIDER_VALUES[secondVal].hourText}`, [secondVal]);
+  const secondTooltipText = useMemo(
+    () => (secondVal ? `до ${SLIDER_VALUES[secondVal].hourText}` : ''),
+    [secondVal]
+  );
 
   const mobileTooltipText = useMemo(() => `${firstTooltipText} ${secondTooltipText}`, [
     firstTooltipText,

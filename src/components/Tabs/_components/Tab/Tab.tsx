@@ -19,8 +19,8 @@ export const Tab = ({ id, text, activeTab, onChangeTab }: PropsType) => {
   return (
     <button
       className={cn(CLASS_NAME, { [`${CLASS_NAME}--active`]: activeTab === id })}
-      type="button"
       onClick={handleChange}
+      type="button"
     >
       {text}
     </button>

@@ -54,9 +54,9 @@ export const Input = ({
           [`${CLASS_NAME}--withRightIcon`]: RightIcon
         })}
         id={id}
+        onChange={handleChange}
         type="text"
         value={value}
-        onChange={handleChange}
       />
       {RightIcon && (
         <RightIcon
