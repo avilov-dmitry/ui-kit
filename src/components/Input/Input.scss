@@ -15,10 +15,10 @@ $horizontal-padding: 12px;
   margin: 0;
 
   &--withLeftIcon {
-    padding-left: 30px;
+    padding-left: 30px !important;
   }
   &--withRightIcon {
-    padding-right: 30px;
+    padding-right: 30px !important;
   }
 
   &:focus {

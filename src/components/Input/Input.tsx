@@ -10,6 +10,7 @@ type PropsType = {
   // label?: string;
   fieldName: string;
   className?: string;
+  placeholder?: string;
   value?: string;
   isReadOnly?: boolean;
   leftIcon?: any;
@@ -23,6 +24,7 @@ export const Input = ({
   // label,
   fieldName,
   className = '',
+  placeholder = '',
   value = '',
   isReadOnly = false,
   leftIcon: LeftIcon,
@@ -54,9 +56,10 @@ export const Input = ({
           [`${CLASS_NAME}--withRightIcon`]: RightIcon
         })}
         id={id}
-        onChange={handleChange}
+        placeholder={placeholder}
         type="text"
         value={value}
+        onChange={handleChange}
       />
       {RightIcon && (
         <RightIcon

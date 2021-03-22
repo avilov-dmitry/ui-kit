@@ -17,6 +17,11 @@ export interface Props {
   isOpened?: boolean;
 
   /**
+   * Определяет вложенный ли это Drop
+   */
+  isSubDrop?: boolean;
+
+  /**
    * Обработчик для клика по control'у
    */
   onClickControl?: () => void;

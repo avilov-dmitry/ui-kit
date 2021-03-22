@@ -26,18 +26,15 @@ export const SelectDropdownItem = ({ selectedId = '', fieldName, option, onChang
     [option, selectedId]
   );
 
-  const text = useMemo(
-    () => (typeof option === 'string' ? selectedId === option : selectedId === option.label),
-    [option, selectedId]
-  );
+  const text = useMemo(() => (typeof option === 'string' ? option : option.label), [option]);
 
   return (
     <button
       className={cn(`${CLASS_NAME}`, {
         [`${CLASS_NAME}--active`]: isSelected
       })}
-      onClick={handleChange}
       type="button"
+      onClick={handleChange}
     >
       {text}
     </button>

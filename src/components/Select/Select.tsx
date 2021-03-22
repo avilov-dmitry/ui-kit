@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 // import cn from 'classnames';
-import { Drop } from '@components';
+import { Drop } from '@custom';
 import { SelectButton, SelectDropdown } from './_components';
 import { SelectOptionType } from './_types';
 import './Select.scss';
@@ -48,9 +48,9 @@ export const Select = ({
       <SelectDropdown
         className={dropdownClassName}
         fieldName={fieldName}
-        onChange={onChange}
         options={options}
         selectedId={typeof selected === 'string' ? selected : selected.id}
+        onChange={onChange}
       />
     ),
     [selected, fieldName, options, onChange, dropdownClassName]

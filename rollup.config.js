@@ -6,7 +6,10 @@ import resolve from '@rollup/plugin-node-resolve';
 import image from '@rollup/plugin-image';
 import visualizer from 'rollup-plugin-visualizer';
 import typescript from 'rollup-plugin-typescript';
+// import typescript from 'rollup-plugin-typescript2'
+import alias from '@rollup/plugin-alias';
 import pkg from './package.json';
+import path from "path";
 
 export default {
   input: './src/components/index.ts',
@@ -21,21 +24,27 @@ export default {
     }
   ],
   plugins: [
+    resolve(),
+    alias({
+      entries: [
+        { find: '@components', replacement: path.resolve(__dirname, 'src/components') },
+      ]
+    }),
+    typescript({
+      // lib: ['es5', 'es6', 'dom'],
+      // target: 'es5',
+      jsx: 'react',
+      // declaration: true,
+      // typescript: require('typescript')
+   }),
     external(),
     postcss(),
-    typescript({
-      lib: ['es5', 'es6', 'dom'],
-      target: 'es5',
-      jsx: 'react',
-      typescript: require('typescript')
-    }),
+    image(),
+    visualizer(),
     babel({
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.ts', '.tsx']
     }),
-    resolve(),
-    commonjs(),
-    image(),
-    visualizer()
+   commonjs()
   ]
 };

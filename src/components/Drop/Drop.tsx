@@ -28,18 +28,18 @@ export class Drop extends React.PureComponent<Props, StateType> {
     this.dropdownRef = React.createRef();
 
     this.state = {
-      isVisible: false,
-      openToTop: false,
-      openToLeft: false,
       controlHeight: '',
-      dropdownHeight: '',
       controlWidth: '',
-      dropdownWidth: ''
+      dropdownHeight: '',
+      dropdownWidth: '',
+      isVisible: false,
+      openToLeft: false,
+      openToTop: false
     };
   }
 
   componentDidMount(): void {
-    const { isOpened } = this.props;
+    const { isOpened = false, isSubDrop } = this.props;
     if (isOpened) {
       this.setState({ isVisible: isOpened }, () => {
         this.controlRef.current.click();
@@ -48,9 +48,13 @@ export class Drop extends React.PureComponent<Props, StateType> {
     if (this.controlRef.current && this.dropdownRef.current) {
       this.setState({
         controlHeight: this.controlRef.current.scrollHeight,
-        dropdownHeight: this.dropdownRef.current.scrollHeight,
         controlWidth: this.controlRef.current.scrollWidth,
-        dropdownWidth: this.dropdownRef.current.scrollWidth
+        dropdownHeight: isSubDrop
+          ? this.dropdownRef.current.scrollHeight
+          : this.dropdownRef.current.clientHeight,
+        dropdownWidth: isSubDrop
+          ? this.dropdownRef.current.scrollWidth
+          : this.dropdownRef.current.clientWidth
       });
     }
   }
@@ -73,8 +77,8 @@ export class Drop extends React.PureComponent<Props, StateType> {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         controlHeight: this.controlRef.current.scrollHeight,
-        dropdownHeight: this.dropdownRef.current.scrollHeight,
         controlWidth: this.controlRef.current.scrollWidth,
+        dropdownHeight: this.dropdownRef.current.scrollHeight,
         dropdownWidth: this.dropdownRef.current.scrollWidth
       });
     }
@@ -107,9 +111,12 @@ export class Drop extends React.PureComponent<Props, StateType> {
     this.setState(
       ({ isVisible }) => {
         const openToTop =
-          bottomSpace <= this.dropdownRef.current.scrollHeight && bottomSpace < topSpace;
+          bottomSpace <= this.dropdownRef.current.getBoundingClientRect().height &&
+          bottomSpace < topSpace;
         const openToLeft =
-          rightSpace <= this.dropdownRef.current.scrollWidth && rightSpace < leftSpace;
+          rightSpace <= this.dropdownRef.current.getBoundingClientRect().width &&
+          rightSpace < leftSpace;
+
         return { isVisible: !isVisible, openToTop, openToLeft };
       },
       () => {
@@ -144,9 +151,9 @@ export class Drop extends React.PureComponent<Props, StateType> {
       <div className={CLASS_NAME} ref={this.wrapperRef}>
         <button
           className={`${CLASS_NAME}__control-wrapper`}
-          onClick={this.handleOnControl}
           ref={this.controlRef}
           type="button"
+          onClick={this.handleOnControl}
         >
           {control}
         </button>

@@ -27,9 +27,9 @@ export const SelectDropdown = ({
       <SelectDropdownItem
         fieldName={fieldName}
         key={typeof option === 'string' ? option : option.id}
-        onChange={onChange}
         option={option}
         selectedId={selectedId}
+        onChange={onChange}
       />
     ))}
   </div>
