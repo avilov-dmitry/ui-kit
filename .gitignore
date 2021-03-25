@@ -1,0 +1,14 @@
+/node_modules
+old/node_modules
+/build
+
+# ides
+/.idea
+
+# envs
+.env
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

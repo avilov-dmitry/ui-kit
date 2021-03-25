@@ -1,0 +1,22 @@
+.Button {
+    align-items: center;
+    background: #0083ff;
+    border-radius: 12px;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    outline: none;
+    padding: 8px;
+    position: relative;
+    width: 100%;
+    border: 2px solid #0083ff;
+    font-weight: 600;
+    color: #fff;
+    
+    &--isSecondary {
+        color: #0083ff;
+        background: transparent;
+    }
+}
