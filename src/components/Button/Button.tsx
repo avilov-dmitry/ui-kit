@@ -19,6 +19,10 @@ export type ButtonPropsType = {
      */
     id?: string;
     /**
+     * Индикатор не активной кнопки
+     */
+    isDisabled?: false;
+    /**
      * Иконка слева от текста
      */
     leftIcon?: React.ElementType;
@@ -48,6 +52,7 @@ export const Button: React.FunctionComponent<ButtonPropsType> = ({
     children,
     сlassName,
     id,
+    isDisabled = false,
     leftIcon: LeftIcon,
     onClick,
     rightIcon: RightIcon,
@@ -57,26 +62,27 @@ export const Button: React.FunctionComponent<ButtonPropsType> = ({
 }) => {
     const handleClick = useCallback(
         (event) => {
-            if (onClick) {
+            if (onClick && !isDisabled) {
                 onClick({ event, id });
             }
         },
-        [id, onClick]
+        [id, isDisabled, onClick]
     );
 
     return (
         <button
             id={id}
-            className={cn(CLASS_NAME, { [`${CLASS_NAME}--isSecondary`]: variant === 'secondary' }, сlassName)}
+            className={cn(CLASS_NAME, { [`${CLASS_NAME}--isSecondary`]: variant === 'secondary', [`${CLASS_NAME}--isDisabled`]: isDisabled }, сlassName)}
             type={type}
             onClick={handleClick}
+            disabled={isDisabled}
         >
             {
                 children ||
                     <>
-                        {LeftIcon && <LeftIcon />}
+                        {LeftIcon && <span className={cn(`${CLASS_NAME}__icon`, `${CLASS_NAME}__icon--left`)}><LeftIcon /></span>}
                         {text && <span className={cn(`${CLASS_NAME}__text`)}>{text}</span>}
-                        {RightIcon && <RightIcon />}
+                        {RightIcon && <span className={cn(`${CLASS_NAME}__icon`, `${CLASS_NAME}__icon--right`)}><RightIcon /></span>}
                     </>
             }
         </button>
