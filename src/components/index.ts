@@ -1,2 +1,3 @@
-export * from './Button'
-export * from './Portal'
+export * from './Button';
+export * from './Overlay';
+export * from './Portal';
