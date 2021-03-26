@@ -19,11 +19,11 @@ export default {
     },
 } as Meta;
 
-const Template: Story<ButtonPropsType> = (args) => <Button {...args} />;
+const Template: Story<ButtonPropsType> = (args: ButtonPropsType) => <Button {...args} />;
 export const SimpleButton = Template.bind({});
 
 
-const WithChildrenTemplate: Story<ButtonPropsType> = (args) => {
+const WithChildrenTemplate: Story<ButtonPropsType> = (args: ButtonPropsType) => {
     const styles = { display: 'inline-block', 'fontSize': '16px', 'lineHeight': '24px' };
 
     return (
@@ -41,5 +41,5 @@ const Icon = () => {
     const styles = { display: 'flex', alignItems: 'center', justifyContent: 'center', 'width': '30px', 'height': '100%', fontSize: '16px', lineHeight: '24px' };
     return  <span style={styles}>❤</span>
 }
-export const WithLeftIcon: Story<ButtonPropsType> = (args) => <Button {...args} leftIcon={Icon} />
-export const WithRightIcon: Story<ButtonPropsType> = (args) => <Button {...args} rightIcon={Icon} />
+export const WithLeftIcon: Story<ButtonPropsType> = (args: ButtonPropsType) => <Button {...args} leftIcon={Icon} />
+export const WithRightIcon: Story<ButtonPropsType> = (args: ButtonPropsType) => <Button {...args} rightIcon={Icon} />

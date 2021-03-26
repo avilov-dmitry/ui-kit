@@ -1,7 +1,7 @@
 export type SelectOptionType = {
   id: string;
   label: string;
-  [key: string]: any;
+  [key: string]: unknown;
 };
 
 export type SelectChangeType = {

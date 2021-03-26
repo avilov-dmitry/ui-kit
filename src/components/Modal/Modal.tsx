@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect } from 'react';
 import cn from 'classnames';
 import { KEY_CODES } from '../../constants';
-import './Modal.scss';
 import { CloseIcon } from '../icons';
 import { Portal } from '../Portal';
 import { Overlay } from '../Overlay';
+import './Modal.scss';
 
 const CLASS_NAME = 'Modal';
 

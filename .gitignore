@@ -1,9 +1,10 @@
 node_modules
 old/node_modules
-/build
+build
 
 # ides
-/.idea
+.idea
+.vscode
 
 # envs
 .env

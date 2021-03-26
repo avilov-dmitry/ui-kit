@@ -1,4 +1,4 @@
-export var KEY_CODES = {
+export const KEY_CODES = {
   ALT: 18,
   BACKSPACE: 8,
   CTRL: 17,
