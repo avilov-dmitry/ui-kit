@@ -1,8 +1,9 @@
-import cn from 'classnames';
+import classnames from 'classnames';
 import React, { useCallback } from 'react';
 import { ButtonChangeParamsType } from './_types';
-import './Button.scss';
+import styles from './Button.module.scss';
 
+const cn = classnames.bind(styles);
 const CLASS_NAME = 'Button';
 
 export type ButtonPropsType = {
@@ -61,7 +62,7 @@ export const Button: React.FunctionComponent<ButtonPropsType> = ({
     variant = 'primary',
 }) => {
     const handleClick = useCallback(
-        (event) => {
+        (event: React.MouseEvent<HTMLElement>) => {
             if (onClick && !isDisabled) {
                 onClick({ event, id });
             }
@@ -79,11 +80,11 @@ export const Button: React.FunctionComponent<ButtonPropsType> = ({
         >
             {
                 children ||
-                    <>
-                        {LeftIcon && <span className={cn(`${CLASS_NAME}__icon`, `${CLASS_NAME}__icon--left`)}><LeftIcon /></span>}
-                        {text && <span className={cn(`${CLASS_NAME}__text`)}>{text}</span>}
-                        {RightIcon && <span className={cn(`${CLASS_NAME}__icon`, `${CLASS_NAME}__icon--right`)}><RightIcon /></span>}
-                    </>
+                <>
+                    {LeftIcon && <span className={cn(`${CLASS_NAME}__icon`, `${CLASS_NAME}__icon--left`)}><LeftIcon /></span>}
+                    {text && <span className={cn(`${CLASS_NAME}__text`)}>{text}</span>}
+                    {RightIcon && <span className={cn(`${CLASS_NAME}__icon`, `${CLASS_NAME}__icon--right`)}><RightIcon /></span>}
+                </>
             }
         </button>
     );
