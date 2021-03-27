@@ -4,13 +4,11 @@ import React, {
 import cn from 'classnames/bind';
 import'./Overlay.scss';
 
-type OverlayPropsType = {
+export type OverlayPropsType = {
   /** флаг меняющий свойство position с fixed на absolute */
   isAbsolute?: boolean;
   /** содержимое компонента */
   children: React.ReactNode;
-  /** прозрачность оверлея */
-  opacity?: string;
   /** коллбек клика по оверлею */
   onClick?: (event: SyntheticEvent) => void;
   /** флаг меняющий backgroundColor на transparent */
