@@ -1,10 +1,9 @@
 import path from "path";
 import webpack from "webpack";
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-// import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 
 const config: webpack.Configuration = {
-  entry: path.resolve(__dirname, './src/index.ts'),
+  entry: path.resolve(__dirname, "./src/index.ts"),
   module: {
     rules: [
       {
@@ -24,40 +23,39 @@ const config: webpack.Configuration = {
       {
         test: /\.(scss|sass)$/,
         exclude: /node_modules/,
-        use: ["style-loader", "css-loader", "sass-loader"]
+        use: [
+          "style-loader", 
+          "css-modules-typescript-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true
+            }
+          },
+          "sass-loader"
+        ]
       }
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".tsx", ".ts", ".js", ".css", ".scss"],
   },
   output: {
 		path: path.resolve(__dirname, "dist"),
-		filename: "[name].js",
-		library: ["[name]"],
+		library: "@avilov.dmitry/ui-kit",
 		libraryTarget: "umd",
-    clean: true
+    clean: true,
+    filename: "index.js",
+    umdNamedDefine: true
 	},
+  mode: "production",
   plugins: [
     new ForkTsCheckerWebpackPlugin({
       eslint: {
-        files: './src/**/*.{ts,tsx,js,jsx}'
+        files: "./src/**/*.{ts,tsx,js,jsx}"
       }
     })
-    // }),
-    // new HtmlWebpackPlugin({
-    //     template: path.join(__dirname, 'public', 'index.html')
-    // })
   ],
-  // output: {
-  //   path: path.resolve(__dirname, "build"),
-  //   filename: "bundle.js",
-  // },
-  // devServer: {
-  //   contentBase: path.join(__dirname, "build"),
-  //   compress: true,
-  //   port: 4000,
-  // },
 };
 
 export default config;
