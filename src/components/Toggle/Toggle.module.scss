@@ -1,0 +1,25 @@
+.Toggle {
+    background: linear-gradient(45deg, #F9FC00, #01AAF3);
+    border-radius: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    outline: none;
+    padding: 4px;
+    width: 68px;
+    opacity: 0.3;
+
+    &--isActive {
+        align-items: flex-end;
+        opacity: 1;
+    }
+
+    &__thumb {
+        background-color: #fff;
+    }
+    
+    &--isDisabled {
+        opacity: 0.7;
+    }
+}
