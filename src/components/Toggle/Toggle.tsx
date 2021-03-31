@@ -13,12 +13,12 @@ export const Toggle: FunctionComponent<TogglePropsType> = ({
     isDisabled = false,
     label = '',
     onClick,
-    value = false,
+    value,
 }) => {
     const handleClick = useCallback(
         (event: React.MouseEvent<HTMLElement>) => {
             if (onClick && !isDisabled) {
-                onClick({ event, id, value });
+                onClick({ event, id, value: !value });
             }
         },
         [id, isDisabled, onClick]
@@ -40,7 +40,7 @@ export const Toggle: FunctionComponent<TogglePropsType> = ({
                 onClick={handleClick}
                 disabled={isDisabled}
             >
-                <span className={cn(`${CLASS_NAME}__thumb`)} />
+                <div className={cn(`${CLASS_NAME}__thumb`)}  />
             </button>
         </div>
     );

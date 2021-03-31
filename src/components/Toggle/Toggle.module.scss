@@ -4,22 +4,30 @@
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     outline: none;
-    padding: 4px;
-    width: 68px;
-    opacity: 0.3;
+    padding: 3px;
+    width: 60px;
+    background: #F0F0F0;
+    border: none;
+    transition: justify-content .4s, opacity .4s;
 
     &--isActive {
-        align-items: flex-end;
+        justify-content: flex-start;
         opacity: 1;
+        background: linear-gradient(45deg, #F9FC00, #01AAF3);
+    }
+
+    &--isDisabled {
+        opacity: 0.3;
     }
 
     &__thumb {
         background-color: #fff;
-    }
-    
-    &--isDisabled {
-        opacity: 0.7;
+        border-radius: 50%;
+        border: none;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
     }
 }
