@@ -2,7 +2,6 @@ $thumb-width: 20px;
 
 .Toggle {
     background: #F0F0F0;
-    background-image: none;
     border-radius: 40px;
     border: none;
     box-sizing: border-box;
@@ -10,11 +9,11 @@ $thumb-width: 20px;
     display: flex;
     outline: none;
     padding: 3px;
-    transition: background-image .3s;
+    transition: background-color .3s;
     width: 60px;
 
     &--isActive {
-        background-image: #01AAF3;
+        background-color: #01AAF3;
     }
 
     &--isDisabled {
@@ -26,10 +25,16 @@ $thumb-width: 20px;
         align-items: center;
     }
 
-    &__label {
+    &__leftText {
         font-size: 14px;
         font-weight: 600;
         margin-right: 20px;
+    }
+
+    &__rightText {
+        font-size: 14px;
+        font-weight: 600;
+        margin-left: 20px;
     }
 
     &__thumb {
