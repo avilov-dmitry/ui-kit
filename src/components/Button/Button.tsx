@@ -1,59 +1,17 @@
-import classnames from 'classnames';
-import React, { useCallback } from 'react';
-import { ButtonChangeParamsType } from './_types';
+import classnames from 'classnames/bind';
+import React, { FunctionComponent, useCallback } from 'react';
+import { ButtonPropsType } from './_types';
 import styles from './Button.module.scss';
 
 const cn = classnames.bind(styles);
 const CLASS_NAME = 'Button';
 
-export type ButtonPropsType = {
-    /***
-     * Кастомное содержимое кнопки
-     */
-    children?: React.ReactNode;
-    /**
-     * className для переопределени дефолтных стилей
-     */
-    сlassName?: string;
-    /**
-     * Идентификатор кнопки
-     */
-    id?: string;
-    /**
-     * Индикатор не активной кнопки
-     */
-    isDisabled?: false;
-    /**
-     * Иконка слева от текста
-     */
-    leftIcon?: React.ElementType;
-    /**
-     * Обработчик нажатия кнопки
-     */
-    onClick?: (params: ButtonChangeParamsType) => void;
-    /**
-     * Иконка справа от текста
-     */
-    rightIcon?: React.ElementType;
-    /**
-     * Текст в кнопке, отображается, если НЕ передан children
-     */
-    text?: string;
-    /**
-     * Тип кнопки
-     */
-    type?: 'button' | 'submit' | 'reset';
-    /**
-     * Вариант кнопки
-     */
-    variant?: 'primary' | 'secondary';
-};
-
-export const Button: React.FunctionComponent<ButtonPropsType> = ({
+export const Button: FunctionComponent<ButtonPropsType> = ({
     children,
-    сlassName,
+    className,
     id,
     isDisabled = false,
+    isFullWidth = false,
     leftIcon: LeftIcon,
     onClick,
     rightIcon: RightIcon,
@@ -73,7 +31,13 @@ export const Button: React.FunctionComponent<ButtonPropsType> = ({
     return (
         <button
             id={id}
-            className={cn(CLASS_NAME, { [`${CLASS_NAME}--isSecondary`]: variant === 'secondary', [`${CLASS_NAME}--isDisabled`]: isDisabled }, сlassName)}
+            className={cn(CLASS_NAME, {
+                [`${CLASS_NAME}--isSecondary`]: variant === 'secondary',
+                [`${CLASS_NAME}--isDisabled`]: isDisabled,
+                [`${CLASS_NAME}--isFullWidth`]: isFullWidth,
+            },
+            className
+            )}
             type={type}
             onClick={handleClick}
             disabled={isDisabled}
@@ -81,9 +45,9 @@ export const Button: React.FunctionComponent<ButtonPropsType> = ({
             {
                 children ||
                 <>
-                    {LeftIcon && <span className={cn(`${CLASS_NAME}__icon`, `${CLASS_NAME}__icon--left`)}><LeftIcon /></span>}
+                    {LeftIcon && <span className={cn(`${CLASS_NAME}__icon--left`)}><LeftIcon /></span>}
                     {text && <span className={cn(`${CLASS_NAME}__text`)}>{text}</span>}
-                    {RightIcon && <span className={cn(`${CLASS_NAME}__icon`, `${CLASS_NAME}__icon--right`)}><RightIcon /></span>}
+                    {RightIcon && <span className={cn(`${CLASS_NAME}__icon--right`)}><RightIcon /></span>}
                 </>
             }
         </button>
