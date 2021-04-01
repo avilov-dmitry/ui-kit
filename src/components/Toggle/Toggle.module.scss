@@ -1,33 +1,49 @@
+$thumb-width: 20px;
+
 .Toggle {
-    background: linear-gradient(45deg, #F9FC00, #01AAF3);
+    background: #F0F0F0;
+    background-image: none;
     border-radius: 40px;
+    border: none;
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
-    justify-content: flex-end;
     outline: none;
     padding: 3px;
+    transition: background-image .3s;
     width: 60px;
-    background: #F0F0F0;
-    border: none;
-    transition: justify-content .4s, opacity .4s;
 
     &--isActive {
-        justify-content: flex-start;
-        opacity: 1;
-        background: linear-gradient(45deg, #F9FC00, #01AAF3);
+        background-image: #01AAF3;
     }
 
     &--isDisabled {
         opacity: 0.3;
     }
 
+    &__wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    &__label {
+        font-size: 14px;
+        font-weight: 600;
+        margin-right: 20px;
+    }
+
     &__thumb {
         background-color: #fff;
         border-radius: 50%;
         border: none;
-        width: 20px;
-        height: 20px;
         cursor: pointer;
+        height: 20px;
+        margin-left: 0;
+        transition: margin-left .3s;
+        width: $thumb-width;
+        
+        &--isActive {
+            margin-left: calc(100% - #{$thumb-width});
+        }
     }
 }

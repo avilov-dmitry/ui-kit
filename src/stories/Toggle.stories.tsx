@@ -30,7 +30,7 @@ export const SimpleInput: Story<TogglePropsType> = (args) => {
     const handleClick = useCallback((params: ToggleClickParamsType) => {
         setValue(params.value);
         args.onClick(params);
-    }, []);
+    }, [setValue, args]);
 
     return (
         <Toggle {...args} value={value} onClick={handleClick} />

@@ -8,11 +8,14 @@ const CLASS_NAME = 'Toggle';
 
 export const Toggle: FunctionComponent<TogglePropsType> = ({
     className,
-    labelClassName,
     id,
     isDisabled = false,
-    label = '',
+    leftText = '',
+    leftTextClassName,
     onClick,
+    rightText = '',
+    rightTextClassName,
+    thumbClassName,
     value,
 }) => {
     const handleClick = useCallback(
@@ -21,13 +24,13 @@ export const Toggle: FunctionComponent<TogglePropsType> = ({
                 onClick({ event, id, value: !value });
             }
         },
-        [id, isDisabled, onClick]
+        [id, isDisabled, value, onClick]
     );
 
     return (
         <div className={cn(`${CLASS_NAME}__wrapper`)}>
-            {Boolean(label) && <span  className={cn(`${CLASS_NAME}__label`, labelClassName)}>
-                {label}
+            {Boolean(leftText) && <span  className={cn(`${CLASS_NAME}__leftText`, leftTextClassName)}>
+                {leftText}
             </span>}
             <button
                 id={id}
@@ -40,8 +43,13 @@ export const Toggle: FunctionComponent<TogglePropsType> = ({
                 onClick={handleClick}
                 disabled={isDisabled}
             >
-                <div className={cn(`${CLASS_NAME}__thumb`)}  />
+                <span className={cn(`${CLASS_NAME}__thumb`, {
+                    [`${CLASS_NAME}__thumb--isActive`]: value,
+                }, thumbClassName)} />
             </button>
+            {Boolean(rightText) && <span  className={cn(`${CLASS_NAME}__rightText`, rightTextClassName)}>
+                {rightText}
+            </span>}
         </div>
     );
 };
