@@ -14,7 +14,7 @@
         ],
         "module": "commonjs",
         "moduleResolution": "node",
-        "baseDir": "./src/",
+        "baseUrl": "./src",
         "outDir": "lib",
         "resolveJsonModule": true,
         "skipLibCheck": true,
@@ -32,6 +32,6 @@
     "include": [
         "src",
         "declaration.d.ts",
-        "Button.stories.tsx"
+        "stories"
     ]
 }
