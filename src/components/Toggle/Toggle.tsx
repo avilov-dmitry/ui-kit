@@ -1,7 +1,7 @@
 import classnames from 'classnames/bind';
 import React, { FunctionComponent, useCallback } from 'react';
 import { TogglePropsType } from './_types';
-import styles from './Toggle..scss';
+import styles from './Toggle.scss';
 
 const cn = classnames.bind(styles);
 const CLASS_NAME = 'Toggle';

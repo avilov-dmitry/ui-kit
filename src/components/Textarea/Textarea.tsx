@@ -1,7 +1,7 @@
 import React, { memo, FunctionComponent, useCallback, useState, useMemo, useRef, useEffect } from 'react';
 import classnames from 'classnames/bind';
 import { TextareaPropsType } from './_types';
-import styles from './Textarea..scss';
+import styles from './Textarea.scss';
 import { KEY_CODES } from '../../constants';
 
 const cn = classnames.bind(styles);

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback, useState, useMemo, useRef } from 'react';
 import classnames from 'classnames/bind';
 import { InputPropsType } from './_types';
-import styles from './Input..scss';
+import styles from './Input.scss';
 
 const cn = classnames.bind(styles);
 const CLASS_NAME = 'Input';

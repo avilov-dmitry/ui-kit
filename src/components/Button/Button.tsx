@@ -1,7 +1,7 @@
 import classNames from 'classNames/bind';
 import React, { FunctionComponent, useCallback } from 'react';
 import { ButtonPropsType } from './_types';
-import styles from './Button..scss';
+import styles from './Button.scss';
 
 const cn = classNames.bind(styles);
 const CLASS_NAME = 'Button';
