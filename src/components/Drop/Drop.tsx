@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DropPropsType } from './_types';
-import './Drop.scss';
+import './Drop';
 
 const CLASS_NAME = 'Drop';
 

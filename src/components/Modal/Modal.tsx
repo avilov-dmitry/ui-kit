@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect } from 'react';
 import cn from 'classnames';
-import { KEY_CODES } from '../../constants';
 import { CloseIcon } from '../icons';
 import { Portal } from '../Portal';
 import { Overlay } from '../Overlay';
-import './Modal.scss';
+import './Modal';
 
 const CLASS_NAME = 'Modal';
 
@@ -29,7 +28,7 @@ export const Modal: React.FunctionComponent<ModalPropsType> = ({ isOpened, child
 
   const handleDocumentKeyDown = useCallback(
     ({ keyCode }) => {
-      if (keyCode === KEY_CODES.ESCAPE) {
+      if (keyCode === keyCode.ESCAPE) {
         onClose();
       }
     },
