@@ -1,6 +1,6 @@
 {
   "name": "@avilov.dmitry/ui-kit",
-  "version": "0.0.1-beta.55",
+  "version": "0.0.1-beta.56",
   "description": "Ui kit",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
