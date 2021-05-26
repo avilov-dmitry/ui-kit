@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback, useState, useMemo, useRef } from 'react';
 import classnames from 'classnames/bind';
 import { InputPropsType } from './_types';
-import styles from './Input.module.scss';
+import styles from './Input..scss';
 
 const cn = classnames.bind(styles);
 const CLASS_NAME = 'Input';
@@ -17,7 +17,7 @@ export const Input: FunctionComponent<InputPropsType> = ({
     value = '',
 }: InputPropsType) => {
     const [isFocused, setIsFocused] = useState(false);
-    const inputRer = useRef(null);
+    const inputRer = useRef<any>(null);
   
     const handleChange = useCallback(
         (event) => {

@@ -8,7 +8,7 @@ export type ButtonPropsType = {
     /**
      * className для переопределени дефолтных стилей
      */
-    сlassName?: string;
+    className?: string;
     /**
      * Идентификатор кнопки
      */
@@ -16,7 +16,11 @@ export type ButtonPropsType = {
     /**
      * Индикатор не активной кнопки
      */
-    isDisabled?: false;
+    isDisabled?: boolean;
+    /**
+     * Индикатор не активной кнопки
+     */
+    isFullWidth?: boolean;
     /**
      * Иконка слева от текста
      */

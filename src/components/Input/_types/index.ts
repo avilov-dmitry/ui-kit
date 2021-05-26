@@ -19,6 +19,6 @@ export type InputPropsType = {
 
 export type InputChangeParamsType = {
   event: React.KeyboardEvent<HTMLElement>;
-  id: string;
+  id?: string;
   value: string;
 }

@@ -21,7 +21,7 @@ export class Drop extends React.PureComponent<DropPropsType, StateType> {
 
   private readonly dropdownRef: any;
 
-  constructor(props: Props) {
+  constructor(props: DropPropsType) {
     super(props);
     this.wrapperRef = React.createRef();
     this.controlRef = React.createRef();
@@ -59,7 +59,7 @@ export class Drop extends React.PureComponent<DropPropsType, StateType> {
     }
   }
 
-  componentDidUpdate(prevProps: Props): void {
+  componentDidUpdate(prevProps: DropPropsType): void {
     const { isOpened, dropdown } = this.props;
 
     if (prevProps.isOpened !== isOpened && isOpened !== undefined) {

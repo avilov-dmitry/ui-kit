@@ -1,7 +1,7 @@
 import React, { memo, FunctionComponent, useCallback, useState, useMemo, useRef, useEffect } from 'react';
 import classnames from 'classnames/bind';
 import { TextareaPropsType } from './_types';
-import styles from './Textarea.module.scss';
+import styles from './Textarea..scss';
 import { KEY_CODES } from '../../constants';
 
 const cn = classnames.bind(styles);
@@ -10,19 +10,26 @@ const CLASS_NAME = 'Textarea';
 export const Textarea: FunctionComponent<TextareaPropsType> = memo(({
     className = '',
     error = '',
-    id,
+    id = '',
     isReadOnly = false,
     label,
     onChange,
     value = '',
 }: TextareaPropsType) => {
     const [isFocused, setIsFocused] = useState(false);
-    const textareaRer = useRef(null);
+    const textareaRef = useRef<any>(null);
 
     useEffect(() => {
-        const t = document.getElementById(id);
-        t.addEventListener('keydown', handleKeyDown);
-        return () => t.removeEventListener('keydown', handleKeyDown);
+        if(id) {
+            const textAreaElement = document.getElementById(id);
+
+            if(textAreaElement) {
+
+                textAreaElement.addEventListener('keydown', handleKeyDown);
+    
+                return () => textAreaElement.removeEventListener('keydown', handleKeyDown);
+            }
+        }
     }, [id]);
   
     const handleChange = useCallback(
@@ -46,7 +53,7 @@ export const Textarea: FunctionComponent<TextareaPropsType> = memo(({
     );
 
     const handleClickOnLabel = useCallback(() => {
-        textareaRer.current.focus();
+        textareaRef.current.focus();
     }, []);
 
     const handleFocus = useCallback(() => setIsFocused(true), []);
@@ -65,7 +72,7 @@ export const Textarea: FunctionComponent<TextareaPropsType> = memo(({
                     [`${CLASS_NAME}__label--isVisibleLabel`]: isVisibleLabel,
                 })} onClick={handleClickOnLabel}>{label}</span>
                 <textarea
-                    ref={textareaRer}
+                    ref={textareaRef}
                     className={cn(CLASS_NAME)}
                     id={id}
                     value={value}
