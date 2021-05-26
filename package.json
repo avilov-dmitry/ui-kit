@@ -1,9 +1,9 @@
 {
   "name": "@avilov.dmitry/ui-kit",
-  "version": "0.0.1-beta.56",
+  "version": "0.0.1-beta.57",
   "description": "Ui kit",
-  "main": "./lib/index.js",
-  "typings": "./lib/index.d.ts",
+  "main": "./lib/components/index.js",
+  "typings": "./lib/components/index.d.ts",
   "scripts": {
     "build": "gulp",
     "publish": "npm run lib:clean && npx tsc && gulp",
