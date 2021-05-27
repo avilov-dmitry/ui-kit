@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import ReactDOM from 'react-dom';
 
 export type PortalPropsType = {
@@ -6,7 +6,7 @@ export type PortalPropsType = {
   children: React.ReactNode;
 };
 
-export const Portal: React.FunctionComponent<PortalPropsType> = ({ isOpened, children }) => {
+export const Portal: React.FunctionComponent<PortalPropsType> = memo(({ isOpened, children }) => {
   if (!isOpened) {
     return null;
   }
@@ -14,4 +14,7 @@ export const Portal: React.FunctionComponent<PortalPropsType> = ({ isOpened, chi
   return (
     ReactDOM.createPortal(children, document.body)
   );
-};
+})
+
+
+Portal.displayName = 'Portal'

@@ -1,11 +1,11 @@
-import cn from 'classnames/bind';
-import React, { FunctionComponent, useCallback } from 'react';
+import cn from 'classnames';
+import React, { FunctionComponent, memo, useCallback } from 'react';
 import { ButtonPropsType } from './_types';
-import './Button';
+import './Button.scss';
 
 const CLASS_NAME = 'Button';
 
-export const Button: FunctionComponent<ButtonPropsType> = ({
+export const Button: FunctionComponent<ButtonPropsType> = memo(({
     children,
     className,
     id,
@@ -51,4 +51,6 @@ export const Button: FunctionComponent<ButtonPropsType> = ({
             }
         </button>
     );
-};
+})
+
+Button.displayName = 'Button'

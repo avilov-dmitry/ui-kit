@@ -1,6 +1,6 @@
 import React, { memo, SyntheticEvent } from 'react';
-import cn from 'classnames/bind';
-import './Overlay';
+import cn from 'classnames';
+import './Overlay.scss';
 
 const CLASS_NAME = 'Overlay';
 

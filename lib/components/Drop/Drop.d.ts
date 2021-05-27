@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DropPropsType } from './_types';
-import './Drop';
+import './Drop.scss';
 declare type StateType = {
     controlHeight: string;
     controlWidth: string;

@@ -1,11 +1,11 @@
-import cn from 'classnames/bind';
-import React, { FunctionComponent, useCallback } from 'react';
+import cn from 'classnames';
+import React, { FunctionComponent, memo, useCallback } from 'react';
 import { TogglePropsType } from './_types';
-import './Toggle';
+import './Toggle.scss';
 
 const CLASS_NAME = 'Toggle';
 
-export const Toggle: FunctionComponent<TogglePropsType> = ({
+export const Toggle: FunctionComponent<TogglePropsType> = memo(({
     className,
     id,
     isDisabled = false,
@@ -51,4 +51,6 @@ export const Toggle: FunctionComponent<TogglePropsType> = ({
             </span>}
         </div>
     );
-};
+})
+
+Toggle.displayName = 'Toggle';

@@ -1,11 +1,11 @@
-import React, { FunctionComponent, useCallback, useState, useMemo, useRef } from 'react';
-import cn from 'classnames/bind';
+import React, { FunctionComponent, useCallback, useState, useMemo, useRef, memo } from 'react';
+import cn from 'classnames';
 import { InputPropsType } from './_types';
-import './Input';
+import './Input.scss';
 
 const CLASS_NAME = 'Input';
 
-export const Input: FunctionComponent<InputPropsType> = ({
+export const Input: FunctionComponent<InputPropsType> = memo(({
     className = '',
     error = '',
     id,
@@ -59,4 +59,6 @@ export const Input: FunctionComponent<InputPropsType> = ({
         </>
 
     );
-};
+})
+
+Input.displayName = 'Input';

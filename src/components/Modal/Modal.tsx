@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import cn from 'classnames';
 import { CloseIcon } from '../icons';
 import { Portal } from '../Portal';
 import { Overlay } from '../Overlay';
-import './Modal';
+import './Modal.scss';
 
 const CLASS_NAME = 'Modal';
 
@@ -16,7 +16,7 @@ export type ModalPropsType = {
   onClose: () => void;
 };
 
-export const Modal: React.FunctionComponent<ModalPropsType> = ({ isOpened, children, modalClassName = '', closeIconClassName='', withCloseIcon = false, onClose }) => {
+export const Modal: React.FunctionComponent<ModalPropsType> = memo(({ isOpened, children, modalClassName = '', closeIconClassName='', withCloseIcon = false, onClose }) => {
   useEffect(() => {
     document.addEventListener('keydown', handleDocumentKeyDown);
 
@@ -47,4 +47,6 @@ export const Modal: React.FunctionComponent<ModalPropsType> = ({ isOpened, child
       </Overlay>
     </Portal>
   );
-};
+});
+
+Modal.displayName = 'Modal'

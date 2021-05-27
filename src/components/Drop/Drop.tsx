@@ -1,6 +1,7 @@
 import * as React from 'react';
+import cn from 'classnames';
 import { DropPropsType } from './_types';
-import './Drop';
+import './Drop.scss';
 
 const CLASS_NAME = 'Drop';
 
@@ -148,9 +149,9 @@ export class Drop extends React.PureComponent<DropPropsType, StateType> {
     };
 
     return (
-      <div className={CLASS_NAME} ref={this.wrapperRef}>
+      <div className={cn(CLASS_NAME)} ref={this.wrapperRef}>
         <button
-          className={`${CLASS_NAME}__control-wrapper`}
+          className={cn(`${CLASS_NAME}__control-wrapper`)}
           ref={this.controlRef}
           type="button"
           onClick={this.handleOnControl}
@@ -158,7 +159,7 @@ export class Drop extends React.PureComponent<DropPropsType, StateType> {
           {control}
         </button>
         <div
-          className={`${CLASS_NAME}__dropdown-wrapper`}
+          className={cn(`${CLASS_NAME}__dropdown-wrapper`)}
           ref={this.dropdownRef}
           style={wrapperStyles}
         >

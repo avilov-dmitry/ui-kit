@@ -1,4 +1,4 @@
 import { FunctionComponent } from 'react';
 import { InputPropsType } from './_types';
-import './Input';
+import './Input.scss';
 export declare const Input: FunctionComponent<InputPropsType>;

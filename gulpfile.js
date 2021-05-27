@@ -9,11 +9,4 @@ function sassTask() {
         .pipe(dest('lib/components/'));
 }
 
-// const startWatch = () => {
-//     console.log("Watching source directories...");
-
-//     watch('src/components/**/*.scss', sassTask);
-//   }
-
-// exports.sass = sassTask;
 exports.default = sassTask;

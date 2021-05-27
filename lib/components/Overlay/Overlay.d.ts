@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from 'react';
-import './Overlay';
+import './Overlay.scss';
 export declare type OverlayPropsType = {
     /** флаг меняющий свойство position с fixed на absolute */
     isAbsolute?: boolean;
