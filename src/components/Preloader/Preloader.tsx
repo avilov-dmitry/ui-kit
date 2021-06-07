@@ -2,7 +2,7 @@ import React, { FunctionComponent, memo, useMemo } from 'react';
 import classnames from 'classnames/bind';
 import { Overlay, Portal } from 'components';
 import PreloaderIcon from './PreloaderIcon.svg';
-import styles from './Preloader.module.scss';
+import styles from './Preloader.scss';
 
 const cn = classnames.bind(styles);
 const CLASS_NAME = 'Preloader';
@@ -10,7 +10,6 @@ const CLASS_NAME = 'Preloader';
 type PreloaderPropsType = {
     className?: string;
     isLoading?: boolean;
-    withOverlay?: boolean;
     isAbsolute?: boolean;
     isTransparent?: boolean;
     size?: 'xs' | 's' | 'm' | 'l' | 'xl';
@@ -20,7 +19,6 @@ type PreloaderPropsType = {
 export const Preloader: FunctionComponent<PreloaderPropsType> = memo(
     ({
         className,
-        withOverlay = false,
         isLoading = false,
         isAbsolute = false,
         isTransparent = false,
@@ -40,7 +38,7 @@ export const Preloader: FunctionComponent<PreloaderPropsType> = memo(
             );
         }, [size, color, className]);
 
-        if (!withOverlay || isAbsolute) {
+        if (isAbsolute) {
             return isLoading ? <Loader /> : <></>;
         }
 
