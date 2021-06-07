@@ -1,0 +1,18 @@
+@import "styles/main.module";
+
+@keyframes rotate-loader {
+  0% {
+    transform: rotateZ(0);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.Preloader {
+  width: 40px;
+  height: 40px;
+
+  animation: 7s ease-in infinite both running;
+  animation-name: rotate-loader;
+}

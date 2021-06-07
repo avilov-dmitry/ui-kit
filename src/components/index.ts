@@ -4,5 +4,6 @@ export * from './Input';
 export * from './Modal';
 export * from './Overlay';
 export * from './Portal';
+export * from './Preloader';
 export * from './Textarea';
 export * from './Toggle';
