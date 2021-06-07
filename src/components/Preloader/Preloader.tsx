@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, memo, useMemo } from 'react';
 import classnames from 'classnames/bind';
-import PreloaderIcon from './PreloaderIcon.svg';
-import styles from './Preloader.scss';
 import { Overlay, Portal } from 'components';
+import PreloaderIcon from './PreloaderIcon.svg';
+import styles from './Preloader.module.scss';
 
 const cn = classnames.bind(styles);
 const CLASS_NAME = 'Preloader';
@@ -13,21 +13,45 @@ type PreloaderPropsType = {
     withOverlay?: boolean;
     isAbsolute?: boolean;
     isTransparent?: boolean;
+    size?: 'xs' | 's' | 'm' | 'l' | 'xl';
+    color?: 'dark' | 'white' | 'blue' | 'grey' | 'greyDark';
 };
 
-export const Preloader: FunctionComponent<PreloaderPropsType> = ({ className, withOverlay=false, isLoading=false, isAbsolute=false, isTransparent=false }) => {
+export const Preloader: FunctionComponent<PreloaderPropsType> = memo(
+    ({
+        className,
+        withOverlay = false,
+        isLoading = false,
+        isAbsolute = false,
+        isTransparent = false,
+        size = 'l',
+        color = 'blue',
+    }) => {
+        const Loader = useMemo(() => {
+            return () => (
+                <PreloaderIcon
+                    className={cn(
+                        CLASS_NAME,
+                        { [`${CLASS_NAME}--size-${size}`]: Boolean(size) },
+                        { [`${CLASS_NAME}--color-${color}`]: Boolean(color) },
+                        className
+                    )}
+                />
+            );
+        }, [size, color, className]);
 
-    if(!withOverlay) {
+        if (!withOverlay || isAbsolute) {
+            return isLoading ? <Loader /> : <></>;
+        }
+
         return (
-            <PreloaderIcon className={cn(CLASS_NAME, className)} />
-        )
+            <Portal isOpened={isLoading}>
+                <Overlay isAbsolute={isAbsolute} isTransparent={isTransparent}>
+                    <Loader />
+                </Overlay>
+            </Portal>
+        );
     }
+);
 
-    return (
-        <Portal isOpened={isLoading}>
-            <Overlay isAbsolute={isAbsolute} isTransparent={isTransparent}>
-                <PreloaderIcon className={cn(CLASS_NAME, className)} />
-            </Overlay>
-        </Portal>
-    )
-};
+Preloader.displayName = 'Preloader';

@@ -1,4 +1,4 @@
-@import "styles/main.module";
+@import "styles/main.scss";
 
 @keyframes rotate-loader {
   0% {
@@ -13,6 +13,47 @@
   width: 40px;
   height: 40px;
 
-  animation: 7s ease-in infinite both running;
+  animation: 4s linear infinite both running;
   animation-name: rotate-loader;
+
+  &--size {
+    &-xs {
+      width: 16px;
+      height: 16px;
+    }
+    &-s {
+      width: 20px;
+      height: 20px;
+    }
+    &-m {
+      width: 24px;
+      height: 24px;
+    }
+    &-l {
+      width: 32px;
+      height: 32px;
+    }
+    &-xl {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &--color {
+    &-dark {
+      color: #232323;
+    }
+    &-white {
+      color: #FFFFFF;
+    }
+    &-blue {
+      color: #0083FF;
+    }
+    &-grey {
+      color: #979797;
+    }
+    &-greyDark {
+      color: #4A4A4A;
+    }
+  }
 }
