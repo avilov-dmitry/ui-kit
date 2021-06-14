@@ -1,0 +1,146 @@
+@keyframes enterTop {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+@keyframes enterBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+@keyframes exitCenter {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    100% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+}
+
+@keyframes exitLeft {
+    0% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateX(-100%);
+    }
+}
+
+// @keyframes exitCenter {
+//     0% {
+//       opacity: 1;
+//       transform: scale(1);
+//     }
+  
+//     100% {
+//       opacity: 0;
+//       transform: scale(0);
+//     }
+// }
+
+@keyframes exitRight {
+    0% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translateX(100%);
+    }
+}
+
+
+.Notifications {
+    $this:&;
+
+    position: absolute;
+    min-width: 420px;
+    height: 100%;
+    padding: 12px;
+    display: flex;
+
+    &--position {
+        &-top {
+            flex-direction: column;
+
+            #{$this}__item--enter {
+                animation: enterBottom .4s forwards;
+            }
+        }
+        &-bottom {
+            flex-direction: column-reverse;
+
+            #{$this}__item--enter {
+                animation: enterTop  .4s forwards;
+            }
+        }
+        &-left {
+            left: 12px;
+
+            #{$this}__item--exit {
+                animation: exitLeft .4s forwards;
+            }
+        }
+        &-center {
+            left: 50%;
+            transform: translateX(-50%);
+
+            #{$this}__item--exit {
+                animation: exitCenter .4s forwards;
+            }
+        }
+        &-right {
+            right: 12px;
+
+            #{$this}__item--exit {
+                animation: exitRight .4s forwards;
+            }
+        }
+    }
+
+    &__wrapper {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    &__item {
+        margin: 12px 0 0 0;
+        min-width: 420px;
+
+        &--fromTop {
+            &:first-child {
+                margin: 0;
+            }
+        }
+        &--fromBottom {
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+}
