@@ -10,36 +10,10 @@ export type NotificationPropsType = {
     notification: NotificationType;
     className: string;
     onClose: NotificationCloseType;
-    // withCloseIcon?: boolean;
 };
 
 export const Notification: FunctionComponent<NotificationPropsType> = memo(
-    ({
-        notification: { id, message, type = 'info' },
-        className,
-        onClose,
-        // withCloseIcon = false,
-    }) => {
-        // const [isOpened, setIsOpened] = useState(true);
-        // const handleDocumentKeyDown = useCallback(
-        //     ({ keyCode }) => {
-        //         if (keyCode === KEY_CODES.ESCAPE) {
-        //             onClose();
-        //         }
-        //     },
-        //     [onClose]
-        // );
-
-        // useEffect(() => {
-        //     document.addEventListener('keydown', handleDocumentKeyDown);
-
-        //     return () => {
-        //         document.removeEventListener('keydown', handleDocumentKeyDown);
-        //     };
-        // }, [handleDocumentKeyDown]);
-
-        // const [timer, setTimer] = useState(null);
-
+    ({ notification: { id, message, type = 'info' }, className, onClose }) => {
         useEffect(() => {
             setTimeout(() => onClose({ id }), 4000);
         }, []);
