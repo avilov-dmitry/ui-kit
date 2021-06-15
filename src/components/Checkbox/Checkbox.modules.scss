@@ -1,0 +1,27 @@
+.Checkbox {
+  &__input {
+    display: none;
+  }
+
+  &__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .3s, border .3s;
+    border: 2px solid #97A9CE;
+    border-radius: 4px;
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+
+    &--isChecked {
+      background-color: #5A4686;
+      border: none;
+    }
+  }
+
+  &__icon {
+    color: #fff;
+  }
+}

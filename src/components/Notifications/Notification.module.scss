@@ -1,0 +1,20 @@
+.Notification {
+    border-radius: 16px;
+    padding: 30px;
+    background-color: transparent;
+
+    &--type {
+        &-error {
+            background-color: rgba(253, 212, 215, 0.8);
+        }
+        &-info {
+            background-color: #293553;
+        }
+        &-warning {
+            background-color: #E89902;
+        }
+        &-success {
+            background-color: #21A038;
+        }
+    }
+}

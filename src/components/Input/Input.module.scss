@@ -1,0 +1,59 @@
+$icon-space: 30px;
+
+$horizontal-padding: 12px;
+
+@mixin inputText {
+  color: #293553;
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.Input {
+  @include inputText;
+  border: none;
+
+  background: transparent;
+  border-bottom: 1px solid #d2dee3;
+  box-sizing: border-box;
+  margin: 0;
+
+  outline: none !important;
+  padding-bottom: 8px;
+  width: 100%;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 52px;
+    justify-content: flex-end;
+    position: relative;
+    width: auto;
+
+    &--isFullWidth {
+      width: 100%;
+    }
+  }
+
+  &__label {
+    @include inputText;
+    position: absolute;
+    top: 26px;
+    transition: top .3s, color .3s, font-size .6s;
+
+    &--isVisibleLabel {
+      color: #77838B;
+      font-size: 12px;
+      line-height: 16px;
+      top: 0px;
+    }
+  }
+
+  &__error {
+    display: inline-block;
+    color: #F32738;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    margin-top: 8px;
+  }
+}

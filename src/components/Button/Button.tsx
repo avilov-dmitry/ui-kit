@@ -1,32 +1,57 @@
-import React, { useCallback } from 'react';
-import cn from 'classnames';
+import classnames from 'classnames/bind';
+import React, { FunctionComponent, memo, useCallback } from 'react';
+import { ButtonPropsType } from './_types';
+import styles from './Button.module.scss';
 
-import './Button.scss';
-
+const cn = classnames.bind(styles);
 const CLASS_NAME = 'Button';
 
-type PropsType = {
-  name: string;
-  text?: string;
-  type?: 'button' | 'submit';
-  icon?: any;
-  buttonClassName?: string;
-  onClick: any;
-};
+export const Button: FunctionComponent<ButtonPropsType> = memo(({
+    children,
+    className,
+    id,
+    isDisabled = false,
+    isFullWidth = false,
+    leftIcon: LeftIcon,
+    onClick,
+    rightIcon: RightIcon,
+    text = '',
+    type = 'button',
+    variant = 'primary',
+}) => {
+    const handleClick = useCallback(
+        (event: React.MouseEvent<HTMLElement>) => {
+            if (onClick && !isDisabled) {
+                onClick({ event, id });
+            }
+        },
+        [id, isDisabled, onClick]
+    );
 
-export const Button = ({
-  // name,
-  text,
-  // icon,
-  // buttonClassName,
-  type = 'button',
-  onClick
-}: PropsType) => {
-  const handleClick = useCallback(() => onClick(), [onClick]);
+    return (
+        <button
+            id={id}
+            className={cn(CLASS_NAME, {
+                [`${CLASS_NAME}--isSecondary`]: variant === 'secondary',
+                [`${CLASS_NAME}--isDisabled`]: isDisabled,
+                [`${CLASS_NAME}--isFullWidth`]: isFullWidth,
+            },
+            className
+            )}
+            type={type}
+            onClick={handleClick}
+            disabled={isDisabled}
+        >
+            {
+                children ||
+                <>
+                    {LeftIcon && <span className={cn(`${CLASS_NAME}__icon--left`)}><LeftIcon /></span>}
+                    {text && <span className={cn(`${CLASS_NAME}__text`)}>{text}</span>}
+                    {RightIcon && <span className={cn(`${CLASS_NAME}__icon--right`)}><RightIcon /></span>}
+                </>
+            }
+        </button>
+    );
+})
 
-  return (
-    <button className={cn(CLASS_NAME)} onClick={handleClick} type={type}>
-      {text}
-    </button>
-  );
-};
+Button.displayName = 'Button'

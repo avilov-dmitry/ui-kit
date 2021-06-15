@@ -1,0 +1,81 @@
+@import "./Notifications.keyframes.scss";
+
+.Notifications {
+    $this:&;
+
+    position: fixed;
+    min-width: 420px;
+    height: 100%;
+    padding: 12px;
+    display: flex;
+    z-index: -1;
+    top: 0;
+
+    &--isVisible {
+        z-index: 1000;
+    }
+
+    &--position {
+        &-top {
+            flex-direction: column;
+
+            #{$this}__item--enter {
+                animation: enterBottom .4s forwards;
+            }
+        }
+        &-bottom {
+            flex-direction: column-reverse;
+
+            #{$this}__item--enter {
+                animation: enterTop  .4s forwards;
+            }
+        }
+        &-left {
+            left: 12px;
+
+            #{$this}__item--exit {
+                animation: exitLeft .4s forwards;
+            }
+        }
+        &-center {
+            left: 50%;
+            transform: translateX(-50%);
+
+            #{$this}__item--exit {
+                animation: exitCenter .4s forwards;
+            }
+        }
+        &-right {
+            right: 12px;
+
+            #{$this}__item--exit {
+                animation: exitRight .4s forwards;
+            }
+        }
+    }
+
+    &__wrapper {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    &__item {
+        margin: 12px 0 0 0;
+        min-width: 420px;
+
+        &--fromTop {
+            &:first-child {
+                margin: 0;
+            }
+        }
+        &--fromBottom {
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+}

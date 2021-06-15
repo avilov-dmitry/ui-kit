@@ -1,70 +1,65 @@
-import React, { useCallback } from 'react';
-import cn from 'classnames';
+import React, { FunctionComponent, useCallback, useState, useMemo, useRef, memo } from 'react';
+import { InputPropsType } from './_types';
+import classnames from 'classnames/bind';
+import styles from './Input.module.scss';
 
-import './Input.scss';
-
+const cn = classnames.bind(styles);
 const CLASS_NAME = 'Input';
 
-type PropsType = {
-  id?: string;
-  // label?: string;
-  fieldName: string;
-  className?: string;
-  value?: string;
-  isReadOnly?: boolean;
-  leftIcon?: any;
-  rightIcon?: any;
-  onChange: (params: any) => void;
-  [key: string]: any;
-};
+export const Input: FunctionComponent<InputPropsType> = memo(({
+    className = '',
+    error = '',
+    id,
+    isFullWidth = false,
+    isReadOnly = false,
+    label,
+    onChange,
+    value = '',
+}: InputPropsType) => {
+    const [isFocused, setIsFocused] = useState(false);
+    const inputRer = useRef<any>(null);
+  
+    const handleChange = useCallback(
+        (event) => {
+            if (!isReadOnly && onChange) {
+                onChange({ event, id, value: event.target.value });
+            }
+        },
+        [isReadOnly, id, onChange]
+    );
 
-export const Input = ({
-  id,
-  // label,
-  fieldName,
-  className = '',
-  value = '',
-  isReadOnly = false,
-  leftIcon: LeftIcon,
-  rightIcon: RightIcon,
-  onChange
-}: PropsType) => {
-  const handleChange = useCallback(
-    (event) => {
-      if (!isReadOnly && onChange) {
-        onChange({ fieldName, value: event.target.value });
-      }
-    },
-    [isReadOnly, fieldName, onChange]
-  );
+    const handleClickOnLabel = useCallback(() => {
+        inputRer.current.focus();
+    }, []);
+    const handleFocus = useCallback(() => setIsFocused(true), []);
+    const handleBlur = useCallback(() => setIsFocused(false), []);
 
-  return (
-    <div className={cn(`${CLASS_NAME}__wrapper`, className)}>
-      {/* {Boolean(label) && <label htmlFor={id}>{label}</label>} */}
-      {LeftIcon && (
-        <LeftIcon
-          className={cn(`${CLASS_NAME}__icon`, {
-            [`${CLASS_NAME}__icon--withLeftIcon`]: LeftIcon
-          })}
-        />
-      )}
-      <input
-        className={cn(`${CLASS_NAME}`, {
-          [`${CLASS_NAME}--withLeftIcon`]: LeftIcon,
-          [`${CLASS_NAME}--withRightIcon`]: RightIcon
-        })}
-        id={id}
-        onChange={handleChange}
-        type="text"
-        value={value}
-      />
-      {RightIcon && (
-        <RightIcon
-          className={cn(`${CLASS_NAME}__icon`, {
-            [`${CLASS_NAME}__icon--withRightIcon`]: RightIcon
-          })}
-        />
-      )}
-    </div>
-  );
-};
+    const isVisibleLabel = useMemo(() => {
+        return Boolean(label && (isFocused || value)); 
+    }, [label, isFocused, value]);
+
+    return (
+        <>
+            <div className={cn(`${CLASS_NAME}__wrapper`, { [`${CLASS_NAME}__wrapper--isFullWidth`]: isFullWidth }, className)}>
+                <span className={cn(`${CLASS_NAME}__label`, {
+                    [`${CLASS_NAME}__label--isVisibleLabel`]: isVisibleLabel,
+                })} onClick={handleClickOnLabel}>{label}</span>
+                <input
+                    ref={inputRer}
+                    className={cn(CLASS_NAME)}
+                    id={id}
+                    type="text"
+                    value={value}
+                    disabled={isReadOnly}
+                    onChange={handleChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                />
+            </div>
+            {Boolean(error) && <span className={cn(`${CLASS_NAME}__error`)}>{error}</span>}
+        </>
+
+    );
+})
+
+Input.displayName = 'Input';

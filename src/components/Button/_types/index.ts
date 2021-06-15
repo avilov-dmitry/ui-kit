@@ -1,10 +1,6 @@
-export type SelectOptionType = {
-  id: string;
-  label: string;
-  [key: string]: any;
-};
+export * from './props-type';
 
-export type SelectChangeType = {
-  value: SelectOptionType;
-  event: any;
-};
+export type ButtonChangeParamsType = {
+  event: React.MouseEvent<HTMLElement>;
+  id?: string;
+}

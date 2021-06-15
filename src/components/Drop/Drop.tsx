@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Props } from './_types';
-import './Drop.scss';
+import { DropPropsType } from './_types';
+import classnames from 'classnames/bind';
+import styles from './Drop.module.scss';
 
+const cn = classnames.bind(styles);
 const CLASS_NAME = 'Drop';
 
 type StateType = {
@@ -14,32 +16,32 @@ type StateType = {
   openToTop: boolean;
 };
 
-export class Drop extends React.PureComponent<Props, StateType> {
+export class Drop extends React.PureComponent<DropPropsType, StateType> {
   private readonly wrapperRef: any;
 
   private readonly controlRef: any;
 
   private readonly dropdownRef: any;
 
-  constructor(props: Props) {
+  constructor(props: DropPropsType) {
     super(props);
     this.wrapperRef = React.createRef();
     this.controlRef = React.createRef();
     this.dropdownRef = React.createRef();
 
     this.state = {
-      isVisible: false,
-      openToTop: false,
-      openToLeft: false,
       controlHeight: '',
-      dropdownHeight: '',
       controlWidth: '',
-      dropdownWidth: ''
+      dropdownHeight: '',
+      dropdownWidth: '',
+      isVisible: false,
+      openToLeft: false,
+      openToTop: false
     };
   }
 
   componentDidMount(): void {
-    const { isOpened } = this.props;
+    const { isOpened = false, isSubDrop } = this.props;
     if (isOpened) {
       this.setState({ isVisible: isOpened }, () => {
         this.controlRef.current.click();
@@ -48,14 +50,18 @@ export class Drop extends React.PureComponent<Props, StateType> {
     if (this.controlRef.current && this.dropdownRef.current) {
       this.setState({
         controlHeight: this.controlRef.current.scrollHeight,
-        dropdownHeight: this.dropdownRef.current.scrollHeight,
         controlWidth: this.controlRef.current.scrollWidth,
-        dropdownWidth: this.dropdownRef.current.scrollWidth
+        dropdownHeight: isSubDrop
+          ? this.dropdownRef.current.scrollHeight
+          : this.dropdownRef.current.clientHeight,
+        dropdownWidth: isSubDrop
+          ? this.dropdownRef.current.scrollWidth
+          : this.dropdownRef.current.clientWidth
       });
     }
   }
 
-  componentDidUpdate(prevProps: Props): void {
+  componentDidUpdate(prevProps: DropPropsType): void {
     const { isOpened, dropdown } = this.props;
 
     if (prevProps.isOpened !== isOpened && isOpened !== undefined) {
@@ -73,8 +79,8 @@ export class Drop extends React.PureComponent<Props, StateType> {
       // eslint-disable-next-line react/no-did-update-set-state
       this.setState({
         controlHeight: this.controlRef.current.scrollHeight,
-        dropdownHeight: this.dropdownRef.current.scrollHeight,
         controlWidth: this.controlRef.current.scrollWidth,
+        dropdownHeight: this.dropdownRef.current.scrollHeight,
         dropdownWidth: this.dropdownRef.current.scrollWidth
       });
     }
@@ -107,9 +113,12 @@ export class Drop extends React.PureComponent<Props, StateType> {
     this.setState(
       ({ isVisible }) => {
         const openToTop =
-          bottomSpace <= this.dropdownRef.current.scrollHeight && bottomSpace < topSpace;
+          bottomSpace <= this.dropdownRef.current.getBoundingClientRect().height &&
+          bottomSpace < topSpace;
         const openToLeft =
-          rightSpace <= this.dropdownRef.current.scrollWidth && rightSpace < leftSpace;
+          rightSpace <= this.dropdownRef.current.getBoundingClientRect().width &&
+          rightSpace < leftSpace;
+
         return { isVisible: !isVisible, openToTop, openToLeft };
       },
       () => {
@@ -141,17 +150,17 @@ export class Drop extends React.PureComponent<Props, StateType> {
     };
 
     return (
-      <div className={CLASS_NAME} ref={this.wrapperRef}>
+      <div className={cn(CLASS_NAME)} ref={this.wrapperRef}>
         <button
-          className={`${CLASS_NAME}__control-wrapper`}
-          onClick={this.handleOnControl}
+          className={cn(`${CLASS_NAME}__control-wrapper`)}
           ref={this.controlRef}
           type="button"
+          onClick={this.handleOnControl}
         >
           {control}
         </button>
         <div
-          className={`${CLASS_NAME}__dropdown-wrapper`}
+          className={cn(`${CLASS_NAME}__dropdown-wrapper`)}
           ref={this.dropdownRef}
           style={wrapperStyles}
         >
