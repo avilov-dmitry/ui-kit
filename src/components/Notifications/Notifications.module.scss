@@ -1,84 +1,19 @@
-@keyframes enterTop {
-    0% {
-      opacity: 0;
-      transform: translateY(100%);
-    }
-  
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-}
-
-@keyframes enterBottom {
-    0% {
-      opacity: 0;
-      transform: translateY(-100%);
-    }
-  
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-}
-
-@keyframes exitCenter {
-    0% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  
-    100% {
-      opacity: 0;
-      transform: translateY(-100%);
-    }
-}
-
-@keyframes exitLeft {
-    0% {
-      opacity: 0;
-      transform: translateY(0);
-    }
-  
-    100% {
-      opacity: 1;
-      transform: translateX(-100%);
-    }
-}
-
-// @keyframes exitCenter {
-//     0% {
-//       opacity: 1;
-//       transform: scale(1);
-//     }
-  
-//     100% {
-//       opacity: 0;
-//       transform: scale(0);
-//     }
-// }
-
-@keyframes exitRight {
-    0% {
-      opacity: 0;
-      transform: translateX(0);
-    }
-  
-    100% {
-      opacity: 1;
-      transform: translateX(100%);
-    }
-}
-
+@import "./Notifications.keyframes.scss";
 
 .Notifications {
     $this:&;
 
-    position: absolute;
+    position: fixed;
     min-width: 420px;
     height: 100%;
     padding: 12px;
     display: flex;
+    z-index: -1;
+    top: 0;
+
+    &--isVisible {
+        z-index: 1000;
+    }
 
     &--position {
         &-top {

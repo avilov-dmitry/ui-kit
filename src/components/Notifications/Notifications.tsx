@@ -39,7 +39,6 @@ export const Notifications: FunctionComponent<NotificationsPropsType> = ({
     onClose,
 }) => {
     return ReactDOM.createPortal(
-        <div id="notifications" className={cn(`${CLASS_NAME}__wrapper`)}>
             <TransitionGroup
                 className={cn(CLASS_NAME, {
                     [`${CLASS_NAME}--position-${positionVertical}`]: Boolean(positionVertical),
@@ -66,8 +65,7 @@ export const Notifications: FunctionComponent<NotificationsPropsType> = ({
                         />
                     </CSSTransition>
                 ))}
-            </TransitionGroup>
-        </div>,
+            </TransitionGroup>,
         document.body
     );
 };
