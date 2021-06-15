@@ -1,14 +1,19 @@
 {
   "name": "@avilov.dmitry/ui-kit",
-  "version": "0.0.1-beta.115",
+  "version": "0.0.1-beta.114",
   "description": "Ui kit",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "scripts": {
+    "gulp:build": "gulp",
+    "gulp:publish": "npm run lib:clean && npx tsc && gulp && npm run lib:style-exts",
     "build": "webpack",
     "prepublish": "npm run lib:clean && webpack",
     "lib:clean": "rimraf lib",
-    "storybook": "start-storybook -p 6006"
+    "lib:style-exts": "node scripts/change-scss-file-extension.js",
+    "lib:copy-styles": "copyfiles -u 1 src/**/*.scss lib/",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",

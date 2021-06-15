@@ -1,8 +1,9 @@
-import cn from 'classnames';
+import classnames from 'classnames/bind';
 import React, { FunctionComponent, memo, useCallback } from 'react';
 import { ButtonPropsType } from './_types';
-import './Button.scss';
+import styles from './Button.module.scss';
 
+const cn = classnames.bind(styles);
 const CLASS_NAME = 'Button';
 
 export const Button: FunctionComponent<ButtonPropsType> = memo(({

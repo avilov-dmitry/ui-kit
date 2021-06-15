@@ -1,5 +1,4 @@
 import React from 'react';
-import './Modal.scss';
 export declare type ModalPropsType = {
     isOpened: boolean;
     withCloseIcon?: boolean;

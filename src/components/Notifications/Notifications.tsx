@@ -39,33 +39,33 @@ export const Notifications: FunctionComponent<NotificationsPropsType> = ({
     onClose,
 }) => {
     return ReactDOM.createPortal(
-            <TransitionGroup
-                className={cn(CLASS_NAME, {
-                    [`${CLASS_NAME}--position-${positionVertical}`]: Boolean(positionVertical),
-                    [`${CLASS_NAME}--position-${positionHorizontal}`]: Boolean(positionHorizontal),
-                })}
-            >
-                {notifications.map((notification) => (
-                    <CSSTransition
-                        key={notification.id}
-                        timeout={CSSTransitionTimeout}
-                        classNames={CSSTransitionCN}
-                    >
-                        <Notification
-                            notification={notification}
-                            className={cn(`${CLASS_NAME}__item`, {
-                                [`${CLASS_NAME}__item--fromTop`]: Boolean(
-                                    positionVertical == 'top'
-                                ),
-                                [`${CLASS_NAME}__item--fromBottom`]: Boolean(
-                                    positionVertical == 'bottom'
-                                ),
-                            })}
-                            onClose={onClose}
-                        />
-                    </CSSTransition>
-                ))}
-            </TransitionGroup>,
+        // <div id="notifications" className={cn(`${CLASS_NAME}__wrapper`)}>
+        <TransitionGroup
+            className={cn(CLASS_NAME, {
+                [`${CLASS_NAME}--isVisible`]: Boolean(notifications.length),
+                [`${CLASS_NAME}--position-${positionVertical}`]: Boolean(positionVertical),
+                [`${CLASS_NAME}--position-${positionHorizontal}`]: Boolean(positionHorizontal),
+            })}
+        >
+            {notifications.map((notification) => (
+                <CSSTransition
+                    key={notification.id}
+                    timeout={CSSTransitionTimeout}
+                    classNames={CSSTransitionCN}
+                >
+                    <Notification
+                        notification={notification}
+                        className={cn(`${CLASS_NAME}__item`, {
+                            [`${CLASS_NAME}__item--fromTop`]: Boolean(positionVertical == 'top'),
+                            [`${CLASS_NAME}__item--fromBottom`]: Boolean(
+                                positionVertical == 'bottom'
+                            ),
+                        })}
+                        onClose={onClose}
+                    />
+                </CSSTransition>
+            ))}
+        </TransitionGroup>,
         document.body
     );
 };

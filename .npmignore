@@ -1,15 +1,35 @@
-.storybook
+# ides
+.idea
 .vscode
-node_modules
-src
-stories
 
+# envs
+.env
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# .MD
+*.md
+
+# folders
+.storybook
+node_modules
+./configs
+./scripts
+./src
+./stories
+
+# files
 .babelrc
-.eslintrc.json
+.eslintignore
+.eslintrc.js
 .gitignore
 .npmignore
 package-lock.json
 tsconfig.json
 webpack.config.ts
 
-*.md
+# unknown
+.DS_Store

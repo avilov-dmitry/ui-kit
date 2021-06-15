@@ -2,7 +2,7 @@ import React, { FunctionComponent, memo, useMemo } from 'react';
 import classnames from 'classnames/bind';
 import { Overlay, Portal } from 'components';
 import PreloaderIcon from './PreloaderIcon.svg';
-import styles from './Preloader.scss';
+import styles from './Preloader.module.scss';
 
 const cn = classnames.bind(styles);
 const CLASS_NAME = 'Preloader';
@@ -30,8 +30,7 @@ export const Preloader: FunctionComponent<PreloaderPropsType> = memo(
                 <PreloaderIcon
                     className={cn(
                         CLASS_NAME,
-                        { [`${CLASS_NAME}--size-${size}`]: Boolean(size) },
-                        { [`${CLASS_NAME}--color-${color}`]: Boolean(color) },
+                        { [`${CLASS_NAME}--size-${size}`]: Boolean(size), [`${CLASS_NAME}--color-${color}`]: Boolean(color) },
                         className
                     )}
                 />

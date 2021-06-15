@@ -1,4 +1,19 @@
-.vscode/
+# ides
+.idea
+.vscode
+
+# envs
+.env
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# folders
 build/
 lib/
 node_modules/
+
+# unknown
+.DS_Store

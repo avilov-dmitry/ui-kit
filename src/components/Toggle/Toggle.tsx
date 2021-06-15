@@ -1,8 +1,9 @@
-import cn from 'classnames';
+import classnames from 'classnames/bind';
 import React, { FunctionComponent, memo, useCallback } from 'react';
 import { TogglePropsType } from './_types';
-import './Toggle.scss';
+import styles from './Toggle.module.scss';
 
+const cn = classnames.bind(styles);
 const CLASS_NAME = 'Toggle';
 
 export const Toggle: FunctionComponent<TogglePropsType> = memo(({

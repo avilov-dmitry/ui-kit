@@ -15,7 +15,7 @@ export type NotificationPropsType = {
 export const Notification: FunctionComponent<NotificationPropsType> = memo(
     ({ notification: { id, message, type = 'info' }, className, onClose }) => {
         useEffect(() => {
-            setTimeout(() => onClose({ id }), 4000);
+            setTimeout(() => onClose({ id }), 3000);
         }, []);
 
         return (

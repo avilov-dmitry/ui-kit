@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useCallback, useState, useMemo, useRef, memo } from 'react';
-import cn from 'classnames';
 import { InputPropsType } from './_types';
-import './Input.scss';
+import classnames from 'classnames/bind';
+import styles from './Input.module.scss';
 
+const cn = classnames.bind(styles);
 const CLASS_NAME = 'Input';
 
 export const Input: FunctionComponent<InputPropsType> = memo(({

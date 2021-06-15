@@ -1,8 +1,9 @@
 import React, { memo, FunctionComponent, useCallback, useState, useMemo, useRef, useEffect } from 'react';
-import cn from 'classnames';
 import { TextareaPropsType } from './_types';
-import './Textarea.scss';
+import classnames from 'classnames/bind';
+import styles from './Textarea.module.scss';
 
+const cn = classnames.bind(styles);
 const CLASS_NAME = 'Textarea';
 
 export const Textarea: FunctionComponent<TextareaPropsType> = memo(({

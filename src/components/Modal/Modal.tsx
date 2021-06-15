@@ -1,10 +1,11 @@
 import React, { memo, useCallback, useEffect } from 'react';
-import cn from 'classnames';
 import { CloseIcon } from '../icons';
 import { Portal } from '../Portal';
 import { Overlay } from '../Overlay';
-import './Modal.scss';
+import classnames from 'classnames/bind';
+import styles from './Modal.module.scss';
 
+const cn = classnames.bind(styles);
 const CLASS_NAME = 'Modal';
 
 export type ModalPropsType = {

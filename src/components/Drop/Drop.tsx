@@ -1,8 +1,9 @@
 import * as React from 'react';
-import cn from 'classnames';
 import { DropPropsType } from './_types';
-import './Drop.scss';
+import classnames from 'classnames/bind';
+import styles from './Drop.module.scss';
 
+const cn = classnames.bind(styles);
 const CLASS_NAME = 'Drop';
 
 type StateType = {

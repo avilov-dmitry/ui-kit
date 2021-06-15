@@ -1,9 +1,8 @@
 import React, { useRef } from 'react';
-import cn from 'classnames';
-import { generateShortId } from 'tools';
-import { Icon } from 'components';
-import './Checkbox.scss';
+import classnames from 'classnames/bind';
+import styles from './Checkbox.module.scss';
 
+const cn = classnames.bind(styles);
 const CLASS_NAME = 'Checkbox';
 
 type PropsType = {
@@ -14,7 +13,7 @@ type PropsType = {
 };
 
 export const Checkbox: React.FC<PropsType> = ({ name, value, isDisabled = false, onClick }) => {
-    const id = useRef<string>(generateShortId());
+    const id = useRef<string>();
     const inputRef = useRef<HTMLInputElement>(null);
 
     const handleChange = (event: any) => {
@@ -48,7 +47,7 @@ export const Checkbox: React.FC<PropsType> = ({ name, value, isDisabled = false,
                 })}
                 onClick={handleClick}
             >
-                {value && <Icon icon="check" className={cn(`${CLASS_NAME}__icon`)} />}
+                {/* {value && <Icon icon="check" className={cn(`${CLASS_NAME}__icon`)} />} */}
             </div>
         </div>
     );

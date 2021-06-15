@@ -1,7 +1,8 @@
 import React, { memo, SyntheticEvent } from 'react';
-import cn from 'classnames';
-import './Overlay.scss';
+import classnames from 'classnames/bind';
+import styles from './Overlay.module.scss';
 
+const cn = classnames.bind(styles);
 const CLASS_NAME = 'Overlay';
 
 export type OverlayPropsType = {
