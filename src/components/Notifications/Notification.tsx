@@ -19,15 +19,7 @@ export const Notification: FunctionComponent<NotificationPropsType> = memo(
         }, []);
 
         return (
-            <div
-                className={cn(
-                    CLASS_NAME,
-                    {
-                        [`${CLASS_NAME}--type-${type}`]: Boolean(type),
-                    },
-                    className
-                )}
-            >
+            <div className={cn(CLASS_NAME, `${CLASS_NAME}--type-${type}`, className)}>
                 {message}
             </div>
         );

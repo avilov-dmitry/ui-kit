@@ -39,15 +39,16 @@ export const Notifications: FunctionComponent<NotificationsPropsType> = ({
     onClose,
 }) => {
     return ReactDOM.createPortal(
-        // <div id="notifications" className={cn(`${CLASS_NAME}__wrapper`)}>
         <TransitionGroup
-            className={cn(CLASS_NAME, {
-                [`${CLASS_NAME}--isVisible`]: Boolean(notifications.length),
-                [`${CLASS_NAME}--position-${positionVertical}`]: Boolean(positionVertical),
-                [`${CLASS_NAME}--position-${positionHorizontal}`]: Boolean(positionHorizontal),
-            })}
+            className={cn(CLASS_NAME,
+                `${CLASS_NAME}--position-${positionVertical}`,
+                `${CLASS_NAME}--position-${positionHorizontal}`,
+                {
+                    [`${CLASS_NAME}--isVisible`]: Boolean(notifications.length),
+                }
+            )}
         >
-            {notifications.map((notification) => (
+            {notifications.map((notification: NotificationType) => (
                 <CSSTransition
                     key={notification.id}
                     timeout={CSSTransitionTimeout}
