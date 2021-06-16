@@ -19,6 +19,8 @@ export type NotificationsPropsType = {
     notifications: Array<NotificationType>;
     positionVertical?: NotificationPositionVerticalTypes;
     positionHorizontal?: NotificationPositionHorizontalTypes;
+    delay?: number;
+    withClose?: boolean;
     onClose: NotificationCloseType;
 };
 
@@ -36,11 +38,14 @@ export const Notifications: FunctionComponent<NotificationsPropsType> = ({
     notifications,
     positionVertical = 'bottom',
     positionHorizontal = 'center',
+    delay,
+    withClose,
     onClose,
 }) => {
     return ReactDOM.createPortal(
         <TransitionGroup
-            className={cn(CLASS_NAME,
+            className={cn(
+                CLASS_NAME,
                 `${CLASS_NAME}--position-${positionVertical}`,
                 `${CLASS_NAME}--position-${positionHorizontal}`,
                 {
@@ -55,13 +60,13 @@ export const Notifications: FunctionComponent<NotificationsPropsType> = ({
                     classNames={CSSTransitionCN}
                 >
                     <Notification
-                        notification={notification}
+                        {...notification}
                         className={cn(`${CLASS_NAME}__item`, {
-                            [`${CLASS_NAME}__item--fromTop`]: Boolean(positionVertical == 'top'),
-                            [`${CLASS_NAME}__item--fromBottom`]: Boolean(
-                                positionVertical == 'bottom'
-                            ),
+                            [`${CLASS_NAME}__item--fromTop`]: positionVertical === 'top',
+                            [`${CLASS_NAME}__item--fromBottom`]: positionVertical === 'bottom',
                         })}
+                        delay={delay}
+                        withClose={withClose}
                         onClose={onClose}
                     />
                 </CSSTransition>
