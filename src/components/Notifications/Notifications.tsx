@@ -9,7 +9,7 @@ import {
     NotificationPositionVerticalTypes,
     NotificationType,
 } from './_types';
-import { Notification } from './Notification';
+import { Notification } from './_components';
 import styles from './Notifications.module.scss';
 
 const cn = classnames.bind(styles);
