@@ -5,11 +5,7 @@
 
     position: fixed;
     min-width: 420px;
-    height: 100%;
-    padding: 12px;
     display: flex;
-    z-index: -1;
-    top: 0;
 
     &--isVisible {
         z-index: 1000;
@@ -18,6 +14,7 @@
     &--position {
         &-top {
             flex-direction: column;
+            top: 12px;
 
             #{$this}__item--enter {
                 animation: enterBottom .4s forwards;
@@ -25,6 +22,7 @@
         }
         &-bottom {
             flex-direction: column-reverse;
+            bottom: 12px;
 
             #{$this}__item--enter {
                 animation: enterTop  .4s forwards;
