@@ -18,6 +18,15 @@ export type ModalPropsType = {
 };
 
 export const Modal: React.FunctionComponent<ModalPropsType> = memo(({ isOpened, children, modalClassName = '', closeIconClassName='', withCloseIcon = false, onClose }) => {
+  const handleDocumentKeyDown = useCallback(
+    ({ keyCode }) => {
+      if (keyCode === keyCode.ESCAPE) {
+        onClose();
+      }
+    },
+    [onClose]
+  );
+  
   useEffect(() => {
     document.addEventListener('keydown', handleDocumentKeyDown);
 
@@ -27,14 +36,6 @@ export const Modal: React.FunctionComponent<ModalPropsType> = memo(({ isOpened, 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleDocumentKeyDown = useCallback(
-    ({ keyCode }) => {
-      if (keyCode === keyCode.ESCAPE) {
-        onClose();
-      }
-    },
-    [onClose]
-  );
 
   return (
     <Portal isOpened={isOpened}>

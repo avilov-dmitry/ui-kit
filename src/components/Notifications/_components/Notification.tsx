@@ -1,6 +1,6 @@
 import React, { FunctionComponent, memo, useEffect, useMemo } from 'react';
 import classnames from 'classnames/bind';
-// import { Icon } from 'components';
+import { CloseIcon } from '../../icons';
 import { NotificationCloseType, NotificationType } from '../_types';
 import styles from './Notification.module.scss';
 
@@ -35,7 +35,7 @@ export const Notification: FunctionComponent<NotificationPropsType> = memo(
                 <span className={cn(`${CLASS_NAME}__text`)}>{message}</span>
                 {withClose && (
                     <span className={cn(`${CLASS_NAME}__close`)} onClick={handleClose}>
-                        <Icon name="close-outlined" />
+                        <CloseIcon className={cn(`${CLASS_NAME}__icon`)} />
                     </span>
                 )}
             </div>

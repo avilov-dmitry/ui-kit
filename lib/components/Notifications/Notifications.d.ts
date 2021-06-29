@@ -4,6 +4,8 @@ export declare type NotificationsPropsType = {
     notifications: Array<NotificationType>;
     positionVertical?: NotificationPositionVerticalTypes;
     positionHorizontal?: NotificationPositionHorizontalTypes;
+    delay?: number;
+    withClose?: boolean;
     onClose: NotificationCloseType;
 };
 export declare const Notifications: FunctionComponent<NotificationsPropsType>;
