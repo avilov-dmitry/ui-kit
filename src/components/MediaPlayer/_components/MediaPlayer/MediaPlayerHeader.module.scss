@@ -1,0 +1,27 @@
+.MediaPlayerHeader {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 24px 32px;
+  position: fixed;
+  transition: top 400ms, opacity 400ms;
+  width: 100%;
+
+  &--enter {
+    opacity: 0;
+    top: -100%;
+  }
+
+  &--enter-active {
+    opacity: 1;
+    top: 0;
+  }
+
+  &--exit {
+    opacity: 1;
+    top: 0;
+  }
+
+  &--exit-active {
+    opacity: 0;
+    top: -100%;
+  }
+}
