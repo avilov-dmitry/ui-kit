@@ -1,4 +1,5 @@
 export * from './Button';
+export * from './MediaPlayer';
 export * from './Modal';
 export * from './Notifications';
 export * from './Overlay';

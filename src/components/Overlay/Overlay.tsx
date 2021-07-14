@@ -1,4 +1,4 @@
-import React, { memo, SyntheticEvent } from 'react';
+import React, { FunctionComponent, memo, SyntheticEvent, ReactNode } from 'react';
 import classnames from 'classnames/bind';
 import styles from './Overlay.module.scss';
 
@@ -9,15 +9,20 @@ export type OverlayPropsType = {
     /** флаг меняющий свойство position с fixed на absolute */
     isAbsolute?: boolean;
     /** содержимое компонента */
-    children: React.ReactNode;
+    children: ReactNode;
     /** коллбек клика по оверлею */
     onClick?: (event: SyntheticEvent) => void;
     /** флаг меняющий backgroundColor на transparent */
     isTransparent?: boolean;
 };
 
-export const Overlay: React.FunctionComponent<OverlayPropsType> = memo(
-    ({ children, isAbsolute, isTransparent, onClick = () => false }: OverlayPropsType) => {
+export const Overlay: FunctionComponent<OverlayPropsType> = memo(
+    ({
+        children,
+        isAbsolute = false,
+        isTransparent = false,
+        onClick = () => false,
+    }: OverlayPropsType) => {
         return (
             <div
                 className={cn(CLASS_NAME, {
