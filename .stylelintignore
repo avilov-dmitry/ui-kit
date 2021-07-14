@@ -1,0 +1,11 @@
+./idea
+
+node_modules
+
+environments
+distribution
+
+packages/backend
+
+packages/frontend/node_modules
+packages/frontend/dist

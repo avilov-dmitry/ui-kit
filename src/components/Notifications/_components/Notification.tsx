@@ -1,4 +1,4 @@
-import React, { FunctionComponent, memo, useEffect, useMemo } from 'react';
+import React, { FunctionComponent, memo, useCallback, useEffect, useMemo, useState } from 'react';
 import classnames from 'classnames/bind';
 import { CloseIcon } from '../../icons';
 import { NotificationCloseType, NotificationType } from '../_types';
@@ -24,14 +24,29 @@ export const Notification: FunctionComponent<NotificationPropsType> = memo(
         onClose,
         withClose = false,
     }) => {
-        const handleClose = () => onClose({ id });
+        const [timerId, setTimerId] = useState<null | number>(null);
+
+        const handleClose = useCallback(() => onClose({ id }), []);
+  
+        const handleMouseEnter = useCallback(() => {
+            if (timerId) {
+                clearTimeout(timerId);
+            }
+        }, [timerId]);
+
+        const handleMouseLeave = useCallback(() => {
+            setTimerId(Number(setTimeout(handleClose, delay)));
+        }, [delay]);
 
         useEffect(() => {
-            setTimeout(handleClose, delay);
+            setTimerId(Number(setTimeout(handleClose, delay)));
         }, []);
 
         return (
-            <div className={cn(CLASS_NAME, `${CLASS_NAME}--type-${type}`, className)}>
+            <div className={cn(CLASS_NAME, `${CLASS_NAME}--type-${type}`, className)}
+            onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+            >
                 <span className={cn(`${CLASS_NAME}__text`)}>{message}</span>
                 {withClose && (
                     <span className={cn(`${CLASS_NAME}__close`)} onClick={handleClose}>
