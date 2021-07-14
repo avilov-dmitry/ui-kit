@@ -1,2 +1,2 @@
-export * from './Dropdown';
+export * from './MediaPlayer';
 export * from './_types';
