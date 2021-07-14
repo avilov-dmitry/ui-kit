@@ -1,67 +1,71 @@
 $padding: 8px;
+
 @mixin buttonIcon {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  position: absolute;
+  top: 0;
 }
 
 .Button {
-    align-items: center;
-    background: #0083ff;
-    border-radius: 12px;
-    border: 2px solid #0083ff;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: flex;
-    font-weight: 600;
-    justify-content: center;
-    outline: none;
-    padding: $padding;
-    position: relative;
-    width: auto;
-    display: flex;
-    
-    &--isSecondary {
-        color: #0083ff;
-        background: transparent;
+  align-items: center;
+  background: #0083ff;
+  border: 2px solid #0083ff;
+  border-radius: 12px;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-weight: 600;
+  justify-content: center;
+  outline: none;
+  padding: $padding;
+  position: relative;
+  width: auto;
+
+  &--isSecondary {
+    background: transparent;
+    color: #0083ff;
+  }
+
+  &--isDisabled {
+    opacity: 0.7;
+  }
+
+  &__icon {
+    &--left {
+      margin-right: 8px;
     }
 
-    &--isDisabled {
-        opacity: 0.7;
+    &--right {
+      margin-left: 8px;
     }
+  }
 
-    &--isFullWidth {
-        width: 100%;
-        
-        .Button {
-            &__icon {
-                &--left {
-                    @include buttonIcon;
-                    left: $padding;
-                }
-                &--right {
-                    @include buttonIcon;
-                    right: $padding;
-                }
-            }
-        }
-    }
+  &--isFullWidth {
+    width: 100%;
 
-    &__icon {
+    .Button {
+      &__icon {
         &--left {
-            margin-right: 8px;
-        }
-        &--right {
-            margin-left: 8px;
-        }
-    }
+          @include buttonIcon;
 
-    &__text {
-        font-size: 15px;
+          left: $padding;
+        }
+
+        &--right {
+          @include buttonIcon;
+
+          right: $padding;
+        }
+      }
     }
+  }
+
+  &__text {
+    font-size: 15px;
+  }
 }

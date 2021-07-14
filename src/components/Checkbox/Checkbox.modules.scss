@@ -4,19 +4,19 @@
   }
 
   &__icon-wrapper {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    transition: background-color .3s, border .3s;
-    border: 2px solid #97A9CE;
+    border: 2px solid #97a9ce;
     border-radius: 4px;
     box-sizing: border-box;
     cursor: pointer;
-    width: 20px;
+    display: flex;
     height: 20px;
+    justify-content: center;
+    transition: background-color 0.3s, border 0.3s;
+    width: 20px;
 
     &--isChecked {
-      background-color: #5A4686;
+      background-color: #5a4686;
       border: none;
     }
   }

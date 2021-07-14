@@ -1,70 +1,75 @@
 @import "./Notifications.keyframes.scss";
 
 .Notifications {
-    $this:&;
+  $this:&;
 
-    position: fixed;
+  display: flex;
+  min-width: 420px;
+  position: fixed;
+
+  &--isVisible {
+    z-index: 1000;
+  }
+
+  &--position {
+    &-top {
+      flex-direction: column;
+      top: 12px;
+
+      #{$this}__item--enter {
+        animation: enterBottom 0.4s forwards;
+      }
+    }
+
+    &-bottom {
+      bottom: 12px;
+      flex-direction: column-reverse;
+
+      #{$this}__item--enter {
+        animation: enterTop  0.4s forwards;
+      }
+    }
+
+    &-left {
+      left: 12px;
+
+      #{$this}__item--exit {
+        animation: exitLeft 0.4s forwards;
+      }
+    }
+
+    &-center {
+      left: 50%;
+      transform: translateX(-50%);
+
+      #{$this}__item--exit {
+        animation: exitCenter 0.4s forwards;
+      }
+    }
+
+    &-right {
+      right: 12px;
+
+      #{$this}__item--exit {
+        animation: exitRight 0.4s forwards;
+      }
+    }
+  }
+
+  &__item {
+    margin: 12px 0 0 0;
     min-width: 420px;
-    display: flex;
 
-    &--isVisible {
-        z-index: 1000;
+    &--fromTop {
+      &:first-child {
+        margin: 0;
+      }
     }
 
-    &--position {
-        &-top {
-            flex-direction: column;
-            top: 12px;
-
-            #{$this}__item--enter {
-                animation: enterBottom .4s forwards;
-            }
-        }
-        &-bottom {
-            flex-direction: column-reverse;
-            bottom: 12px;
-
-            #{$this}__item--enter {
-                animation: enterTop  .4s forwards;
-            }
-        }
-        &-left {
-            left: 12px;
-
-            #{$this}__item--exit {
-                animation: exitLeft .4s forwards;
-            }
-        }
-        &-center {
-            left: 50%;
-            transform: translateX(-50%);
-
-            #{$this}__item--exit {
-                animation: exitCenter .4s forwards;
-            }
-        }
-        &-right {
-            right: 12px;
-
-            #{$this}__item--exit {
-                animation: exitRight .4s forwards;
-            }
-        }
+    &--fromBottom {
+      &:last-child {
+        margin: 0;
+      }
     }
-
-    &__item {
-        margin: 12px 0 0 0;
-        min-width: 420px;
-
-        &--fromTop {
-            &:first-child {
-                margin: 0;
-            }
-        }
-        &--fromBottom {
-            &:last-child {
-                margin: 0;
-            }
-        }
-    }
+  }
 }

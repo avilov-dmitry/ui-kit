@@ -2,38 +2,42 @@
   0% {
     transform: rotateZ(0);
   }
+
   100% {
     transform: rotateZ(360deg);
   }
 }
 
 .Preloader {
-  width: 40px;
-  height: 40px;
-
   animation: 4s linear infinite both running;
   animation-name: rotate-loader;
+  height: 40px;
+  width: 40px;
 
   &--size {
     &-xs {
-      width: 16px;
       height: 16px;
+      width: 16px;
     }
+
     &-s {
-      width: 20px;
       height: 20px;
+      width: 20px;
     }
+
     &-m {
-      width: 24px;
       height: 24px;
+      width: 24px;
     }
+
     &-l {
-      width: 32px;
       height: 32px;
+      width: 32px;
     }
+
     &-xl {
-      width: 40px;
       height: 40px;
+      width: 40px;
     }
   }
 
@@ -41,17 +45,21 @@
     &-dark {
       color: #232323;
     }
+
     &-white {
-      color: #FFFFFF;
+      color: #fff;
     }
+
     &-blue {
-      color: #0083FF;
+      color: #0083ff;
     }
+
     &-grey {
       color: #979797;
     }
+
     &-greyDark {
-      color: #4A4A4A;
+      color: #4a4a4a;
     }
   }
 }

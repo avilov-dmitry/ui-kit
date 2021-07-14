@@ -11,9 +11,10 @@ yarn-debug.log*
 yarn-error.log*
 
 # folders
-build/
-lib/
-node_modules/
+configs
+lib
+node_modules
+scripts
 
 # unknown
 .DS_Store

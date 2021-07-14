@@ -6,9 +6,9 @@ const pathToComponents = path.resolve(__dirname, '../lib', 'components'); // pat
 
 const componentFiles = glob.sync(`${pathToComponents}/**/*.js`); // get .js files in this directory
 
-componentFiles.forEach(item => {
-    fs.readFile(item, function(err, data) {
-        if(err) {
+componentFiles.forEach((item) => {
+    fs.readFile(item, function (err, data) {
+        if (err) {
             throw err;
         }
 
@@ -16,14 +16,11 @@ componentFiles.forEach(item => {
 
         data = data.replace(/.scss/, '.css');
 
-        fs.writeFile(item, data, function(err) {
-            if(err) {
-                console.error(err)
+        fs.writeFile(item, data, function (err) {
+            if (err) {
+                console.error(err);
                 // console.log('Data replaced - ', item);
             }
         });
     });
 });
-
-  
-

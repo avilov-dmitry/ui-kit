@@ -1,41 +1,45 @@
 .Notification {
-    $this:&;
-    border-radius: 16px;
-    padding: 30px;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
+  $this:&;
 
-    &--type {
-        &-error {
-            background-color: rgba(253, 212, 215, 0.8);
-            color: #F32738;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 16px;
+  display: flex;
+  padding: 30px;
 
-            #{$this}__close {
-                color: #F32738;
-            }
-        }
-        &-info {
-            background-color: #293553;
-            color: #ffffff;
+  &--type {
+    &-error {
+      background-color: rgba(253, 212, 215, 0.8);
+      color: #f32738;
 
-            #{$this}__action {
-                color: #98C4FF;
-            }
-            #{$this}__close {
-                color: #98C4FF;
-            }
-        }
-        &-warning {
-            background-color: #E89902;
-        }
-        &-success {
-            background-color: #21A038;
-        }
+      #{$this}__close {
+        color: #f32738;
+      }
     }
 
-    &__close {
-        margin-left: 20px;
-        cursor: pointer;
+    &-info {
+      background-color: #293553;
+      color: #fff;
+
+      #{$this}__action {
+        color: #98c4ff;
+      }
+      #{$this}__close {
+        color: #98c4ff;
+      }
     }
+
+    &-warning {
+      background-color: #e89902;
+    }
+
+    &-success {
+      background-color: #21a038;
+    }
+  }
+
+  &__close {
+    cursor: pointer;
+    margin-left: 20px;
+  }
 }

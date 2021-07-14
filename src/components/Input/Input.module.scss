@@ -10,13 +10,12 @@ $horizontal-padding: 12px;
 
 .Input {
   @include inputText;
-  border: none;
 
   background: transparent;
+  border: none;
   border-bottom: 1px solid #d2dee3;
   box-sizing: border-box;
   margin: 0;
-
   outline: none !important;
   padding-bottom: 8px;
   width: 100%;
@@ -36,21 +35,22 @@ $horizontal-padding: 12px;
 
   &__label {
     @include inputText;
+
     position: absolute;
     top: 26px;
-    transition: top .3s, color .3s, font-size .6s;
+    transition: top 0.3s, color 0.3s, font-size 0.6s;
 
     &--isVisibleLabel {
-      color: #77838B;
+      color: #77838b;
       font-size: 12px;
       line-height: 16px;
-      top: 0px;
+      top: 0;
     }
   }
 
   &__error {
+    color: #f32738;
     display: inline-block;
-    color: #F32738;
     font-size: 13px;
     font-weight: 400;
     line-height: 16px;

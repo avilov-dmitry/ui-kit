@@ -1,11 +1,20 @@
-./idea
+# ides
+.idea
+.vscode
 
+# envs
+.env
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# folders
+lib
+configs
 node_modules
+scripts
 
-environments
-distribution
-
-packages/backend
-
-packages/frontend/node_modules
-packages/frontend/dist
+# unknown
+.DS_Store
