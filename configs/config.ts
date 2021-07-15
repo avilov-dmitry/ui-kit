@@ -42,7 +42,7 @@ const config: webpack.Configuration = {
   },
   output: {
 		path: path.resolve(__dirname, "dist"),
-		library: "@avilov.dmitry/ui-kit",
+		library: "@avilov.dmitry/components",
 		libraryTarget: "umd",
     clean: true,
     filename: "index.js",

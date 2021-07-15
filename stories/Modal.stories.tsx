@@ -9,26 +9,28 @@ export default {
     component: Modal,
     argTypes: {
         isOpened: {
-            control: { type: 'boolean' }
+            control: { type: 'boolean' },
         },
         withCloseIcon: {
-            control: { type: 'boolean' }
+            control: { type: 'boolean' },
         },
     },
     args: {
         text: 'Modal',
+        // eslint-disable-next-line no-console
         onClose: () => console.log('Close Modal'),
     },
 } as Meta;
 
-
 export const WithChildrenTemplate: Story<ModalPropsType> = (args: ModalPropsType) => {
-    const styles = { display: 'inline-block', 'fontSize': '16px', 'lineHeight': '24px' };
+    const styles = { display: 'inline-block', fontSize: '16px', lineHeight: '24px' };
 
     return (
-        <Modal {...args} >
+        <Modal {...args}>
             <div>
-                <span style={{ ...styles, color: '#333',  textDecoration: 'line-through' }}>99 ₽</span>
+                <span style={{ ...styles, color: '#333', textDecoration: 'line-through' }}>
+                    99 ₽
+                </span>
             </div>
         </Modal>
     );

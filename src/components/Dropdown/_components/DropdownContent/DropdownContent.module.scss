@@ -1,0 +1,190 @@
+$bg-light: #fff;
+$bg-dark: #323742;
+
+.DropdownContent {
+  $this: &;
+
+  background-color: transparent;
+  display: inline-block;
+  opacity: 0;
+  position: absolute;
+  transform-origin: center center;
+  transition-property: opacity, transform;
+
+  &__element {
+    border-radius: 12px;
+    box-shadow: 0 0 24px 9px rgba(34, 60, 80, 0.22);
+    font-size: 13px;
+    line-height: 16px;
+    min-width: 70px;
+    padding: 16px;
+    position: relative;
+    text-align: center;
+
+    &::after {
+      background-color: $bg-dark;
+      border: none;
+      content: '';
+      display: none;
+      height: 12px;
+      position: absolute;
+      width: 12px;
+    }
+
+    &--theme-dark {
+      background-color: $bg-dark;
+      color: #fff;
+
+      &::after {
+        background-color: $bg-dark;
+      }
+    }
+
+    &--theme-light {
+      background-color: #fff;
+      color: #293553;
+
+      &::after {
+        background-color: $bg-light;
+      }
+    }
+
+    &--withArrow {
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  &--top {
+    padding-bottom: 20px;
+    transform: translate(-50%, -15px) scale(0);
+
+    #{$this}__element:after {
+      left: 50%;
+      top: 100%;
+      transform: translate(-50%, -50%) rotateZ(45deg);
+    }
+  }
+
+  &--bottom {
+    padding-top: 20px;
+    transform: translate(-50%, 15px) scale(0);
+
+    #{$this}__element:after {
+      bottom: 100%;
+      left: 50%;
+      transform: translate(-50%, 50%) rotateZ(45deg);
+    }
+  }
+
+  &--left {
+    padding-right: 20px;
+    transform: translate(-15px, -50%) scale(0);
+
+    #{$this}__element:after {
+      left: 100%;
+      top: 50%;
+      transform: translate(-50%, -50%) rotateZ(45deg);
+    }
+  }
+
+  &--right {
+    padding-left: 20px;
+    transform: translate(15px, -50%) scale(0);
+
+    #{$this}__element:after {
+      right: 100%;
+      top: 50%;
+      transform: translate(50%, -50%) rotateZ(45deg);
+    }
+  }
+
+  &--top-left {
+    padding-bottom: 20px;
+    transform: translate(0, -15px) scale(0);
+
+    #{$this}__element:after {
+      left: 20px;
+      top: 100%;
+      transform: translateY(-50%) rotateZ(45deg);
+    }
+  }
+
+  &--top-right {
+    padding-bottom: 20px;
+    transform: translate(-100%, -15px) scale(0);
+
+    #{$this}__element:after {
+      right: 20px;
+      top: 100%;
+      transform: translateY(-50%) rotateZ(45deg);
+    }
+  }
+
+  &--bottom-left {
+    padding-top: 20px;
+    transform: translate(0, 15px) scale(0);
+
+    #{$this}__element:after {
+      bottom: 100%;
+      left: 20px;
+      transform: translateY(50%) rotateZ(45deg);
+    }
+  }
+
+  &--bottom-right {
+    padding-top: 20px;
+    transform: translate(-100%, 15px) scale(0);
+
+    #{$this}__element:after {
+      bottom: 100%;
+      right: 20px;
+      transform: translateY(50%) rotateZ(45deg);
+    }
+  }
+
+  &--left-top {
+    padding-right: 20px;
+    transform: translate(-15px, 0) scale(0);
+
+    #{$this}__element:after {
+      left: 100%;
+      top: 12px;
+      transform: translateX(-50%) rotateZ(45deg);
+    }
+  }
+
+  &--left-bottom {
+    padding-right: 20px;
+    transform: translate(-15px, -100%) scale(0);
+
+    #{$this}__element:after {
+      bottom: 12px;
+      left: 100%;
+      transform: translateX(-50%) rotateZ(45deg);
+    }
+  }
+
+  &--right-top {
+    padding-left: 20px;
+    transform: translate(15px, 0) scale(0);
+
+    #{$this}__element:after {
+      right: 100%;
+      top: 12px;
+      transform: translateX(50%) rotateZ(45deg);
+    }
+  }
+
+  &--right-bottom {
+    padding-left: 20px;
+    transform: translate(15px, -100%) scale(0);
+
+    #{$this}__element:after {
+      bottom: 12px;
+      right: 100%;
+      transform: translateX(50%) rotateZ(45deg);
+    }
+  }
+}

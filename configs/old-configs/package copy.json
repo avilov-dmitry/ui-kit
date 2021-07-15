@@ -1,5 +1,5 @@
 {
-  "name": "@avilov.dmitry/ui-kit",
+  "name": "@avilov.dmitry/components",
   "version": "0.0.1-beta.114",
   "description": "Ui kit",
   "main": "./lib/index.js",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/avilov-dmitry/ui-kit.git"
+    "url": "git+https://github.com/avilov-dmitry/components.git"
   },
   "author": "Avilov Dmitry",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/avilov-dmitry/ui-kit/issues"
+    "url": "https://github.com/avilov-dmitry/components/issues"
   },
-  "homepage": "https://github.com/avilov-dmitry/ui-kit#readme",
+  "homepage": "https://github.com/avilov-dmitry/components#readme",
   "devDependencies": {
     "@babel/core": "7.13.10",
     "@babel/plugin-transform-runtime": "7.13.10",
