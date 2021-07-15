@@ -32,7 +32,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
 
         const handleClickControl = useCallback(() => {
             setIsOpen((isVisible) => !isVisible);
-        }, [position, dropdownRef]);
+        }, []);
 
         const handleDropdownOpen = useCallback(() => {
             const controlRect = controlRef?.current?.getBoundingClientRect();
