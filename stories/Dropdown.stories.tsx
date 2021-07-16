@@ -1,7 +1,7 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { Button, Dropdown, TooltipPropsType } from 'components';
+import { Button, Dropdown, DropdownPropsType } from 'components';
 
 export default {
     title: 'Example/Dropdown',
@@ -14,18 +14,15 @@ export default {
         theme: {
             control: { type: 'select' },
         },
-        withArrow: {
-            control: { type: 'boolean' },
-        },
     },
     args: {
         content: 'The test tooltip content',
         position: 'bottom',
-        animationDuration: 200,
+        animationDuration: 2000,
     },
 } as Meta;
 
-export const Simple: Story<TooltipPropsType> = (args) => {
+export const Simple: Story<DropdownPropsType> = (args) => {
     return (
         <div style={{ margin: 150, height: '100vh' }}>
             <Dropdown {...args}>
@@ -35,7 +32,7 @@ export const Simple: Story<TooltipPropsType> = (args) => {
     );
 };
 
-export const AutoPosition: Story<TooltipPropsType> = (args) => {
+export const AutoPosition: Story<DropdownPropsType> = (args) => {
     return (
         <div style={{ top: 0, right: 0, left: 0, height: '200vh' }}>
             <div style={{ position: 'relative', top: '200px', right: 0, left: 0, height: '900px' }}>
@@ -64,7 +61,7 @@ export const AutoPosition: Story<TooltipPropsType> = (args) => {
     );
 };
 
-export const WithCustomComponent: Story<TooltipPropsType> = (args) => {
+export const PositionAutoWithCustomContent: Story<DropdownPropsType> = (args) => {
     const content = (
         <div style={{ display: 'flex', flexDirection: 'column', width: '200px' }}>
             text
@@ -74,8 +71,23 @@ export const WithCustomComponent: Story<TooltipPropsType> = (args) => {
 
     return (
         <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
+            <div style={{ position: 'absolute', top: '10px', left: '10px' }}>
+                <Dropdown {...args} content={content} position="auto">
+                    <Button text="Нажми" />
+                </Dropdown>
+            </div>
+            <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
+                <Dropdown {...args} content={content} position="auto">
+                    <Button text="Нажми" />
+                </Dropdown>
+            </div>
+            <div style={{ position: 'absolute', bottom: '10px', left: '10px' }}>
+                <Dropdown {...args} content={content} position="auto">
+                    <Button text="Нажми" />
+                </Dropdown>
+            </div>
             <div style={{ position: 'absolute', bottom: '10px', right: '10px' }}>
-                <Dropdown {...args} content={content} withArrow>
+                <Dropdown {...args} content={content} position="auto">
                     <Button text="Нажми" />
                 </Dropdown>
             </div>
