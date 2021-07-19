@@ -36,7 +36,7 @@ export class Drop extends React.PureComponent<DropPropsType, StateType> {
             dropdownWidth: '',
             isVisible: false,
             openToLeft: false,
-            openToTop: false,,
+            openToTop: false,
         };
     }
 
@@ -56,7 +56,7 @@ export class Drop extends React.PureComponent<DropPropsType, StateType> {
                     : this.dropdownRef.current.clientHeight,
                 dropdownWidth: isSubDrop
                     ? this.dropdownRef.current.scrollWidth
-                    : this.dropdownRef.current.clientWidth,,
+                    : this.dropdownRef.current.clientWidth,
             });
         }
     }
@@ -112,11 +112,12 @@ export class Drop extends React.PureComponent<DropPropsType, StateType> {
 
         this.setState(
             ({ isVisible }) => {
+                const {height, width} = this.dropdownRef.current.getBoundingClientRect()
                 const openToTop =
-                    bottomSpace <= this.dropdownRef.current.getBoundingClientRect().height &&
+                    bottomSpace <= height &&
                     bottomSpace < topSpace;
                 const openToLeft =
-                    rightSpace <= this.dropdownRef.current.getBoundingClientRect().width &&
+                    rightSpace <= width &&
                     rightSpace < leftSpace;
 
                 return { isVisible: !isVisible, openToTop, openToLeft };
@@ -139,8 +140,8 @@ export class Drop extends React.PureComponent<DropPropsType, StateType> {
             openToLeft,
             controlHeight,
             dropdownHeight,
-            controlWidth,
-            dropdownWidth,,
+                  controlWidth,
+            dropdownWidth,
         } = this.state;
 
         const wrapperStyles: any = {

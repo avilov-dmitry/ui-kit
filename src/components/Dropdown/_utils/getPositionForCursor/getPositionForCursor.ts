@@ -2,34 +2,33 @@ import { DropdownPositionParamsType, DropdownPositionType } from 'ui-kit';
 
 type ParamsType = {
     position: DropdownPositionType;
-    controlRect: ClientRect;
+    lastCursorPosition: DropdownPositionParamsType;
     dropdownElement: HTMLElement;
 };
 
-const MARGING = 10;
+// const MARGING = 10;
 
-export const getPosition = ({
+export const getPositionForCursor = ({
     position,
-    controlRect,
+    lastCursorPosition,
     dropdownElement,
 }: ParamsType): DropdownPositionParamsType => {
-    const { top, bottom, left, right } = controlRect;
+    const { top, left } = lastCursorPosition;
     const { scrollWidth, scrollHeight } = dropdownElement;
 
-    console.log({ controlRect });
+    const bottom = document.documentElement.clientHeight - top;
+    const right = document.documentElement.clientWidth - left;
+
+    console.log({ scrollWidth, scrollHeight });
 
     switch (position) {
         case 'auto': {
-            const bottomSpace = document.documentElement.clientHeight - bottom;
-            const rightSpace = document.documentElement.clientWidth - right;
-
-            const isTop = scrollHeight >= bottomSpace;
-            const isRight = scrollWidth >= rightSpace;
+            const isTop = scrollHeight >= bottom;
+            const isRight = scrollWidth >= right;
 
             return {
-                top: window.pageYOffset + (isTop ? top - scrollHeight - MARGING : bottom + MARGING),
-                left:
-                    window.pageXOffset + (isRight ? left - scrollWidth + controlRect.width : left),
+                top: window.pageYOffset + (isTop ? top - scrollHeight : top),
+                left: window.pageXOffset + (isRight ? left - scrollWidth : left),
             };
         }
 

@@ -18,7 +18,7 @@ export default {
     args: {
         content: 'The test tooltip content',
         position: 'bottom',
-        animationDuration: 2000,
+        animationDuration: 400,
     },
 } as Meta;
 
@@ -29,6 +29,38 @@ export const Simple: Story<DropdownPropsType> = (args) => {
                 <Button text="Нажми" />
             </Dropdown>
         </div>
+    );
+};
+
+export const RightClick: Story<DropdownPropsType> = (args) => {
+    const handleButtonClick = () => console.log('left click');
+
+    return (
+        <div style={{ margin: 150, height: '100vh' }}>
+            <Dropdown {...args} isRightClick>
+                <Button text="Нажми" onClick={handleButtonClick} />
+            </Dropdown>
+        </div>
+    );
+};
+
+export const RightClickSpaceBlock: Story<DropdownPropsType> = (args) => {
+    return (
+        <Dropdown {...args} isRightClick>
+            <div
+                style={{
+                    display: 'flex',
+                    margin: 0,
+                    marginTop: 0,
+                    height: '180vh',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px dashed #000',
+                }}
+            >
+                Click on space!
+            </div>
+        </Dropdown>
     );
 };
 

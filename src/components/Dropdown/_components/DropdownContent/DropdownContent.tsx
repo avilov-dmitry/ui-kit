@@ -6,12 +6,7 @@ import React, {
     MutableRefObject,
     ReactNode,
 } from 'react';
-import {
-    DropdownPositionParamsType,
-    DropdownPositionType,
-    DropdownThemeType,
-    Portal,
-} from 'components';
+import { DropdownPositionParamsType, DropdownPositionType, DropdownThemeType } from 'ui-kit';
 import classNames from 'classnames/bind';
 import { modifyPositionElement } from './_utils';
 import styles from './DropdownContent.module.scss';
@@ -49,12 +44,6 @@ export const DropdownContent: FunctionComponent<PropsType> = memo(
             ref
         ) => {
             useEffect(() => {
-                if (isShow) {
-                    onOpen();
-                }
-            }, [isShow]);
-
-            useEffect(() => {
                 if (ref) {
                     const el: HTMLDivElement = (ref as MutableRefObject<HTMLDivElement>).current;
                     if (el && isShow) {
@@ -63,23 +52,27 @@ export const DropdownContent: FunctionComponent<PropsType> = memo(
                 }
             }, [position, coordinates, duration, isShow]);
 
+            useEffect(() => {
+                if (ref) {
+                    onOpen();
+                }
+            }, []);
+
             return (
-                <Portal isOpened={isShow}>
-                    <div className={cn(CLASS_NAME, `${CLASS_NAME}--${position}`)} ref={ref}>
-                        <div
-                            className={cn(
-                                `${CLASS_NAME}__element`,
-                                `${CLASS_NAME}__element--theme-${theme}`,
-                                {
-                                    [`${CLASS_NAME}__element--withArrow`]: withArrow,
-                                },
-                                className
-                            )}
-                        >
-                            {content}
-                        </div>
+                <div className={cn(CLASS_NAME, `${CLASS_NAME}--${position}`)} ref={ref}>
+                    <div
+                        className={cn(
+                            `${CLASS_NAME}__element`,
+                            `${CLASS_NAME}__element--theme-${theme}`,
+                            {
+                                [`${CLASS_NAME}__element--withArrow`]: withArrow,
+                            },
+                            className
+                        )}
+                    >
+                        {content}
                     </div>
-                </Portal>
+                </div>
             );
         }
     )

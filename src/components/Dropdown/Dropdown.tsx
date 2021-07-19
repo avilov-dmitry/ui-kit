@@ -7,9 +7,15 @@ import React, {
     useRef,
     useState,
 } from 'react';
+import { Portal } from 'ui-kit';
 import { DropdownContent } from './_components';
 import { DropdownPositionParamsType, DropdownPropsType } from './_types';
-import { getPosition } from './_utils';
+import { getPosition, getPositionForCursor } from './_utils';
+
+const initialPosition = {
+    top: 0,
+    left: 0,
+};
 
 export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
     ({
@@ -17,6 +23,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
         children,
         className,
         content,
+        isRightClick,
         position = 'auto',
         theme = 'light',
         withArrow = false,
@@ -25,29 +32,43 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
         const dropdownRef = useRef<HTMLDivElement>(null);
 
         const [isOpen, setIsOpen] = useState(false);
-        const [elPosition, setElPosition] = useState<DropdownPositionParamsType>({
-            top: 0,
-            left: 0,
-        });
+        const [lastCursorPosition, setLastCursorPosition] =
+            useState<DropdownPositionParamsType>(initialPosition);
+        const [elPosition, setElPosition] = useState<DropdownPositionParamsType>(initialPosition);
 
         const handleClickControl = useCallback(() => {
             setIsOpen((isVisible) => !isVisible);
         }, []);
 
+        const handleRightClickControl = useCallback((event) => {
+            event.preventDefault();
+
+            setLastCursorPosition({ left: event.x, top: event.y });
+            setIsOpen((isVisible) => !isVisible);
+        }, []);
+
         const handleDropdownOpen = useCallback(() => {
             const controlRect = controlRef?.current?.getBoundingClientRect();
-            const dropdownRect = dropdownRef?.current?.getBoundingClientRect();
+            const dropdownElement = dropdownRef?.current;
 
-            if (controlRect && dropdownRect) {
-                const newPosition = getPosition({
-                    position,
-                    controlRect,
-                    dropdownRect,
-                });
+            if (controlRect && dropdownElement) {
+                console.log('handleDropdownOpen');
+
+                const newPosition = isRightClick
+                    ? getPositionForCursor({
+                          position,
+                          lastCursorPosition,
+                          dropdownElement,
+                      })
+                    : getPosition({
+                          position,
+                          controlRect,
+                          dropdownElement,
+                      });
 
                 setElPosition(newPosition);
             }
-        }, [controlRef, dropdownRef]);
+        }, [controlRef, dropdownRef, lastCursorPosition]);
 
         const handleOutsideControl = useCallback(
             (event: any) => {
@@ -68,24 +89,28 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
         }, [isOpen]);
 
         useEffect(() => {
-            controlRef.current?.addEventListener('click', handleClickControl);
+            isRightClick
+                ? controlRef.current?.addEventListener('contextmenu', handleRightClickControl)
+                : controlRef.current?.addEventListener('click', handleClickControl);
         }, [controlRef]);
 
         return (
             <>
                 {cloneElement(children, { ...children.props, ref: controlRef })}
-                <DropdownContent
-                    className={className}
-                    content={content}
-                    duration={animationDuration}
-                    isShow={isOpen}
-                    coordinates={elPosition}
-                    ref={dropdownRef}
-                    theme={theme}
-                    position={position}
-                    withArrow={withArrow}
-                    onOpen={handleDropdownOpen}
-                />
+                <Portal isOpened={isOpen}>
+                    <DropdownContent
+                        className={className}
+                        content={content}
+                        duration={animationDuration}
+                        isShow={isOpen}
+                        coordinates={elPosition}
+                        ref={dropdownRef}
+                        theme={theme}
+                        position={position}
+                        withArrow={withArrow}
+                        onOpen={handleDropdownOpen}
+                    />
+                </Portal>
             </>
         );
     }
