@@ -16,8 +16,6 @@ export const getPosition = ({
     const { top, bottom, left, right } = controlRect;
     const { scrollWidth, scrollHeight } = dropdownElement;
 
-    console.log({ controlRect });
-
     switch (position) {
         case 'auto': {
             const bottomSpace = document.documentElement.clientHeight - bottom;
@@ -54,7 +52,7 @@ export const getPosition = ({
         case 'right':
             return {
                 top: top + scrollHeight / 2 + window.pageYOffset,
-                left: left + scrollWidth + window.pageXOffset,
+                left: right + window.pageXOffset,
             };
 
         case 'top-left':

@@ -19,8 +19,6 @@ export const getPositionForCursor = ({
     const bottom = document.documentElement.clientHeight - top;
     const right = document.documentElement.clientWidth - left;
 
-    console.log({ scrollWidth, scrollHeight });
-
     switch (position) {
         case 'auto': {
             const isTop = scrollHeight >= bottom;
@@ -53,7 +51,7 @@ export const getPositionForCursor = ({
         case 'right':
             return {
                 top: top + scrollHeight / 2 + window.pageYOffset,
-                left: left + scrollWidth + window.pageXOffset,
+                left: right + window.pageXOffset,
             };
 
         case 'top-left':

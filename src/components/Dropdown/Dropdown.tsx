@@ -40,20 +40,11 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
             setIsOpen((isVisible) => !isVisible);
         }, []);
 
-        const handleRightClickControl = useCallback((event) => {
-            event.preventDefault();
-
-            setLastCursorPosition({ left: event.x, top: event.y });
-            setIsOpen((isVisible) => !isVisible);
-        }, []);
-
         const handleDropdownOpen = useCallback(() => {
             const controlRect = controlRef?.current?.getBoundingClientRect();
             const dropdownElement = dropdownRef?.current;
 
             if (controlRect && dropdownElement) {
-                console.log('handleDropdownOpen');
-
                 const newPosition = isRightClick
                     ? getPositionForCursor({
                           position,
@@ -72,12 +63,29 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
 
         const handleOutsideControl = useCallback(
             (event: any) => {
-                if (
+                const isClickedOutside =
                     isOpen &&
                     !dropdownRef?.current?.contains(event.target) &&
-                    !controlRef?.current?.contains(event.target)
-                ) {
+                    !controlRef?.current?.contains(event.target);
+
+                if (isClickedOutside) {
                     setIsOpen(false);
+                }
+            },
+            [isRightClick, isOpen]
+        );
+
+        const handlelRightClick = useCallback(
+            (event: any) => {
+                event.preventDefault();
+
+                setLastCursorPosition({ left: event.x, top: event.y });
+
+                if (!dropdownRef?.current?.contains(event.target)) {
+                    setIsOpen(false);
+                }
+                if (controlRef?.current?.contains(event.target)) {
+                    setIsOpen(true);
                 }
             },
             [isOpen]
@@ -85,13 +93,24 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
 
         useEffect(() => {
             document.addEventListener('click', handleOutsideControl);
-            return () => document.removeEventListener('click', handleOutsideControl);
+
+            return () => {
+                document.removeEventListener('click', handleOutsideControl);
+            };
         }, [isOpen]);
 
         useEffect(() => {
-            isRightClick
-                ? controlRef.current?.addEventListener('contextmenu', handleRightClickControl)
-                : controlRef.current?.addEventListener('click', handleClickControl);
+            isRightClick && document.addEventListener('contextmenu', handlelRightClick);
+
+            return () => {
+                isRightClick && document.removeEventListener('contextmenu', handlelRightClick);
+            };
+        }, []);
+
+        useEffect(() => {
+            if (!isRightClick) {
+                controlRef.current?.addEventListener('click', handleClickControl);
+            }
         }, [controlRef]);
 
         return (
