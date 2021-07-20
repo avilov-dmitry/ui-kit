@@ -26,13 +26,14 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
         isRightClick,
         position = 'auto',
         theme = 'light',
+        isWrapper,
         withArrow = false,
     }) => {
         const controlRef = useRef<HTMLElement>(null);
         const dropdownRef = useRef<HTMLDivElement>(null);
 
         const [isOpen, setIsOpen] = useState(false);
-        const [lastCursorPosition, setLastCursorPosition] =
+        const [cursorPosition, setCursorPosition] =
             useState<DropdownPositionParamsType>(initialPosition);
         const [elPosition, setElPosition] = useState<DropdownPositionParamsType>(initialPosition);
 
@@ -48,7 +49,7 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
                 const newPosition = isRightClick
                     ? getPositionForCursor({
                           position,
-                          lastCursorPosition,
+                          cursorPosition,
                           dropdownElement,
                       })
                     : getPosition({
@@ -59,14 +60,15 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
 
                 setElPosition(newPosition);
             }
-        }, [controlRef, dropdownRef, lastCursorPosition]);
+        }, [controlRef, dropdownRef, cursorPosition]);
 
         const handleOutsideControl = useCallback(
             (event: any) => {
                 const isClickedOutside =
-                    isOpen &&
-                    !dropdownRef?.current?.contains(event.target) &&
-                    !controlRef?.current?.contains(event.target);
+                    (isOpen &&
+                        !dropdownRef?.current?.contains(event.target) &&
+                        !controlRef?.current?.contains(event.target)) ||
+                    (!dropdownRef?.current?.contains(event.target) && isRightClick);
 
                 if (isClickedOutside) {
                     setIsOpen(false);
@@ -78,14 +80,17 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
         const handlelRightClick = useCallback(
             (event: any) => {
                 event.preventDefault();
+                event.stopPropagation();
 
-                setLastCursorPosition({ left: event.x, top: event.y });
+                setCursorPosition({ left: event.x, top: event.y });
 
                 if (!dropdownRef?.current?.contains(event.target)) {
                     setIsOpen(false);
                 }
-                if (controlRef?.current?.contains(event.target)) {
-                    setIsOpen(true);
+                if (isWrapper) {
+                    setIsOpen(Boolean(controlRef?.current === event.target));
+                } else {
+                    setIsOpen(Boolean(controlRef?.current?.contains(event.target)));
                 }
             },
             [isOpen]

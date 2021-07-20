@@ -1,7 +1,7 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from '@storybook/react/types-6-0';
-import { Button, Dropdown, DropdownPropsType } from 'components';
+import { Button, Dropdown, DropdownPropsType } from '../source/ui-kit';
 
 export default {
     title: 'Example/Dropdown',
@@ -17,7 +17,7 @@ export default {
     },
     args: {
         content: 'The test tooltip content',
-        position: 'bottom',
+        position: 'auto',
         animationDuration: 400,
     },
 } as Meta;
@@ -46,19 +46,30 @@ export const RightClick: Story<DropdownPropsType> = (args) => {
 
 export const RightClickSpaceBlock: Story<DropdownPropsType> = (args) => {
     return (
-        <Dropdown {...args} isRightClick>
+        <Dropdown {...args} content="Это контент враппера" isRightClick isWrapper>
             <div
                 style={{
                     display: 'flex',
                     margin: 0,
+                    flexDirection: 'column',
                     marginTop: 0,
-                    height: '180vh',
+                    height: '130vh',
                     alignItems: 'center',
                     justifyContent: 'center',
                     border: '1px dashed #000',
                 }}
             >
-                Click on space!
+                <div style={{ marginBottom: '50px' }}>
+                    <Dropdown
+                        {...args}
+                        position="auto"
+                        isRightClick
+                        content="Это контент кнопки !!!!"
+                    >
+                        <Button text="Нажми и проверь, что сработал только мой обработчик!" />
+                    </Dropdown>
+                </div>
+                Right click on space!
             </div>
         </Dropdown>
     );

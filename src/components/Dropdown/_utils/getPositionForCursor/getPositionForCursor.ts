@@ -2,7 +2,7 @@ import { DropdownPositionParamsType, DropdownPositionType } from 'ui-kit';
 
 type ParamsType = {
     position: DropdownPositionType;
-    lastCursorPosition: DropdownPositionParamsType;
+    cursorPosition: DropdownPositionParamsType;
     dropdownElement: HTMLElement;
 };
 
@@ -10,10 +10,10 @@ type ParamsType = {
 
 export const getPositionForCursor = ({
     position,
-    lastCursorPosition,
+    cursorPosition,
     dropdownElement,
 }: ParamsType): DropdownPositionParamsType => {
-    const { top, left } = lastCursorPosition;
+    const { top, left } = cursorPosition;
     const { scrollWidth, scrollHeight } = dropdownElement;
 
     const bottom = document.documentElement.clientHeight - top;

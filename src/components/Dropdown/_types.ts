@@ -11,6 +11,7 @@ export type DropdownPropsType = {
     content: ReactNode;
     /** Флаг который включает правый клик */
     isRightClick: boolean;
+    isWrapper: boolean;
     /** Положение всплывающего блока относительно оборачиваемого элемента */
     position: DropdownPositionType;
     /** Цветовая тема всплывающего блока */
