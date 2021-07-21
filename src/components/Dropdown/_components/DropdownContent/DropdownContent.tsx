@@ -6,7 +6,7 @@ import React, {
     MutableRefObject,
     ReactNode,
 } from 'react';
-import { DropdownPositionParamsType, DropdownPositionType, DropdownThemeType } from 'ui-kit';
+import { DropdownPositionParamsType, DropdownPositionType, DropdownThemeType } from 'components';
 import classNames from 'classnames/bind';
 import { modifyPositionElement } from './_utils';
 import styles from './DropdownContent.module.scss';

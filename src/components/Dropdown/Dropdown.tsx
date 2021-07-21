@@ -7,7 +7,7 @@ import React, {
     useRef,
     useState,
 } from 'react';
-import { Portal } from 'ui-kit';
+import { Portal } from 'components';
 import { DropdownContent } from './_components';
 import { DropdownPositionParamsType, DropdownPropsType } from './_types';
 import { getPosition, getPositionForCursor } from './_utils';
@@ -23,18 +23,20 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
         children,
         className,
         content,
-        isRightClick,
+        isRightClick = false,
         position = 'auto',
         theme = 'light',
-        isWrapper,
+        isWrapper = false,
         withArrow = false,
+        isCloseOnDropdown = false,
     }) => {
         const controlRef = useRef<HTMLElement>(null);
         const dropdownRef = useRef<HTMLDivElement>(null);
 
         const [isOpen, setIsOpen] = useState(false);
-        const [cursorPosition, setCursorPosition] =
-            useState<DropdownPositionParamsType>(initialPosition);
+        const [cursorPosition, setCursorPosition] = useState<DropdownPositionParamsType>(
+            initialPosition
+        );
         const [elPosition, setElPosition] = useState<DropdownPositionParamsType>(initialPosition);
 
         const handleClickControl = useCallback(() => {
@@ -64,13 +66,16 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
 
         const handleOutsideControl = useCallback(
             (event: any) => {
+                const isClickedonDropdown =
+                    isCloseOnDropdown && dropdownRef?.current?.contains(event.target);
+
                 const isClickedOutside =
                     (isOpen &&
                         !dropdownRef?.current?.contains(event.target) &&
                         !controlRef?.current?.contains(event.target)) ||
                     (!dropdownRef?.current?.contains(event.target) && isRightClick);
 
-                if (isClickedOutside) {
+                if (isClickedOutside || isClickedonDropdown) {
                     setIsOpen(false);
                 }
             },
@@ -87,8 +92,25 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
                 if (!dropdownRef?.current?.contains(event.target)) {
                     setIsOpen(false);
                 }
+
+                let wasClickedChild = false;
+
                 if (isWrapper) {
-                    setIsOpen(Boolean(controlRef?.current === event.target));
+                    const childs = controlRef.current?.querySelectorAll(
+                        '[data-dropdown-iswrapper=false]'
+                    );
+
+                    if (childs && childs.length) {
+                        childs.forEach((child) => {
+                            if (!wasClickedChild) {
+                                wasClickedChild = child.contains(event.target);
+                            }
+                        });
+                    }
+                }
+
+                if (wasClickedChild) {
+                    setIsOpen(false);
                 } else {
                     setIsOpen(Boolean(controlRef?.current?.contains(event.target)));
                 }
@@ -105,10 +127,10 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
         }, [isOpen]);
 
         useEffect(() => {
-            isRightClick && document.addEventListener('contextmenu', handlelRightClick);
+            isRightClick && document?.addEventListener('contextmenu', handlelRightClick);
 
             return () => {
-                isRightClick && document.removeEventListener('contextmenu', handlelRightClick);
+                isRightClick && document?.removeEventListener('contextmenu', handlelRightClick);
             };
         }, []);
 
@@ -120,7 +142,10 @@ export const Dropdown: FunctionComponent<DropdownPropsType> = memo(
 
         return (
             <>
-                {cloneElement(children, { ...children.props, ref: controlRef })}
+                <div data-dropdown-iswrapper={isWrapper}>
+                    {cloneElement(children, { ...children.props, ref: controlRef })}
+                </div>
+
                 <Portal isOpened={isOpen}>
                     <DropdownContent
                         className={className}

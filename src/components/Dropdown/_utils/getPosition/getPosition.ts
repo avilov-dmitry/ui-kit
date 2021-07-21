@@ -1,4 +1,4 @@
-import { DropdownPositionParamsType, DropdownPositionType } from 'ui-kit';
+import { DropdownPositionParamsType, DropdownPositionType } from 'components';
 
 type ParamsType = {
     position: DropdownPositionType;
