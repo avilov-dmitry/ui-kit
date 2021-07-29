@@ -9,8 +9,7 @@ export default {
     component: Notification,
     args: {
         message: 'Default',
-        onClose: ({ id }: any) =>
-            console.warn('Close Notification id - ', id),
+        onClose: ({ id }: any) => console.warn('Close Notification id - ', id),
     },
 } as Meta;
 
