@@ -5,5 +5,6 @@ export * from './Notifications';
 export * from './Overlay';
 export * from './Portal';
 export * from './Preloader';
+export * from './ResizeElement';
 export * from './ThumbSlider';
 export * from './Toggle';
