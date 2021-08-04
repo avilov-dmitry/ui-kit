@@ -1,6 +1,7 @@
 import React, { FunctionComponent, memo } from 'react';
 import classnames from 'classnames/bind';
 import { CSSTransition } from 'react-transition-group';
+import { IconButton } from 'ui-kit';
 import styles from './MediaPlayerHeader.module.scss';
 
 const cn = classnames.bind(styles);
@@ -26,7 +27,10 @@ export const MediaPlayerHeader: FunctionComponent<PropsType> = memo(
                 }}
             >
                 <div className={cn(CLASS_NAME)}>
-                    <button onClick={onClose}>Close</button>
+                    <div className={cn(`${CLASS_NAME}__left`)}>
+                        <IconButton color="white" name="close-outlined" onClick={onClose} />
+                    </div>
+                    <div className={cn(`${CLASS_NAME}__right`)}></div>
                 </div>
             </CSSTransition>
         );

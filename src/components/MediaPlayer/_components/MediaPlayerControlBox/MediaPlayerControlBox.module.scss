@@ -1,0 +1,45 @@
+@import "styles/main.scss";
+
+.MediaPlayerControlBox {
+  background: transparent;
+  border: 3px solid #323742;
+  border-radius: 16px;
+  box-sizing: border-box;
+  padding: 44px 24px 28px;
+  width: 372px;
+
+  &__slider {
+    margin-bottom: 36px;
+  }
+
+  &__timers {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__controls {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__rewind {
+    font-size: 24px;
+
+    @include clickableIconStyles();
+  }
+
+  &__play {
+    font-size: 64px;
+    margin: 0 32px;
+
+    @include clickableIconStyles();
+  }
+
+  &__fast-forward {
+    font-size: 24px;
+
+    @include clickableIconStyles();
+  }
+}
