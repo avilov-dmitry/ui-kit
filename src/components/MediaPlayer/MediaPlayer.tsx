@@ -1,6 +1,6 @@
 import React, { FunctionComponent, memo, useCallback, useMemo, useRef, useState } from 'react';
 import classnames from 'classnames/bind';
-import { Overlay, Portal } from 'ui-kit';
+import { Overlay, Portal } from 'components';
 import { MediaPlayerPropsType } from './_types';
 import styles from './MediaPlayer.module.scss';
 import {

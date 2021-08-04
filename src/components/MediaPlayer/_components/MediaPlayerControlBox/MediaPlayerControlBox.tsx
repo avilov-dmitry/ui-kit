@@ -1,6 +1,6 @@
 import React, { FunctionComponent, memo } from 'react';
 import classnames from 'classnames/bind';
-import { IconButton, ThumbSlider, ThumbSliderChangeType } from 'ui-kit';
+import { IconButton, ThumbSlider, ThumbSliderChangeType } from 'components';
 import styles from './MediaPlayerControlBox.module.scss';
 
 const cn = classnames.bind(styles);

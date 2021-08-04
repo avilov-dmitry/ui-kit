@@ -1,5 +1,5 @@
 import React, { forwardRef, FunctionComponent, memo, Ref, SyntheticEvent } from 'react';
-import { MediaPlayerFileType } from 'ui-kit';
+import { MediaPlayerFileType } from 'components';
 import classnames from 'classnames/bind';
 import styles from './MediaPlayerVideo.module.scss';
 

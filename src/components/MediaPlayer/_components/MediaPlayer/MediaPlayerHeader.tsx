@@ -1,7 +1,7 @@
 import React, { FunctionComponent, memo } from 'react';
 import classnames from 'classnames/bind';
 import { CSSTransition } from 'react-transition-group';
-import { IconButton } from 'ui-kit';
+import { IconButton } from 'components';
 import styles from './MediaPlayerHeader.module.scss';
 
 const cn = classnames.bind(styles);
