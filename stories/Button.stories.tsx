@@ -32,7 +32,7 @@ const WithChildrenTemplate: Story<ButtonPropsType> = (args) => {
         <Button {...args} >
             <div>
                 <span style={{ ...styles, color: '#333', textDecoration: 'line-through' }}>99 ₽</span>
-                <span style={{ ...styles, color: args.variant === 'primary' ? '#fff' : '#0083FF', paddingLeft: '20px' }}>79 ₽ / мес</span>
+                <span style={{ ...styles, color: args.variant === 'primary' ? '#fff' : '#023564', paddingLeft: '20px' }}>79 ₽ / мес</span>
             </div>
         </Button>
     );
