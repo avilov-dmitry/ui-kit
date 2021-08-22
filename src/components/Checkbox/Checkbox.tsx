@@ -1,19 +1,32 @@
 import React, { useRef } from 'react';
 import classnames from 'classnames/bind';
-import styles from './Checkbox.module.scss';
+import { Icon } from 'components';
+import styles from './Checkbox.modules.scss';
 
 const cn = classnames.bind(styles);
 const CLASS_NAME = 'Checkbox';
 
-type PropsType = {
+export type CheckboxPropsType = {
+    id: string;
+    label?: string;
     name?: string;
     value?: boolean;
+    isLeftLabel?: boolean;
+    isSquare?: boolean;
     isDisabled?: boolean;
     onClick?: (params: { value: boolean }) => void;
 };
 
-export const Checkbox: React.FC<PropsType> = ({ name, value, isDisabled = false, onClick }) => {
-    const id = useRef<string>();
+export const Checkbox: React.FC<CheckboxPropsType> = ({
+    id,
+    label,
+    name,
+    value,
+    isLeftLabel = false,
+    isSquare = false,
+    isDisabled = false,
+    onClick,
+}) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
     const handleChange = (event: any) => {
@@ -24,15 +37,16 @@ export const Checkbox: React.FC<PropsType> = ({ name, value, isDisabled = false,
 
     const handleClick = () => {
         const input = inputRef.current;
+
         if (input && !input.disabled) {
             input.click();
         }
     };
 
     return (
-        <div className={cn(CLASS_NAME, { isChecked: value })}>
+        <div className={cn(CLASS_NAME, { [`${CLASS_NAME}--isLeftLabel`]: isLeftLabel })}>
             <input
-                id={id.current}
+                id={id}
                 ref={inputRef}
                 name={name}
                 type="checkbox"
@@ -44,11 +58,23 @@ export const Checkbox: React.FC<PropsType> = ({ name, value, isDisabled = false,
             <div
                 className={cn(`${CLASS_NAME}__icon-wrapper`, {
                     [`${CLASS_NAME}__icon-wrapper--isChecked`]: value,
+                    [`${CLASS_NAME}__icon-wrapper--isDisabled`]: isDisabled,
+                    [`${CLASS_NAME}__icon-wrapper--isSquare`]: isSquare,
                 })}
                 onClick={handleClick}
             >
-                {/* {value && <Icon icon="check" className={cn(`${CLASS_NAME}__icon`)} />} */}
+                {value && <Icon name="ok-outlined" className={cn(`${CLASS_NAME}__icon`)} />}
             </div>
+            {label && (
+                <label
+                    htmlFor={id}
+                    className={cn(`${CLASS_NAME}__label`, {
+                        [`${CLASS_NAME}__label--isLeftLabel`]: isLeftLabel,
+                    })}
+                >
+                    {label}
+                </label>
+            )}
         </div>
     );
 };

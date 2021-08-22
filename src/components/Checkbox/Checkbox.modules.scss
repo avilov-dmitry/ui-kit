@@ -1,27 +1,53 @@
 .Checkbox {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+
+  &--isLeftLabel {
+    flex-direction: row-reverse;
+  }
+
   &__input {
     display: none;
   }
 
   &__icon-wrapper {
     align-items: center;
-    border: 2px solid #97a9ce;
-    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #ecf2f5;
+    border-radius: 50%;
     box-sizing: border-box;
     cursor: pointer;
     display: flex;
-    height: 20px;
+    height: 26px;
     justify-content: center;
-    transition: background-color 0.3s, border 0.3s;
-    width: 20px;
+    transition: background-color 0.3s, border 0.3s, opacity 0.3s;
+    width: 26px;
+
+    &--isDisabled {
+      opacity: 0.9;
+    }
+
+    &--isSquare {
+      border-radius: 4px;
+    }
 
     &--isChecked {
-      background-color: #5a4686;
+      background-color: #0083ff;
       border: none;
     }
   }
 
   &__icon {
     color: #fff;
+  }
+
+  &__label {
+    cursor: pointer;
+    padding: 0 0 0 20px;
+
+    &--isLeftLabel {
+      padding: 0 20px 0 0;
+    }
   }
 }

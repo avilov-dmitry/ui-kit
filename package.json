@@ -6,14 +6,15 @@
   "typings": "./lib/index.d.ts",
   "scripts": {
     "build": "webpack",
-    "prepublish": "npm run lib:clean && webpack",
     "lib:clean": "rimraf lib",
     "lint:fix": "yarn eslint --fix .",
     "lint": "yarn eslint .",
+    "postinstall": "husky install",
+    "prepublish": "npm run lib:clean && webpack",
+    "storybook": "start-storybook -p 6006",
     "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix --cache",
     "stylelint": "stylelint '**/*{.css,.scss}'",
-    "storybook": "start-storybook -p 6006",
-    "postinstall": "husky install"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
