@@ -1,17 +1,23 @@
-node_modules
-build
-
-# ides
-.idea
+# IDEs
+idea/
+.idea/
 .vscode
 
-# envs
-.env
+# Folders
+node_modules/
+build/
+dist/
+coverage/
 
-# logs
+# Logs
+*.log
+*.tsbuildinfo
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# unknown
+# Enviroments
+.env
+
+# Unknown
 .DS_Store
