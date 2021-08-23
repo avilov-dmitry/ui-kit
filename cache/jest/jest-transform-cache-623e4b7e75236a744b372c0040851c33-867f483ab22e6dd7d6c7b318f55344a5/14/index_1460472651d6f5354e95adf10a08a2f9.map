@@ -1,0 +1,1 @@
+{"file":"/Users/dmitry.avilov/a/my/ui-kit/src/components/Overlay/index.ts","mappings":";;;;;;;;;;;;AAAA,4CAA0B","names":[],"sources":["/Users/dmitry.avilov/a/my/ui-kit/src/components/Overlay/index.ts"],"sourcesContent":["export * from './Overlay';\n"],"version":3}

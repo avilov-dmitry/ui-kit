@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames/bind';
-import { Checkbox, CheckboxClickParamsType } from 'ui-kit';
+import { Checkbox, CheckboxClickParamsType } from 'components';
 import styles from './CheckboxList.modules.scss';
 
 const cn = classnames.bind(styles);

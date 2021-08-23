@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import classnames from 'classnames/bind';
-import { Icon } from 'ui-kit';
+import { Icon } from 'components';
 import styles from './Checkbox.modules.scss';
 
 const cn = classnames.bind(styles);
@@ -62,7 +62,7 @@ export const Checkbox: React.FC<CheckboxPropsType> = ({
                 onClick={handleChange}
                 disabled={isDisabled}
             />
-            <div
+            <button
                 className={cn(`${CLASS_NAME}__icon-wrapper`, {
                     [`${CLASS_NAME}__icon-wrapper--isChecked`]: value,
                     [`${CLASS_NAME}__icon-wrapper--isDisabled`]: isDisabled,
@@ -71,7 +71,7 @@ export const Checkbox: React.FC<CheckboxPropsType> = ({
                 onClick={handleClick}
             >
                 {value && <Icon name="ok-outlined" className={cn(`${CLASS_NAME}__icon`)} />}
-            </div>
+            </button>
             {label && (
                 <label
                     htmlFor={id}

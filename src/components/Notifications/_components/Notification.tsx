@@ -1,6 +1,6 @@
-import React, { FunctionComponent, memo, useCallback, useEffect, useMemo, useState } from 'react';
+import React, { FunctionComponent, memo, useCallback, useEffect, useState } from 'react';
 import classnames from 'classnames/bind';
-import { CloseIcon } from '../../icons';
+import { Icon } from 'components';
 import { NotificationCloseType, NotificationType } from '../_types';
 import styles from './Notification.module.scss';
 
@@ -15,19 +15,11 @@ export type NotificationPropsType = NotificationType & {
 };
 
 export const Notification: FunctionComponent<NotificationPropsType> = memo(
-    ({
-        id,
-        message,
-        type = 'info',
-        className,
-        delay = 3000,
-        onClose,
-        withClose = false,
-    }) => {
+    ({ id, message, type = 'info', className, delay = 3000, onClose, withClose = false }) => {
         const [timerId, setTimerId] = useState<null | number>(null);
 
         const handleClose = useCallback(() => onClose({ id }), []);
-  
+
         const handleMouseEnter = useCallback(() => {
             if (timerId) {
                 clearTimeout(timerId);
@@ -43,14 +35,15 @@ export const Notification: FunctionComponent<NotificationPropsType> = memo(
         }, []);
 
         return (
-            <div className={cn(CLASS_NAME, `${CLASS_NAME}--type-${type}`, className)}
-            onMouseEnter={handleMouseEnter}
+            <div
+                className={cn(CLASS_NAME, `${CLASS_NAME}--type-${type}`, className)}
+                onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
                 <span className={cn(`${CLASS_NAME}__text`)}>{message}</span>
                 {withClose && (
                     <span className={cn(`${CLASS_NAME}__close`)} onClick={handleClose}>
-                        <CloseIcon className={cn(`${CLASS_NAME}__icon`)} />
+                        <Icon className={cn(`${CLASS_NAME}__icon`)} />
                     </span>
                 )}
             </div>

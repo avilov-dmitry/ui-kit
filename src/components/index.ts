@@ -1,7 +1,8 @@
 export * from './Button';
 export * from './Checkbox';
 export * from './CheckboxList';
-export * from './MediaPlayer';
+export * from './Icon';
+// export * from './MediaPlayer';
 export * from './Modal';
 export * from './Notifications';
 export * from './Overlay';

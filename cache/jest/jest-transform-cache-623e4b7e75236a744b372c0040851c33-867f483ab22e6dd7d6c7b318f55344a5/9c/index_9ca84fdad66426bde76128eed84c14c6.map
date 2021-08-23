@@ -1,0 +1,1 @@
+{"file":"/Users/dmitry.avilov/a/my/ui-kit/src/components/ThumbSlider/index.ts","mappings":";;;;;;;;;;;;AAAA,gDAA8B","names":[],"sources":["/Users/dmitry.avilov/a/my/ui-kit/src/components/ThumbSlider/index.ts"],"sourcesContent":["export * from './ThumbSlider';\n"],"version":3}

@@ -1,0 +1,42 @@
+b92baf8b37c4dafb7dceb60e5e13fb29
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Overlay = void 0;
+var react_1 = __importStar(require("react"));
+var bind_1 = __importDefault(require("classnames/bind"));
+var Overlay_module_scss_1 = __importDefault(require("./Overlay.module.scss"));
+var cn = bind_1.default.bind(Overlay_module_scss_1.default);
+var CLASS_NAME = 'Overlay';
+exports.Overlay = react_1.memo(function (_a) {
+    var _b;
+    var children = _a.children, _c = _a.isAbsolute, isAbsolute = _c === void 0 ? false : _c, _d = _a.isTransparent, isTransparent = _d === void 0 ? false : _d, _e = _a.onClick, onClick = _e === void 0 ? function () { return false; } : _e, _f = _a.withOpacity, withOpacity = _f === void 0 ? true : _f;
+    return (react_1.default.createElement("div", { className: cn(CLASS_NAME, (_b = {},
+            _b[CLASS_NAME + "--isAbsolute"] = isAbsolute,
+            _b[CLASS_NAME + "--isTransparent"] = isTransparent,
+            _b[CLASS_NAME + "--withOpacity"] = withOpacity,
+            _b)), onClick: onClick, role: "presentation" }, children));
+});
+exports.Overlay.displayName = 'Overlay';
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiL1VzZXJzL2RtaXRyeS5hdmlsb3YvYS9teS91aS1raXQvc3JjL2NvbXBvbmVudHMvT3ZlcmxheS9PdmVybGF5LnRzeCIsIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUEsNkNBQWtGO0FBQ2xGLHlEQUF5QztBQUN6Qyw4RUFBMkM7QUFFM0MsSUFBTSxFQUFFLEdBQUcsY0FBVSxDQUFDLElBQUksQ0FBQyw2QkFBTSxDQUFDLENBQUM7QUFDbkMsSUFBTSxVQUFVLEdBQUcsU0FBUyxDQUFDO0FBZWhCLFFBQUEsT0FBTyxHQUF3QyxZQUFJLENBQzVELFVBQUMsRUFNa0I7O1FBTGYsUUFBUSxjQUFBLEVBQ1Isa0JBQWtCLEVBQWxCLFVBQVUsbUJBQUcsS0FBSyxLQUFBLEVBQ2xCLHFCQUFxQixFQUFyQixhQUFhLG1CQUFHLEtBQUssS0FBQSxFQUNyQixlQUFxQixFQUFyQixPQUFPLG1CQUFHLGNBQU0sT0FBQSxLQUFLLEVBQUwsQ0FBSyxLQUFBLEVBQ3JCLG1CQUFrQixFQUFsQixXQUFXLG1CQUFHLElBQUksS0FBQTtJQUVsQixPQUFPLENBQ0gsdUNBQ0ksU0FBUyxFQUFFLEVBQUUsQ0FBQyxVQUFVO1lBQ3BCLEdBQUksVUFBVSxpQkFBYyxJQUFHLFVBQVU7WUFDekMsR0FBSSxVQUFVLG9CQUFpQixJQUFHLGFBQWE7WUFDL0MsR0FBSSxVQUFVLGtCQUFlLElBQUcsV0FBVztnQkFDN0MsRUFDRixPQUFPLEVBQUUsT0FBTyxFQUNoQixJQUFJLEVBQUMsY0FBYyxJQUVsQixRQUFRLENBQ1AsQ0FDVCxDQUFDO0FBQ04sQ0FBQyxDQUNKLENBQUM7QUFFRixlQUFPLENBQUMsV0FBVyxHQUFHLFNBQVMsQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyIvVXNlcnMvZG1pdHJ5LmF2aWxvdi9hL215L3VpLWtpdC9zcmMvY29tcG9uZW50cy9PdmVybGF5L092ZXJsYXkudHN4Il0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBSZWFjdCwgeyBGdW5jdGlvbkNvbXBvbmVudCwgbWVtbywgU3ludGhldGljRXZlbnQsIFJlYWN0Tm9kZSB9IGZyb20gJ3JlYWN0JztcbmltcG9ydCBjbGFzc25hbWVzIGZyb20gJ2NsYXNzbmFtZXMvYmluZCc7XG5pbXBvcnQgc3R5bGVzIGZyb20gJy4vT3ZlcmxheS5tb2R1bGUuc2Nzcyc7XG5cbmNvbnN0IGNuID0gY2xhc3NuYW1lcy5iaW5kKHN0eWxlcyk7XG5jb25zdCBDTEFTU19OQU1FID0gJ092ZXJsYXknO1xuXG5leHBvcnQgdHlwZSBPdmVybGF5UHJvcHNUeXBlID0ge1xuICAgIC8qKiDRhNC70LDQsyDQvNC10L3Rj9GO0YnQuNC5INGB0LLQvtC50YHRgtCy0L4gcG9zaXRpb24g0YEgZml4ZWQg0L3QsCBhYnNvbHV0ZSAqL1xuICAgIGlzQWJzb2x1dGU/OiBib29sZWFuO1xuICAgIC8qKiDRgdC+0LTQtdGA0LbQuNC80L7QtSDQutC+0LzQv9C+0L3QtdC90YLQsCAqL1xuICAgIGNoaWxkcmVuOiBSZWFjdE5vZGU7XG4gICAgLyoqINC60L7Qu9C70LHQtdC6INC60LvQuNC60LAg0L/QviDQvtCy0LXRgNC70LXRjiAqL1xuICAgIG9uQ2xpY2s/OiAoZXZlbnQ6IFN5bnRoZXRpY0V2ZW50KSA9PiB2b2lkO1xuICAgIC8qKiDRhNC70LDQsyDQvNC10L3Rj9GO0YnQuNC5IGJhY2tncm91bmRDb2xvciDQvdCwIHRyYW5zcGFyZW50ICovXG4gICAgaXNUcmFuc3BhcmVudD86IGJvb2xlYW47XG4gICAgLyoqINGE0LvQsNCzLCDQutC+0YLQvtGA0YvQuSDQtNC+0LHQsNCy0LvRj9C10YIgb3BhY2l0eSDQtNC70Y8gYmFja2dyb3VuZCAqL1xuICAgIHdpdGhPcGFjaXR5PzogYm9vbGVhbjtcbn07XG5cbmV4cG9ydCBjb25zdCBPdmVybGF5OiBGdW5jdGlvbkNvbXBvbmVudDxPdmVybGF5UHJvcHNUeXBlPiA9IG1lbW8oXG4gICAgKHtcbiAgICAgICAgY2hpbGRyZW4sXG4gICAgICAgIGlzQWJzb2x1dGUgPSBmYWxzZSxcbiAgICAgICAgaXNUcmFuc3BhcmVudCA9IGZhbHNlLFxuICAgICAgICBvbkNsaWNrID0gKCkgPT4gZmFsc2UsXG4gICAgICAgIHdpdGhPcGFjaXR5ID0gdHJ1ZSxcbiAgICB9OiBPdmVybGF5UHJvcHNUeXBlKSA9PiB7XG4gICAgICAgIHJldHVybiAoXG4gICAgICAgICAgICA8ZGl2XG4gICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtjbihDTEFTU19OQU1FLCB7XG4gICAgICAgICAgICAgICAgICAgIFtgJHtDTEFTU19OQU1FfS0taXNBYnNvbHV0ZWBdOiBpc0Fic29sdXRlLFxuICAgICAgICAgICAgICAgICAgICBbYCR7Q0xBU1NfTkFNRX0tLWlzVHJhbnNwYXJlbnRgXTogaXNUcmFuc3BhcmVudCxcbiAgICAgICAgICAgICAgICAgICAgW2Ake0NMQVNTX05BTUV9LS13aXRoT3BhY2l0eWBdOiB3aXRoT3BhY2l0eSxcbiAgICAgICAgICAgICAgICB9KX1cbiAgICAgICAgICAgICAgICBvbkNsaWNrPXtvbkNsaWNrfVxuICAgICAgICAgICAgICAgIHJvbGU9XCJwcmVzZW50YXRpb25cIlxuICAgICAgICAgICAgPlxuICAgICAgICAgICAgICAgIHtjaGlsZHJlbn1cbiAgICAgICAgICAgIDwvZGl2PlxuICAgICAgICApO1xuICAgIH1cbik7XG5cbk92ZXJsYXkuZGlzcGxheU5hbWUgPSAnT3ZlcmxheSc7XG4iXSwidmVyc2lvbiI6M30=
