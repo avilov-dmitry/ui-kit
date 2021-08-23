@@ -1,50 +1,57 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 import classnames from 'classnames/bind';
-import { Icon } from 'components';
+import { Icon } from 'ui-kit';
 import styles from './Checkbox.modules.scss';
 
 const cn = classnames.bind(styles);
 const CLASS_NAME = 'Checkbox';
 
+export type CheckboxClickParamsType = { id: string; value: boolean };
+
 export type CheckboxPropsType = {
+    className?: string;
     id: string;
-    label?: string;
-    name?: string;
-    value?: boolean;
+    isDisabled?: boolean;
     isLeftLabel?: boolean;
     isSquare?: boolean;
-    isDisabled?: boolean;
-    onClick?: (params: { value: boolean }) => void;
+    label?: string;
+    name?: string;
+    onClick?: (params: CheckboxClickParamsType) => void;
+    value: boolean;
 };
 
 export const Checkbox: React.FC<CheckboxPropsType> = ({
+    className,
     id,
-    label,
-    name,
-    value,
+    isDisabled = false,
     isLeftLabel = false,
     isSquare = false,
-    isDisabled = false,
+    label,
+    name,
     onClick,
+    value,
 }) => {
     const inputRef = useRef<HTMLInputElement>(null);
 
-    const handleChange = (event: any) => {
-        if (!isDisabled && onClick) {
-            onClick({ value: event.target.checked as boolean });
-        }
-    };
+    const handleChange = useCallback(
+        (event: any) => {
+            if (!isDisabled && onClick) {
+                onClick({ id, value: event.target.checked as boolean });
+            }
+        },
+        [id, isDisabled, onClick]
+    );
 
-    const handleClick = () => {
+    const handleClick = useCallback(() => {
         const input = inputRef.current;
 
         if (input && !input.disabled) {
             input.click();
         }
-    };
+    }, []);
 
     return (
-        <div className={cn(CLASS_NAME, { [`${CLASS_NAME}--isLeftLabel`]: isLeftLabel })}>
+        <div className={cn(CLASS_NAME, { [`${CLASS_NAME}--isLeftLabel`]: isLeftLabel }, className)}>
             <input
                 id={id}
                 ref={inputRef}
