@@ -1,1 +1,0 @@
-{"file":"/Users/dmitry.avilov/a/my/ui-kit/src/components/ResizeElement/index.ts","mappings":";;;;;;;;;;;;AAAA,2CAAyB;AACzB,kDAAgC","names":[],"sources":["/Users/dmitry.avilov/a/my/ui-kit/src/components/ResizeElement/index.ts"],"sourcesContent":["export * from './_types';\nexport * from './ResizeElement';\n"],"version":3}

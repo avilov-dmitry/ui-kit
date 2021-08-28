@@ -1,1 +1,0 @@
-{"file":"/Users/dmitry.avilov/a/my/ui-kit/src/components/Notifications/index.ts","mappings":";;;;;;;;;;;;AAAA,kDAAgC","names":[],"sources":["/Users/dmitry.avilov/a/my/ui-kit/src/components/Notifications/index.ts"],"sourcesContent":["export * from './Notifications';\n"],"version":3}

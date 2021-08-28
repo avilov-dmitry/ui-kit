@@ -1,1 +1,0 @@
-{"file":"/Users/dmitry.avilov/a/my/ui-kit/src/components/ThumbSlider/_utils/index.ts","mappings":";;;;;;;;;;;;AAAA,kDAAgC","names":[],"sources":["/Users/dmitry.avilov/a/my/ui-kit/src/components/ThumbSlider/_utils/index.ts"],"sourcesContent":["export * from './getBackground';\n"],"version":3}
