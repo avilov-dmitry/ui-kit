@@ -19,5 +19,8 @@ yarn-error.log*
 # Enviroments
 .env
 
+# Cache
+cache/
+
 # Unknown
 .DS_Store
