@@ -1,0 +1,95 @@
+.Calendar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    @include h1;
+  }
+
+  &__date {
+    align-items: flex-end;
+    display: flex;
+
+    @include h2;
+  }
+
+  &__month-name {
+    margin-right: 24px;
+    text-transform: capitalize;
+  }
+
+  &__left-arrow {
+    margin-right: 16px;
+  }
+
+  &__month {
+    width: 100%;
+  }
+
+  &__types,
+  &__mobile-trainings-list {
+    display: none;
+  }
+}
+
+@media #{$mini-desktop} {
+  .Calendar {
+    border: 1px solid #f0f0f3;
+    border-radius: 4px;
+
+    &__header {
+      background-color: #f0f0f3;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      margin-bottom: 0;
+    }
+
+    &__title {
+      display: none;
+    }
+
+    &__date {
+      justify-content: space-between;
+      padding: 12px;
+      width: 100%;
+
+      @include h2-mobile;
+    }
+
+    &__left-arrow {
+      order: -1;
+    }
+
+    &__body {
+      padding: 0 16px 16px 16px;
+    }
+
+    &__month {
+      margin-bottom: 16px;
+      padding: 0;
+    }
+
+    &__types {
+      display: block;
+    }
+
+    &__mobile-trainings-list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 32px;
+    }
+
+    &__selected-date {
+      margin-bottom: 24px;
+
+      @include h2-mobile;
+    }
+  }
+}

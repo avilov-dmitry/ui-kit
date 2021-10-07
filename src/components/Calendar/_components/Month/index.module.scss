@@ -1,0 +1,80 @@
+$cell-width: calc(100% / 7 + 1px);
+
+.Month {
+  border-collapse: collapse;
+  border-radius: 8px;
+  width: 100%;
+
+  &__header {
+    background: #f7f7fa;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    display: flex;
+    width: 100%;
+  }
+
+  &__header-mobile {
+    display: none;
+  }
+
+  &__week-day {
+    border: 1px solid #d5d5d5;
+    margin-right: -1px;
+    padding: 12px 16px;
+    width: $cell-width;
+
+    &:first-child {
+      border-top-left-radius: 4px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 4px;
+    }
+  }
+
+  &__week {
+    display: flex;
+    width: 100%;
+
+    &:last-child {
+      .Month__day {
+        &:first-child {
+          border-bottom-left-radius: 4px;
+        }
+
+        &:last-child {
+          border-bottom-right-radius: 4px;
+        }
+      }
+    }
+  }
+}
+
+@media #{$mini-desktop} {
+  .Month {
+    flex-direction: column;
+
+    &__header {
+      display: none;
+    }
+
+    &__header-mobile {
+      display: flex;
+      width: 100%;
+    }
+
+    &__week-day {
+      align-items: center;
+      border: none;
+      display: flex;
+      justify-content: center;
+      padding: 12px 0;
+
+      @include h3-mobile;
+
+      &--weekend {
+        color: #f96666;
+      }
+    }
+  }
+}
