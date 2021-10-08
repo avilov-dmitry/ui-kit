@@ -3,6 +3,7 @@ $cell-width: calc(100% / 7 + 1px);
 .Month {
   border-collapse: collapse;
   border-radius: 8px;
+  flex-direction: column;
   width: 100%;
 
   &__header {
@@ -10,17 +11,24 @@ $cell-width: calc(100% / 7 + 1px);
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
     display: flex;
+    display: none;
     width: 100%;
   }
 
   &__header-mobile {
-    display: none;
+    display: flex;
+    width: 100%;
   }
 
   &__week-day {
+    align-items: center;
     border: 1px solid #d5d5d5;
+    border: none;
+    display: flex;
+    justify-content: center;
     margin-right: -1px;
     padding: 12px 16px;
+    padding: 12px 0;
     width: $cell-width;
 
     &:first-child {
@@ -29,6 +37,10 @@ $cell-width: calc(100% / 7 + 1px);
 
     &:last-child {
       border-top-right-radius: 4px;
+    }
+
+    &--weekend {
+      color: #f96666;
     }
   }
 
@@ -45,35 +57,6 @@ $cell-width: calc(100% / 7 + 1px);
         &:last-child {
           border-bottom-right-radius: 4px;
         }
-      }
-    }
-  }
-}
-
-@media #{$mini-desktop} {
-  .Month {
-    flex-direction: column;
-
-    &__header {
-      display: none;
-    }
-
-    &__header-mobile {
-      display: flex;
-      width: 100%;
-    }
-
-    &__week-day {
-      align-items: center;
-      border: none;
-      display: flex;
-      justify-content: center;
-      padding: 12px 0;
-
-      @include h3-mobile;
-
-      &--weekend {
-        color: #f96666;
       }
     }
   }

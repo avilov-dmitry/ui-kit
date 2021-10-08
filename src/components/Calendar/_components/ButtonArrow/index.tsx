@@ -19,7 +19,7 @@ export const ButtonArrow = memo(({ destination, onClick }: PropsType) => {
                 height="14"
                 viewBox="0 0 6 15"
             /> */}
-            {'<-'}
+            {destination === 'left' ? '<' : '>'}
         </button>
     );
 });

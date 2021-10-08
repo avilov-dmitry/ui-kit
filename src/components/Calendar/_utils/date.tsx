@@ -5,7 +5,7 @@ export const changeMonth = (date: Date, destination: 'previous' | 'next' = 'next
 };
 
 export const getLocaleMonthAndYear = (date: Date, locale: string): string => {
-    return `${date.toLocaleString(locale, {
+    return `${date?.toLocaleString(locale, {
         month: 'long',
     })} ${date.getFullYear()}`;
 };

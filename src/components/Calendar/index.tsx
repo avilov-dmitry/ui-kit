@@ -8,15 +8,14 @@ import styles from './index.module.scss';
 const cn = classNames.bind(styles);
 const CLASS_NAME = 'Calendar';
 
-type PropsType = {
+export type CalendarPropsType = {
     locale?: string;
-    title: string;
     weekDays: WeekDays;
     date: Date;
     onChange: (newDate: Date) => void;
 };
 
-export const Calendar = memo(({ title, date, locale = 'ru', weekDays, onChange }: PropsType) => {
+export const Calendar = memo(({ date, locale = 'ru', weekDays, onChange }: CalendarPropsType) => {
     const [selectedDay, setSelectedDay] = useState(new Date().getDate());
 
     const handleClickPreviousMonth = useCallback(() => {
@@ -36,7 +35,6 @@ export const Calendar = memo(({ title, date, locale = 'ru', weekDays, onChange }
     return (
         <div className={cn(CLASS_NAME)}>
             <div className={cn(`${CLASS_NAME}__header`)}>
-                <span className={cn(`${CLASS_NAME}__title`)}>{title}</span>
                 <div className={cn(`${CLASS_NAME}__date`)}>
                     <span className={cn(`${CLASS_NAME}__month-name`)}>{monthName}</span>
                     <div className={cn(`${CLASS_NAME}__left-arrow`)}>
